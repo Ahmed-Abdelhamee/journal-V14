@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+</head>
+<body>
+    <div class="col-12 userTop" *ngFor="let item of profileData">
+            <img [src]="item.img" alt="user profile" class="profileImage">
+            <h1 class="uname">{{item.username}}</h1>
+    </div>
+    <div class="col-12 content">
+        <p class="bigText">New submission</p>
+        <ul>
+            <li><a routerLink="/submitpaper">{{profileTexts[0]}}</a></li>
+            <li><a href="/authorsapproval">{{profileTexts[1]}} </a></li>
+            <li>{{profileTexts[2]}}<a href="/submissioncheck"> check </a></li>
+        </ul>
+        <p class="bigText">Revision</p>
+        <ul>
+            <li><a href="/revisionwaiting">{{profileTexts[3]}}</a></li>
+            <li>{{profileTexts[4]}}<a href="/revisioncheck">check</a></li>
+            
+        </ul>
+        <p class="bigText">Completed </p>
+        <ul>
+            <li><a href="/complete">{{profileTexts[5]}} </a></li>
+        </ul>
+    </div>
+</body>
+</html>

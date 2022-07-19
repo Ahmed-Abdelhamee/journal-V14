@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>submision notes</title>
+</head>
+<body>
+    <div class="col-12">
+        <div class="col-sm-3" style="height:1px;"></div>
+        <div class="col-sm-6 content">
+            <ul  *ngFor="let item of notes">
+                <li>
+                    <p class="researchTitle">For Reasearch : {{item.researchTitle }} </p>
+                    <ul>
+                        <li>{{item.notes}}</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

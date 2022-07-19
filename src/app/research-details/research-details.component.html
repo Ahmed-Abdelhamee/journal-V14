@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>research details</title>
+</head>
+<body>
+    <div class="col-12">
+        <div class="container">
+            <hr>
+            
+                <p class="researchTitle">
+                    {{researchDetails.title}} 
+                </p>
+
+                <span>
+                    <a href="assets/journalData/cycle.pdf" class="pdf" download="cycle.pdf">
+                    <img src="assets/download-pdf.png" class="pdfImg" alt="pdf img"></a>
+                </span>
+            
+            
+            <p class="subTitle"> Articale Field :</p>
+            <p class="contentsData">
+                {{researchDetails.researchField}}
+            </p>
+
+            <p class="subTitle"> Authors : </p>
+            <ul>
+                <li class="researches" *ngFor="let item of researchDetails.researchers;">
+                    {{item}}
+                </li>
+            </ul>
+
+            <p class="subTitle"> The Summary :</p>
+            <p class="contentsData">
+                 {{researchDetails.summary}}
+            </p>
+
+            <p class="subTitle">Basic Words :</p>
+            <p class="contentsData">
+                 {{researchDetails.basicWords}}
+            </p>
+            <hr>
+        </div>
+    </div>
+</body>
+</html>

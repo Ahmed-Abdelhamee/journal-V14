@@ -1,0 +1,455 @@
+[class*="col-"] {
+    float: left;
+    width: 100%;
+}
+
+$generalColor:rgb(88, 176, 211);
+$defualtColor:#eaedf0;
+
+
+@media only screen and (max-width: 600px) {
+    body #grad1{
+        background-image: linear-gradient(166deg, #eaf0f7, $generalColor);
+    }
+    div div div div .formTitle{
+        margin-bottom: -7px;
+    }
+    div div div div div div form #progressbar{
+        padding: 5px;
+        padding-left: 0%;
+    }
+
+    div div div div div div form #progressbar li{
+        font-size: 14px;
+        text-align: center;
+    }
+
+    div div div div div div form .card{
+        padding: 10px;
+    }
+
+    div div div div div div form div .fs-title{
+        font-size: 17px;
+        text-align: center;
+    }
+
+    div div div div div div form .action-button{
+        font-size: 14px;
+        padding: 7px;
+    }
+    div div div div div div form .action-button-previous{
+        font-size: 14px;
+    }
+    div div div div div div form div div .addReviewerStyle{
+        padding-top: 50px;
+    }
+    div div div div div div form div .btn-warning{
+        font-size: 14px;
+    }
+    div div div div div div form div .submitTitle{
+        font-size: 17px;
+    }
+    div div div div div div form div .submitGroubTiTle{
+        font-size: 16px;
+    }
+    div div div div div div form div .submitItem{
+        font-size: 14px;
+    }
+    div div div div div div form .btn-success{
+        font-size: 14px;
+        margin-left: 20px;
+    }
+}
+
+html {
+    height: 100%;
+}
+
+#grad1 {
+    height: 100%;
+    background-image: linear-gradient(120deg, #eaf0f7, $generalColor);
+    // background-color: $defualtColor;
+    margin-top: 0px;
+    padding-bottom: 60px;
+    background-color: $generalColor;
+    padding-bottom: 150px;
+}
+
+
+// ---------------------- msform style start ---------------
+
+#msform {
+    text-align: center;
+    position: relative;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.formTitle{
+    font-size: 22px;
+    color: #5f5d5d;
+}
+
+
+#msform fieldset {
+    background: none;
+    border: 0 none;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding-bottom: 20px;
+    position: relative
+}
+
+#msform fieldset:not(:first-of-type) {
+    display: none
+}
+
+#msform .action-button {
+    width: 100px;
+    background: rgb(0, 119, 158);
+    font-weight: 500;
+    color: white;
+    border: 0 none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+    margin-top: 15px;}
+
+#msform .action-button:hover,
+#msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px rgb(32, 139, 181)
+}
+
+#msform .action-button-previous {
+    width: 100px;
+    background: rgb(88, 78, 78);
+    font-weight: 500;
+    color: white;
+    border: 0 none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+
+}
+
+#msform .action-button-previous:hover,
+#msform .action-button-previous:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #616161;
+}
+
+
+select.list-dt {
+    border: none;
+    outline: 0;
+    border-bottom: 1px solid #ccc;
+    padding: 2px 5px 3px 5px;
+    margin: 2px
+}
+
+select.list-dt:focus {
+    border-bottom: 2px solid $generalColor
+}
+
+.card {
+    z-index: 0;
+    border-radius: 10px;
+    position: relative;
+    padding: 20px;
+    background: $defualtColor;
+    // background-image: linear-gradient(120deg, $defualtColor, skyblue);
+
+    box-shadow: -3px -3px 7px #ffffff73,
+                    2px 2px 5px rgba(94,104,121,0.288);
+    margin-bottom: 15px;
+}
+
+.fs-title {
+    font-size: 20px;
+    color: $generalColor;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 20px;
+}
+
+
+// ----------------------------- from views added---------------------------
+
+.selectarticletype{
+    margin-top: 20px;
+    margin-bottom: 40px;
+    background-color: $defualtColor;
+    box-shadow: rgb(186 190 204) 2px 2px 5px inset, rgb(255 255 255 / 45%) -5px -5px 10px inset;
+}
+.selectResearchArea{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: $defualtColor;
+    box-shadow: rgb(186 190 204) 2px 2px 5px inset, rgb(255 255 255 / 45%) -5px -5px 10px inset;
+
+}
+
+
+
+.fileInputStyle {
+    padding: 10px;
+    height: 55px;
+    background-color: $defualtColor;
+    box-shadow: rgb(186 190 204) 2px 2px 5px inset, rgb(255 255 255 / 45%) -5px -5px 10px inset;
+}
+
+
+
+.generalInfo{
+    margin-bottom: 5px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+
+
+.addReviewerStyle{
+    padding-top: 40px;
+}
+.spanCancel{
+    position: absolute;
+    width: 30px;
+    top: 10px;
+    right: 10px;
+    height: 40px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+.spanCancel{
+    font-size: 24px;
+    color: white;
+}
+.btn-warning{
+    text-align: center;
+}
+.morethan3{
+    margin-top: 7px;
+}
+
+
+
+
+.textarea{
+    margin-top: 10px;
+    background-color: $defualtColor;
+    box-shadow: rgb(186 190 204) 2px 2px 5px inset, rgb(255 255 255 / 45%) -5px -5px 10px inset;
+}
+.comments{
+    color: $generalColor;
+    background-color: $defualtColor;
+}
+.Payment{
+    color: $generalColor;
+    background-color: $defualtColor;
+    padding-top: 10px;
+}
+
+
+
+.textInputStyle{
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+    background-color: $defualtColor;
+    box-shadow: rgb(186 190 204) 2px 2px 5px inset, rgb(255 255 255 / 45%) -5px -5px 10px inset;
+}
+
+.submitData{
+    text-align: left;
+    color: #5f5d5d;
+}
+.submitTitle{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: rgb(28, 138, 174);
+}
+.submitGroubTiTle{
+    font-size: 20px;
+    color:rgb(88, 91, 94);
+    text-decoration: underline;
+    font-weight: bold;
+}
+.submitItem{
+    font-size: 17px;
+}
+.submitItem b{
+    color:rgb(88, 91, 94);
+}
+
+.labelnote{
+    text-align: left;
+    font-size: 12px;
+    font-weight: bold;
+    color: #616161;
+    padding-left: 7px;
+}
+
+
+
+//--------------------------------------------------------------------------
+
+// ------------------------------- progress bar start -----------------------
+
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: rgb(149, 137, 137)
+}
+
+#progressbar .active {
+    color: #000000
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 12px;
+    width: 14%;
+    float: left;
+    position: relative;
+}
+
+#progressbar #step1:before {
+    font-family: FontAwesome;
+    content: "1";
+}
+
+#progressbar #step2:before {
+    font-family: FontAwesome;
+    content: "2"
+}
+
+#progressbar #step3:before {
+    font-family: FontAwesome;
+    content: "3"
+}
+
+#progressbar #step4:before {
+    font-family: FontAwesome;
+    content: "4"
+}
+
+#progressbar #step5:before {
+    font-family: FontAwesome;
+    content: "5"
+}
+
+#progressbar #step6:before {
+    font-family: FontAwesome;
+    content: "6";
+}
+#progressbar #step7:before {
+    font-family: FontAwesome;
+    content: "7"
+}
+
+#progressbar li:before {
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    display: block;
+    font-size: 18px;
+    color: #ffffff;
+    background: rgb(167, 163, 163);
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    padding: 2px;
+    opacity: .8;
+}
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: lightgray;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    z-index: -1;
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: $generalColor;
+    opacity: 1;
+}
+
+.radio-group {
+    position: relative;
+    margin-bottom: 25px
+}
+
+.radio {
+    display: inline-block;
+    width: 204;
+    height: 104;
+    border-radius: 0;
+    background: lightblue;
+    box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 8px 2px
+}
+
+.radio:hover {
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3)
+}
+
+.radio.selected {
+    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1)
+}
+
+.fit-image {
+    width: 100%;
+    object-fit: cover
+}
+
+.btn-success{
+    padding: 9px 5px;
+    font-weight: 500;
+    color: white;
+    border: 0 none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+    margin-left: 40px;
+}
+
+
+
+// #msform input,
+// #msform textarea {
+//     padding: 0px 8px 4px 8px;
+//     border: none;
+//     border-bottom: 1px solid #ccc;
+//     border-radius: 0px;
+//     margin-bottom: 25px;
+//     margin-top: 2px;
+//     width: 100%;
+//     box-sizing: border-box;
+//     font-family: montserrat;
+//     color: #2C3E50;
+//     font-size: 16px;
+//     letter-spacing: 1px
+// }
+
+// #msform input:focus,
+// #msform textarea:focus {
+//     -moz-box-shadow: none !important;
+//     -webkit-box-shadow: none !important;
+//     box-shadow: none !important;
+//     border-radius: 5px;
+//     font-weight: bold;
+//     border-bottom: 2px solid skyblue;
+//     outline-width: 0
+// }

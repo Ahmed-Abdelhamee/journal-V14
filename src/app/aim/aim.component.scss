@@ -1,0 +1,55 @@
+[class*="col-"]{
+    float: left;
+    width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+    .All{
+        padding-bottom: 200px;
+    }
+    div h1{
+        font-size: 24px;
+    }
+    div p{
+        font-size: 18px;
+        padding: 0px;
+        padding-left: 10px;
+        margin-bottom: 20px;
+    }
+}
+
+h1{
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: 'Lobster', cursive;
+    animation-name: aimShow;
+    animation-duration: 1s;
+    animation-direction: normal;
+    animation-iteration-count: 1;
+    color: rgb(13, 115, 178);
+}
+@keyframes aimShow{
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+p{
+    padding-left: 20%;
+    padding-right: 20%;
+    font-size: 25px;
+    // font-weight: bold;
+    font-family: 'Fjalla One', sans-serif;
+    font-family: 'Tapestry', cursive;
+    animation-name: P;
+    animation-duration: 2s;
+    animation-direction: normal;
+    animation-iteration-count: 1;
+    // animation-delay: 4s;
+
+}
+@keyframes P{
+    from {opacity: 0; margin-top: -40px;}
+    to {opacity: 1;}
+}

@@ -1,0 +1,106 @@
+[class*="col-"]{
+    float: left;
+    width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+    div #mainTextH1{
+        font-size: 25px;
+        text-align: center;
+        padding: 0px;
+        padding-top: 15px;
+    }
+
+    div #mainTextP{
+        padding: 0px;
+        padding-left: 12px;
+        font-size: 18px;
+    }
+
+    div h2{
+        font-size: 25px;
+        text-align: center;
+        padding: 0px;
+        padding-top: 15px;
+        padding-bottom: 2px;
+    }
+    div p{
+        padding: 0px;
+        padding-left: 12px;
+        font-size: 18px;
+    }
+
+}
+
+.col-12{
+   margin-bottom: 200px;
+}
+
+#mainTextH1{
+    padding: 10px;
+    padding-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: 'Lobster', cursive;
+    animation-name: aimShow;
+    animation-duration: 1s;
+    animation-direction: normal;
+    animation-iteration-count: 1;
+    color: rgb(13, 115, 178);
+}
+@keyframes aimShow{
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+#mainTextP{
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-bottom: 40px;
+    font-size: 25px;
+    // font-weight: bold;
+    font-family: 'Fjalla One', sans-serif;
+    font-family: 'Tapestry', cursive;
+    animation-name: P;
+    animation-duration: 2s;
+    animation-direction: normal;
+    animation-iteration-count: 1;
+
+}
+@keyframes P{
+    from {opacity: 0; margin-top: -40px;}
+    to {opacity: 1;}
+}
+
+.reviewersDiv{
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+.reviewersDiv a{
+    text-align: center;
+    
+}
+h2{
+    padding-top: 30px;
+    width: 100%;
+    color: rgb(13, 115, 178);
+    padding-left: 1%;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+}
+
+p{
+    padding: 5px 2%; 
+    font-size: 25px;
+    // font-weight: bold;
+    font-family: 'Fjalla One', sans-serif;
+    font-family: 'Tapestry', cursive;
+}
+.reviewer{
+    padding: 5px 2%; 
+    font-size: 25px;
+    // font-weight: bold;
+    font-family: 'Fjalla One', sans-serif;
+    font-family: 'Tapestry', cursive;
+}

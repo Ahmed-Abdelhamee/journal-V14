@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><title>home</title>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="thecarousel">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ul class="carousel-indicators" *ngFor="let item of homeCarousel; let i=index;">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="i+1"></li>
+        </ul>
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+          <div class="carousel-item active ">
+            <p class="carouselText">International Journal of Technological Sciences (IJTS) </p>
+            <img src="assets/img2.jpg" alt="photo" width="100%" height="400">
+          </div>
+          <div class="carousel-item " *ngFor="let item of homeCarousel">
+            <p class="carouselText">{{item.title}} </p>
+            <img [src]="item.photourl" alt="photo" width="100%" height="400">
+          </div>
+        </div>
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
+  </div>
+
+  <!-- the static photo Div -->
+  <div class="col-12 staticPhotoDiv">
+    <div class="col-sm-4" style="height:1px;"></div>
+    <div class="col-sm-4">
+      <img [src]="backImage.backImage" alt="home" class=" staticImage">
+    </div>
+    <div class="col-sm-4" style="height:1px;"></div>
+  </div>
+    
+  <!-- div content  -->
+  <div class="col-12 content">
+      <div class="col-sm-3 reviewslinks" >
+        <p class="reviewLinksTitle">Published Volumes</p>
+        <div class="col-12 reviews" *ngFor="let item of publishReviews; let i=index;">
+          <a routerLink="/research-collection/{{item.publishedVolumes}}">{{item.publishedVolumes}}</a>
+        </div>
+        <br>
+      </div>
+
+      <div class="col-sm-9 data">
+        <div class="col-12 dataContent" *ngFor="let item of homeData; let i=index;">
+          <!-- the frist data without aos animation -->
+          <div class="col-sm-8">
+            <p class="discription" *ngIf="i==0 && item.text !='' && item.text !=undefined ">{{item.text}}</p>
+          </div>
+          <div class="col-sm-4">
+            <img [src]="item.photourl" alt="image" *ngIf="i==0 && item.photourl != '' && item.photourl !=undefined && item.text !='' && item.text !=undefined">
+          </div>
+
+          <!-- the remaining data with aos animation  -->
+          <div class="col-sm-8">
+            <p class="discription" *ngIf="i>0 && item.text !='' && item.text !=undefined" data-aos="fade-up" data-aos-duration="1000">{{item.text}}</p>
+          </div>
+          <div class="col-sm-4">
+            <img [src]="item.photourl" *ngIf="i>0 && item.photourl != '' && item.photourl !=undefined && item.text !='' && item.text !=undefined" alt="image" data-aos="fade-up" data-aos-duration="1000">
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+    
+</body>
+</html>

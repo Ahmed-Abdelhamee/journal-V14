@@ -1,0 +1,328 @@
+[class*="col-"]{
+    float: left;
+    width: 100%;
+}
+
+
+// the style code for mobile view
+@media only screen and (max-width: 850px) {
+  // nav style
+  body .navStyle{
+    padding: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: auto;
+  }
+
+
+  // --------------- logo style ------------
+  div div .logoDiv{
+    display: inline-block;
+  }
+  
+  div div .logoImg{
+    position: relative;
+    height: 55px;
+    border-radius: 5px;
+    top: 15px;
+    // float: left;
+  }
+  div div .logo{
+    position: relative;
+    font-size: 15px;
+    // float: left;
+    padding-left: 55px;
+    top: -50px;
+    margin-bottom: -50px;
+    text-align: left;
+  }
+
+  div div .showMOBILE{
+    display: block;
+  }
+  div div .desktopShow{
+    display: none;
+  }
+  div div .toggleButton{
+    margin: 0px;
+    margin-bottom: 10px;
+  }
+  div div .toggleButton:hover .sidebar{
+    margin: 0px;
+    margin-bottom: 10px;
+  }
+  div div .btnmenuIcon{
+    font-size: 25px;
+  }
+  div div .profileIcon{
+    margin-bottom: 8px;
+  }  
+
+  // -----------------------------------------------------
+  
+  // -------------------- sidebar style -------------------
+  body .sidebarMOBILE {
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      z-index: 100;
+      opacity: 1;
+    }
+    body .showMOBILE{
+      display: block;
+    }
+    div div .desktopShow{
+      display: none;
+    }
+    div .titleSidebarMOBILE{
+      position: relative;
+      font-family: 'Yeseva One', cursive;
+      font-size: 15px;
+      text-align: center;
+      color: white;
+      margin-bottom: 20px;
+      font-weight: 100;
+      padding: 5px;
+      padding-left: 40px;
+      margin-right: 40px;
+    }
+
+}
+
+// style sass varaible
+$basicColor:#465d7e;
+
+
+// the style of nav
+.navStyle{
+ width: 100%;
+ background-color: $basicColor;
+ padding: 5px;
+ padding-top: 10px;
+ padding-bottom: 10px;
+}
+
+// the nav logo text style
+.logoDiv{
+  display: flex;
+  justify-content: center;
+}
+.logo{
+    font-size: 17px;
+    color: white;
+    font-family: 'Yeseva One', cursive;
+    padding-top: 17px;
+    padding-left: 10px;
+    text-align: center;
+    float: right;
+}
+.logoImg{
+  height: 60px;
+  border-radius: 5px;
+}
+.linksSide{
+  display: flex;
+  justify-content: flex-end;
+}
+.toggleButton{
+  background: none;
+  color: white;
+  border: 1px solid white;
+  float: right;
+  margin-right: 10%;
+  margin-top: 7px;
+  border-radius: 5px;
+}
+.toggleButton:hover .sidebar{
+  opacity: 1;
+  z-index: 6;
+  display: block;
+}
+
+.toggleButtonMobile{
+  position: relative;
+  background: none;
+  color: white;
+  border: 1px solid white;
+  float: right;
+  margin-right: 1%;
+  margin-top: 7px;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  
+}
+
+.btnmenuIcon{
+    padding-top: 3px;
+    font-size: 25px;
+}
+
+.profileIcon{
+  font-size: 40px;
+  color: white;
+  margin-right: 15px;
+  margin-top: 12px;
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
+}
+
+
+
+
+
+
+// -------------------------- div .links with sidebar ---------------------
+
+//links class => helps us with the jquery hide and show 
+// .links{
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     height: 100%;
+//     width: 100%;
+//     z-index: 2;
+// }
+
+// ------------------------------ sidebar style -------------------------------
+.desktopShow{
+  display: block;
+}
+.sidebar {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 60px;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    background-color: $basicColor;
+    // position: fixed;
+    height: 575px;
+    overflow: hidden;
+    z-index: 2;
+    padding: 20px;
+    padding-bottom: 85px;
+    padding-top:25px ;
+
+    opacity: 0;
+    z-index: -1;
+    display: none;
+  }
+
+  .titleSidebar{
+    font-family: 'Yeseva One', cursive;
+    font-size: 15px;
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+    font-weight: 100;
+    padding: 5px;
+    // text-shadow: 5px 5px 10px black;
+  }
+
+  .sidebar a {
+    display: block;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 20px;
+    margin-top: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .sidebar a.active {
+    background-color: white;
+    color: black;
+  }
+
+  .sidebar a:hover:not(.active) {
+    background-color: white;
+    color: black;
+  }
+
+  
+  
+
+// sidebar title style
+.titleSidebar{
+  font-family: 'Yeseva One', cursive;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+// **************************** MobileShow ******************************
+.showMOBILE{
+  display: none;
+}
+.sidebarMOBILE {
+  margin: 0;
+  padding: 0;
+  top: 60px;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  background-color: $basicColor;
+  // position: fixed;
+  position: absolute;
+  height: 535px;
+  overflow: hidden;
+  z-index: 2;
+  padding: 20px;
+  padding-bottom: 85px;
+  padding-top:25px ;
+
+}
+
+.sidebarMOBILE a {
+  display: block;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 20px;
+  margin-top: 5px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 500;
+}
+
+.sidebarMOBILE a.active {
+  background-color: white;
+  color: black;
+}
+
+.sidebarMOBILE a:hover:not(.active) {
+  background-color: white;
+  color: black;
+}
+// button hide on the sidebar div 
+.btnHide{
+  position: absolute;
+  // float: left ;
+  right: 10px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+  // ----------------------------------------------------------------------
+
+  // the dark div style next to sidebar
+  // .content {
+  //   margin-right: 300px;
+  //   padding: 0px;
+  //   top: 98px;
+  //   left: 0;
+  //   width: 1150px;
+  //   background-color: black;
+  //   position: fixed;
+  //   height: 100%;
+  //   overflow: auto;
+  //   z-index: 2;
+  //   opacity: calc(.7);
+  // }

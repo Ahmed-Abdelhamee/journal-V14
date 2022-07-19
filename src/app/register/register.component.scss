@@ -1,0 +1,223 @@
+[class*="col"]{
+    float: left;
+    width: 100%;
+}
+
+//--------------------- the mobile code style code; -----------------------
+@media only screen and (max-width: 600px) {
+
+    .col-12{
+        padding: 0px;
+    }
+    // the outer div of the form 
+    div div .registerFormDiv{
+        padding: 0px;
+        padding-top: 4%;
+        margin-bottom: 100px;
+    }
+
+    // the form title 
+    div div div form .formTitle{
+        font-size: 22px;
+        margin-top: 15px;
+        margin-bottom: 25px;
+    }
+
+    // the form style 
+    div div div .card{
+        margin-top: 10px;
+        padding-left: 7px;
+        padding-right: 7px;
+    }
+
+    // the inputs style
+    div div div form div span .inputStyle{
+        height: 40px;
+    }
+
+    // the inputs placeholder style
+    div div div form div span .inputStyle:placeholder-shown{
+        font-size: 13px;
+    }
+
+    div div div form .btnSubmitDiv{
+        padding-left: 30%;
+        padding-right: 30%;
+    }
+
+    div div div form .btnSubmitDiv .btnSubmit{
+        font-size: 15px;
+        height: 40px;
+    }
+    //---------------------------- the icons style --------------------------
+
+    div div div form div span .fa-user{ font-size: 22px; padding-top: 7px;}
+    div div div form div span .fa-lock{ font-size: 22px; padding-top: 7px;}
+    div div div form div span .fa-mobile-phone{ font-size: 30px; padding-top: 7px;}
+    div div div form div span .fa-graduation-cap{ font-size: 17px; padding-top: 7px;}
+    div div div form div span .material-icons{ font-size: 20px; padding-top: 12px;}
+
+    //------------------------------------------------------------------------
+}
+
+//---------------------------------------------------------------------------------
+
+$iconColor:#595959;
+
+// the full div style
+.fullViewDiv{
+    background-color: #dde1e7;
+    // background-image: url(/assets/library.png);
+    // background-size: 50%;
+}
+
+
+// outer div of the form 
+.registerFormDiv{
+    padding: 10%;
+    padding-top: 1%;
+}
+
+
+// the form style 
+.card{
+    margin-top: 20px;
+    padding: 7%;
+    padding-top: 2%;
+    border-radius: 20px;
+    background-color: #dde1e7;
+    // background-color: rgba(0,0,0,.5);
+    box-shadow: -3px -3px 7px #ffffff73,
+               2px 2px 5px rgba(94,104,121,0.288);
+               
+    width: 100%;
+}
+
+
+// the form title
+.formTitle{
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Lobster', cursive;
+    color: $iconColor;
+
+}
+
+
+
+//-------- the span style content ----------
+span{
+    float: left;
+}
+.Spanicon{
+    width: 10%;
+    margin-left: 3%;
+}
+.SpanInput{
+    width: 87%;
+}
+//------------------------------------------
+
+
+
+//-------------- the icons style -----------
+.fa-user{
+    padding-top: 10px;
+    font-size: 30px;
+    color: $iconColor;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    padding-left: 0px;
+}
+.material-icons{
+    padding-top: 10px;
+    font-size: 26px;
+    color: $iconColor;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    padding-left: 0px;
+}
+.fa-lock{
+    padding-top: 10px;
+    font-size: 30px;
+    color: $iconColor;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    padding-left: 0px;
+}
+.fa-mobile-phone{
+    padding-top: 5px;
+    font-size: 44px;
+    color: $iconColor;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    padding-left: 0px;
+}
+.fa-graduation-cap{
+    padding-top: 10px;
+    font-size: 25px;
+    color: $iconColor;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    padding-left: 0px;
+}
+//------------------------------------------
+
+
+
+//---------- the style for inputs------------
+
+.inputStyle{
+    box-shadow: inset 2px 2px 5px #babecc,
+              inset -5px -5px 10px #ffffff73;
+
+    background-color: #dde1e7;;
+    border-radius: 30px;
+    width: 100%;
+    outline: none;
+    border: 1px solid rgb(206, 206, 206);
+    height: 50px;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.inputStyle:placeholder-shown{
+    padding-left: 20px;
+    font-weight: 400;
+}
+
+.inputStyle:focus {
+    box-shadow: inset 1px 1px 2px #babecc,
+                inset -1px -1px 2px #ffffff73;
+  }
+//----------------------------------------------------
+
+.alert-danger{
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+//------------------ button submit style---------------
+.btnSubmit{
+    margin: 15px 0;
+  width: 100%;
+  height: 50px;
+  color:#595959;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: rgb(202, 201, 201);
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  margin-top: 15px;
+  box-shadow: 2px 2px 5px #babecc,
+              -5px -5px 10px #ffffff73;
+}
+.btnSubmit:hover{
+    background-color: gray;
+    color: white;
+}
+//--------------------------------------------------

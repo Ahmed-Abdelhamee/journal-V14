@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>revision waiting</title>
+</head>
+<body>
+    <div class="col-12">
+        <div class="col-sm-3" style="height: 1px;"></div>
+        <div class="col-sm-6">
+            <div class=" contant card" *ngFor="let item of revisionData">
+                <p class="title"> </p>
+                <p> <b>artical type</b> : {{item.articleType}}</p>
+                <p class="groupTitle"><b>attached files : </b></p>
+                <ul>
+                    <li>file 1 : {{item.file1}}</li>
+                    <li>file 2 : {{item.file2}}</li>
+                    <li>file 3 : {{item.file3}}</li>
+                    <li>file 4 : {{item.file4}}</li>
+                </ul>
+                    
+                <p><b>General Information :</b></p>
+                <ul>
+                    <li>{{item.GeneralInformationText1}}</li>
+                    <li>{{item.GeneralInformationText2}}</li>
+                </ul>
+        
+                <p class="groupTitle"><b>Reviewers</b></p>
+                <ul>
+                    <li> reviewer Name : {{item.reviewerName}}</li>
+                    <li>reviewer Jop : {{item.reviewerJop}}</li>
+                    <li> contact : {{item.contact}}</li>
+                    <div *ngFor="let subitem of item.additionalReviewers" class="additionalReviewers">
+                        <li *ngIf=" subitem.reviewerName != '' && subitem.reviewerName !=undefined  ">reviewer Name : {{subitem.reviewerName}}</li>
+                        <li *ngIf=" subitem.reviewerJop != ''  && subitem.reviewerJop !=undefined ">reviewer Jop : {{subitem.reviewerJop}}</li>
+                        <li *ngIf=" subitem.contact != ''  && subitem.contact !=undefined ">contact : {{subitem.contact}}</li>
+                    </div>
+                </ul>
+                
+                <p><b>title :</b> {{item.title}}</p>
+                <p><b>Abstract :</b> {{item.Abstract}}</p>
+                <p><b>KeyWords :</b> {{item.KeyWords}}</p>
+                <p><b>FundingInfo :</b> {{item.FundingInfo}}</p>
+        
+                
+                <p><b>Comments :</b> {{item.comment}}</p>
+                <p><b>receipt number :</b> {{item.receiptnumber}}</p>
+                <p><b>receipt Photo :</b> {{item.receiptPhoto}}</p>
+                
+                <br> <hr> <hr>
+        
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+[class*="col-"]{
+    float: left;
+    width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+    // ********* carsoul style ********
+    body .thecarousel{
+        position: relative;
+        margin-top: 0px;
+    }
+    .thecarousel div div img{
+        height: 280px;
+    }
+    //**********************************
+
+    body .staticPhotoDiv{
+        display: none;
+    }
+    body .content{
+        position: relative;
+        margin-top: 0px;
+    }
+    // *********************************
+
+    .reviewslinks{
+        margin-bottom: 20px;
+    }
+
+    // ******* published papers ********
+    
+    div div .reviewLinksTitle{
+        font-size: 21px;
+    }
+
+    div div .reviews a{
+        font-size: 19px;
+        font-weight: bold;
+    }
+    // **********************************
+
+    // ************** data **************
+    div div .dataContent{
+        display: block;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    div div .dataContent .discription{
+        text-align: left;
+        font-size: 17px;
+        padding: 0px;
+        padding-left: 10px;
+    }
+
+    div div .dataContent img{
+        width: 100%;
+        margin: 0px;
+        height: 250px;
+    }
+
+    // ********************************
+
+
+
+}
+
+$basicColor:#465d7e;
+
+
+.thecarousel{
+    position:absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    margin-bottom: 20px;
+    margin-top: 100px;
+}
+
+.carouselText{
+    padding-top: 20px;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Koulen', cursive;
+    background-color: white;
+    padding-bottom: 5px;
+    margin-bottom: 0px;
+}
+
+// ******************* static photo **************
+.staticPhotoDiv{
+    position: fixed;
+    z-index: -1;
+    opacity: .2;
+    margin-top: 90px;
+    justify-content: center;
+}
+.staticImage{
+    height: 100%;
+    width: 400px;
+    border-radius: 15px;
+
+}
+//******************************************
+
+// ******************* home content ********************** 
+.content{
+    position: relative;
+    margin-top: 500px;
+
+}
+.reviewLinksTitle{
+    color: rgb(28, 94, 148);
+    text-align: center;
+    font-size: 25px;
+    font-weight: 700;
+}
+.reviewslinks a{
+    display: block;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+.reviews{
+    font-size: 25px;
+}
+
+.discription{
+    font-size: 25px;
+    text-align: left;
+    // font-weight: 500;
+    padding: 40px;
+    padding-top: 25px;
+}
+.data{
+    padding: 0px;
+    padding-bottom: 50px;
+}
+.dataContent{
+    // position: relative;
+    display: block;
+    padding: 0px;
+    // justify-content: center;
+}
+
+.dataContent img{
+    height: 350px;
+    width: 100%;
+    border-radius: 45px;
+    padding: 25px 15px;
+
+}

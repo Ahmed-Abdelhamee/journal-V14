@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>instructions</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Tapestry&display=swap" rel="stylesheet"> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="col-12">
+        <div *ngFor="let item of instructions ; let i=index;">
+            
+            <h1 id="mainTextH1" *ngIf="i==0" > INSTRUCTIONS TO AUTHORS    <a href="assets/journalData/cycle.pdf" download="instructions"><img src="assets/download-pdf.png" class="pdfImg" alt="pdf img"></a></h1> 
+
+            <p id="mainTextP" *ngIf="i==0" >{{item.text}}</p>
+            
+            <h2 *ngIf="item.title!='' && i>0"  data-aos="fade-up" data-aos-duration="2000">{{item.title}}</h2>
+
+            <p *ngIf="i>0" data-aos="fade-up" data-aos-duration="2000" >{{item.text}}</p>
+        
+        </div>
+        
+        
+    </div>
+
+</body>
+</html>

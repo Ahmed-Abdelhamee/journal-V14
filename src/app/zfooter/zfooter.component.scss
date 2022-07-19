@@ -1,0 +1,90 @@
+[class*="col-"] {
+    float: left;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="col-"] {
+    width: 100%;
+}
+body .footer{
+  padding-bottom: 150px;
+}
+  
+  div div .col-2{
+    float: none;
+    margin-bottom: 20px;
+    margin-left: 0px;
+    width: 100%;
+  }
+  div .links {
+    margin-left: 0px;
+    text-align: center;
+    padding-left: 35%;
+  }
+  div .links a{
+    font-size: 17px;
+  }
+  div div .forStyle{
+    margin-left: 0px;
+  }
+  div .icons{
+    padding-left: 45%;
+  }
+  div div .icon{
+    font-size: 30px;
+  }
+
+}
+
+.footer{
+  position: relative;
+    padding-top: 25px;
+    padding-bottom: 50px;
+    background-color: beige;
+    text-align: center;
+    background-color: rgb(239, 239, 239);
+}
+
+.icon {
+    font-size: 50px;
+    color: gray;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.icon:hover{
+    color: rgb(71, 103, 163);
+}
+.links{
+  width: 100%;
+  margin-bottom: 25px;
+}
+.links a{
+  display: inline;
+  margin-left: 15%;
+  text-align: center;  
+  font-size: 22px;
+  font-weight: bold;
+  color: gray;
+  text-transform: capitalize;
+}
+.links a:hover{
+  color: rgb(71, 103, 163);
+}
+.forStyle{
+  margin-left: 30px;
+}

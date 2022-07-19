@@ -1,0 +1,152 @@
+{
+  "header-data":[
+    { "journalname":"International Journal of Technological Sciences (IJTS)","logoImg":"assets/journalLogo.png" }
+],
+  "home-carousel": [
+    {"photourl":"assets/img1.jpg","title":"Air Conditioning department"},
+    {"photourl":"assets/img3.jpg","title":" Electric department"}
+],
+  "home-data" : [
+    {"text":"dasfdsdfgs hdfszxdnb cshdgfh zbxch bskdhfk hzjxbc ,sbdck hsdkhfcb skhdfbc, kszbc  Lorem, ipsum dolor sit amet consectetur adipisicing elit.Similique reiciendis quas pariatur cumque iure tempora delectus eaque architecto quia dolorem vitaxime perferendis ducimus accusamus, id, quisquam ipsum!","photourl":"assets/01.jpg"},
+    {"text":"dasfdsdfgs hdfszxdnb cshdgfh zbxch bskdhfk hzjxbc ,sbdck hsdkhfcb skhdfbc, kszbc  Lorem, ipsum dolor sit amet consectetur adipisicing elit.Similique reiciendis quas pariatur cumque iure tempora delectus eaque architecto quia dolorem vitaxime perferendis ducimus accusamus, id, quisquam ipsum!","photourl":"assets/home.jpg"},
+    {"text":"dasfdsdfgs hdfszxdnb cshdgfh zbxch bskdhfk hzjxbc ,sbdck hsdkhfcb skhdfbc, kszbc  Lorem, ipsum dolor sit amet consectetur adipisicing elit.Similique reiciendis quas pariatur cumque iure tempora delectus eaque architecto quia dolorem vitaxime perferendis ducimus accusamus, id, quisquam ipsum!","photourl":"assets/home.jpg"},
+    {"text":"dasfdsdfgs hdfszxdnb cshdgfh zbxch bskdhfk hzjxbc ,sbdck hsdkhfcb skhdfbc, kszbc  Lorem, ipsum dolor sit amet consectetur adipisicing elit.Similique reiciendis quas pariatur cumque iure tempora delectus eaque architecto quia dolorem vitaxime perferendis ducimus accusamus, id, quisquam ipsum!","photourl":"assets/home.jpg"},
+    {"text":"dasfdsdfgs hdfszxdnb cshdgfh zbxch bskdhfk hzjxbc ,sbdck hsdkhfcb skhdfbc, kszbc  Lorem, ipsum dolor sit amet consectetur adipisicing elit.Similique reiciendis quas pariatur cumque iure tempora delectus eaque architecto quia dolorem vitaxime perferendis ducimus accusamus, id, quisquam ipsum!","photourl":"assets/1.jpg"},
+    {"text":"dasfdsdfgs hdfszxdnb cshdgfh zbxch bskdhfk hzjxbc ,sbdck hsdkhfcb skhdfbc, kszbc  Lorem, ipsum dolor sit amet consectetur adipisicing elit.Similique reiciendis quas pariatur cumque iure tempora delectus eaque architecto quia dolorem vitaxime perferendis ducimus accusamus, id, quisquam ipsum!"}
+  ],
+  "bg-image":{
+    "backImage":"assets/home.jpg"
+  },
+  "board-data":[
+    {"text":"TRJ publishes original contributions, critical reviews, technical papers, technical data, short notes, and letters to the editor in English (preferred language) or Arabic. Authors are kindly requested to follow the recommendations given below and are urged to request the Submission Guide to TRJ by mail from the editor Faculty of Technology &Education, Sohag University. Sohag, Egypt, or E-mail:---------------------------------------------------"},
+    {"title":"Submission of papers","text":"Original manuscript should submit via specified menu. Page numbers should be included at the page footers. The name, telephone, and the E-mail address of the corresponding author should be recorded. The author may indicate under which section of TRJ the paper is desired to appear. Authors are requested to submit a software version of their contribution in MS-Word ."},
+    {"title":"Manuscript preparation","text":"Manuscripts should be typed single spaced two columns on A4-size paper using MS Word."},
+    {"title":"Margins","text":"top margin should be 4.5 cm. Left & Right 2.5 cm. Left and right margins for the abstract and keywords are 3.5 cm. Space between columns 0.8 cm."},
+    {"title":"Fonts","text":"Times New Roman for English text with the following sizes: Title 13 pt. upper case and in bold face. Author's name and affiliation: 12 pt. Text 10 pt. Arabic Transparent for Arabic Text with equivalent font sizes."},
+    {"title":"Abstract","text":"Authors are requested to present, in addition to the abstract in the same language of the paper, a translation of the abstract in the other language (English/Arabic)."},
+    {"title":"Symbols and abbreviations","text":"Symbols should correspond to international recommendations. Symbols and abbreviations that are not generally known must be explained when used for the first time. Abbreviations should be avoided in titles and abstracts."},
+    {"title":"Keywords","text":"Authors are requested to submit up to five keywords of their choice. These will appear below the abstract in the printed article."},
+    {"title":"References","text":"References are to be cited in the text by consecutive numbers in square brackets and listed by numbers in the reference list. Please refer to recent issues of the journal for specific examples."},
+    {"title":"Tables","text":"Tables should be numbered and must be given headings. It is a good scientific style to arrange tables as transparently as possible. Tables are not to be combined with figures."},
+    {"title":"Formulae","text":"Formulae and equations must be numbered consecutively in Arabic numerals (1, 2, 3...). They must be typed so clearly that each symbol can be recognized without error. There should be sufficient space between complex formulae and the preceding and subsequent text lines."},
+    {"title":"Figures","text":"Letters, numbers, and essential details of the figure must be distinct and large enough to be recognized. Large figures may be developed with two column width and placed at either top or bottom of a page."},
+    {"title":"Units","text":"SI or internationally agreed upon units should be used."}
+  ],
+  "board-reviewers" :[
+    {"name" : "name reviewer 1 ","job":"job reviewer 1", "generalSpecialty":"General specialty of reviewer 1 ", "Specialty":"the specialty of reviewer 1 "},
+    {"name" : "name reviewer 2 ","job":"job reviewer 2", "generalSpecialty":"General specialty of reviewer 2 ", "Specialty":"the specialty of reviewer 2 "},
+    {"name" : "name reviewer 3 ","job":"job reviewer 3", "generalSpecialty":"General specialty of reviewer 3 ", "Specialty":"the specialty of reviewer 3 "},
+    {"name" : "name reviewer 4 ","job":"job reviewer 4", "generalSpecialty":"General specialty of reviewer 4 ", "Specialty":"the specialty of reviewer 4 "},
+    {"name" : "name reviewer 5 ","job":"job reviewer 5", "generalSpecialty":"General specialty of reviewer 5 ", "Specialty":"the specialty of reviewer 5 "},
+    {"name" : "name reviewer 6 ","job":"job reviewer 6", "generalSpecialty":"General specialty of reviewer 6 ", "Specialty":"the specialty of reviewer 6 "},
+    {"name" : "name reviewer 7 ","job":"job reviewer 7", "generalSpecialty":"General specialty of reviewer 7 ", "Specialty":"the specialty of reviewer 7 "},
+    {"name" : "name reviewer 8 ","job":"job reviewer 8", "generalSpecialty":"General specialty of reviewer 8 ", "Specialty":"the specialty of reviewer 8 "}
+  ],
+  "aim-data" : [
+    {"text":"International Journal of Technological Sciences (IJTS) is devoted to publishing high quality papers in the field of technology and applied sciences."},
+    {"text":"(IJTS) publishes original papers, critical reviews, technical reports,technical data, short notes, technological topic pedagogy, and letters to the editor."},
+    {"text":"Papers covering experimental, theoretical and computational aspects which contribute to the understanding and learning of technological and applied sciences are welcome."},
+    {"text":"Authors from all over the world are invited to submit manuscripts for possible publication in (IJTS)."}
+  ],
+  "instrctions-data" :[
+    {"title":"INSTRUCTIONS TO AUTHORS","text":"TRJ publishes original contributions, critical reviews, technical papers, technical data, short notes, and letters to the editor in English (preferred language) or Arabic. Authors are kindly requested to follow the recommendations given below and are urged to request the Submission Guide to TRJ by mail from the editor Faculty of Technology &Education, Sohag University. Sohag, Egypt, or E-mail:---------------------------------------------------"},
+    {"title":"Submission of papers","text":"Original manuscript should submit via specified menu. Page numbers should be included at the page footers. The name, telephone, and the E-mail address of the corresponding author should be recorded. The author may indicate under which section of TRJ the paper is desired to appear. Authors are requested to submit a software version of their contribution in MS-Word ."},
+    {"title":"Manuscript preparation","text":"Manuscripts should be typed single spaced two columns on A4-size paper using MS Word."},
+    {"title":"Margins","text":"top margin should be 4.5 cm. Left & Right 2.5 cm. Left and right margins for the abstract and keywords are 3.5 cm. Space between columns 0.8 cm."},
+    {"title":"Fonts","text":"Times New Roman for English text with the following sizes: Title 13 pt. upper case and in bold face. Author's name and affiliation: 12 pt. Text 10 pt. Arabic Transparent for Arabic Text with equivalent font sizes."},
+    {"title":"Abstract","text":"Authors are requested to present, in addition to the abstract in the same language of the paper, a translation of the abstract in the other language (English/Arabic)."},
+    {"title":"Symbols and abbreviations","text":"Symbols should correspond to international recommendations. Symbols and abbreviations that are not generally known must be explained when used for the first time. Abbreviations should be avoided in titles and abstracts."},
+    {"title":"Keywords","text":"Authors are requested to submit up to five keywords of their choice. These will appear below the abstract in the printed article."},
+    {"title":"References","text":"References are to be cited in the text by consecutive numbers in square brackets and listed by numbers in the reference list. Please refer to recent issues of the journal for specific examples."},
+    {"title":"Tables","text":"Tables should be numbered and must be given headings. It is a good scientific style to arrange tables as transparently as possible. Tables are not to be combined with figures."},
+    {"title":"Formulae","text":"Formulae and equations must be numbered consecutively in Arabic numerals (1, 2, 3...). They must be typed so clearly that each symbol can be recognized without error. There should be sufficient space between complex formulae and the preceding and subsequent text lines."},
+    {"title":"Figures","text":"Letters, numbers, and essential details of the figure must be distinct and large enough to be recognized. Large figures may be developed with two column width and placed at either top or bottom of a page."},
+    {"title":"Units","text":"SI or internationally agreed upon units should be used."}
+  ],
+
+  "profile":[],
+
+  "compeleted-researches":[
+    {"researchTitle":" (IJTS)","text":" accepted","status":"green"},
+    {"researchTitle":"air conditioning","text":" refused" ,"status":"red"}
+
+  ],
+  "researches-notes":[
+    {"researchTitle":"Air Conditioning ","notes":" the reviewers check your researsh and there is some wrongs needs to be changed ."},
+    {"researchTitle":"Mechanical ","notes":" the reviewers check your researsh and there is some wrongs needs to be changed ."}
+  ],
+  "revisions":[
+    {
+        "articleType":"adfsdfsd ffddfgdf bdfncbvd fldjh1",
+
+        "file1":"adfsdfsd ffddfgdf bdfncbvd fldjh2",
+        "file2":"adfsdfsd ffddfgdf bdfncbvd fldjh3",
+        "file3":"adfsdfsd ffddfgdf bdfncbvd fldjh4",
+        "file4":"adfsdfsd ffddfgdf bdfncbvd fldjh5",
+
+        "reviewerName":"adfsdfsd ffddfgdf bdfncbvd fldjh6",
+        "reviewerJop":"adfsdfsd ffddfgdf bdfncbvd fldjh7",
+        "contact":"adfsdfsd ffddfgdf bdfncbvd fldjh8",
+
+        "additionalReviewers":[{
+         
+        }],
+        "comment":"adfsdfsd ffddfgdf bdfncbvd fldjh12",
+        "receiptnumber":"adfsdfsd ffddfgdf bdfncbvd fldjh13",
+        "receiptPhoto":"adfsdfsd ffddfgdf bdfncbvd fldjh14",
+
+        "title":"adfsdfsd ffddfgdf bdfncbvd fldjh15",
+        "Abstract":"adfsdfsd ffddfgdf bdfncbvd fldjh16",
+        "KeyWords":"adfsdfsd ffddfgdf bdfncbvd fldjh117",
+        "FundingInfo":"adfsdfsd ffddfgdf bdfncbvd fldjh158",
+
+        "GeneralInformationText1":"adfsdfsd ffddfgdf bdfncbvd fldjh19",
+        "GeneralInformationText2":"adfsdfsd ffddfgdf bdfncbvd fldjh26"
+        },
+        {
+        "articleType":"adfsdfsd ffddfgdf bdfncbvd fldjh1",
+
+        "file1":"adfsdfsd ffddfgdf bdfncbvd fldjh2",
+        "file2":"adfsdfsd ffddfgdf bdfncbvd fldjh3",
+        "file3":"adfsdfsd ffddfgdf bdfncbvd fldjh4",
+        "file4":"adfsdfsd ffddfgdf bdfncbvd fldjh5",
+
+        "reviewerName":"adfsdfsd ffddfgdf bdfncbvd fldjh6",
+        "reviewerJop":"adfsdfsd ffddfgdf bdfncbvd fldjh7",
+        "contact":"adfsdfsd ffddfgdf bdfncbvd fldjh8",
+
+        "additionalReviewers":[{
+            "reviewerName":"adfsdfsd ffddfgdf bdfncbvd fldjh9",
+            "reviewerJop":"adfsdfsd ffddfgdf bdfncbvd fldjh10",
+            "contact":"adfsdfsd ffddfgdf bdfncbvd fldjh11"
+        },{
+            "reviewerName":"adfsdfsd ffddfgdf bdfncbvd fldjh9",
+            "reviewerJop":"adfsdfsd ffddfgdf bdfncbvd fldjh10",
+            "contact":"adfsdfsd ffddfgdf bdfncbvd fldjh11"
+        }],
+
+        "comment":"adfsdfsd ffddfgdf bdfncbvd fldjh12",
+        "receiptnumber":"adfsdfsd ffddfgdf bdfncbvd fldjh13",
+        "receiptPhoto":"adfsdfsd ffddfgdf bdfncbvd fldjh14",
+
+        "title":"adfsdfsd ffddfgdf bdfncbvd fldjh15",
+        "Abstract":"adfsdfsd ffddfgdf bdfncbvd fldjh16",
+        "KeyWords":"adfsdfsd ffddfgdf bdfncbvd fldjh117",
+        "FundingInfo":"adfsdfsd ffddfgdf bdfncbvd fldjh158",
+        
+        "GeneralInformationText1":"adfsdfsd ffddfgdf bdfncbvd fldjh19",
+        "GeneralInformationText2":"adfsdfsd ffddfgdf bdfncbvd fldjh26"
+      }
+    
+  ],
+
+  "revision-results" :[
+    {"researchTitle":"Air Conditioning","text":"We have reviewed your research and believe that it is very good and will benefit the community in development"}
+  ],
+  
+  "complete-reseaches":[
+    {"researchTitle":" (IJTS)","text":" accepted","status":"green"},
+    {"researchTitle":"air conditioning","text":" refused" ,"status":"red"}
+  ]
+  
+}

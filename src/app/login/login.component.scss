@@ -1,0 +1,196 @@
+[class*="col"]{
+    float: left;
+    width: 100%;
+}
+
+// ---------------code for  the mobile view---------------
+@media only screen and (max-width: 600px) {
+    .col-12{
+        padding: 0px;
+    }
+    .col-sm-4{
+        padding: 10px;
+        padding-top: 0px;
+    }
+
+    // the form style for mobile
+    div div .loginFormDiv{
+        padding: 0px;
+        padding-top: 20px;
+    }
+    div div div .formTitle{
+        font-size: 25px;
+    }
+    div div div .card{
+        padding: 4px;
+        padding-top: 20px;
+    }
+   
+    // button submit style in mobile view
+    div div div .btnSubmitDiv{
+        padding-left: 35%;
+        padding-right: 35%;
+    }
+
+    div div div .btnSubmitDiv .btnSubmit{
+        font-size: 17px;
+        font-weight: bold;
+        margin-top: 16px;
+    }
+
+    div div div .forgot-pass{
+        padding-left: 25px;
+    }
+
+    //  icons style
+    div div div form div span .fa-user{ font-size: 22px; padding-top: 7px;}
+    div div div form div span .fa-lock{ font-size: 22px; padding-top: 7px;}
+    // input style
+    div div div form div span .inputStyle{height: 40px;}
+    // input placeholder style
+    div div div form div span .inputStyle:placeholder-shown{font-size: 15px;}
+
+}
+//--------------------------------------------------------
+
+
+// the full div style
+.fullViewDiv{
+    background-color: #dde1e7;
+    padding-bottom: 100px;
+}
+
+
+// ------------------- left text -------------------
+
+
+// the outer div for form
+.loginFormDiv{
+    padding: 7%;
+    padding-top: 40px;
+}
+
+// ---the form sytle------
+.card{
+    padding: 20px;
+    padding-top: 40px;
+    padding-left: 30px;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: #dde1e7;
+    box-shadow: -3px -3px 7px #ffffff73,
+               2px 2px 5px rgba(94,104,121,0.288);
+    
+    width: 100%;
+    margin-bottom: 10%;
+}
+//--------------------------
+
+
+
+// form title style
+.formTitle{
+    font-size: 33px;
+  font-weight: 600;
+  margin-bottom: 35px;
+  color: #595959;
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  
+}
+
+//---------- span ----------
+span{
+    float: left;
+}
+.iconSpan{
+    width: 10%; margin-left: 4%;
+}
+.inputSpan{
+    width: 85%;
+}
+// --------------------------
+
+
+// ------------------------inputs style------------------------
+.inputStyle{
+    height: 50px;
+    width: 100%;
+    padding-left: 20px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid rgb(193, 187, 187);
+    color: #595959;
+    background: #dde1e7;
+    border-radius: 25px;
+    box-shadow: inset 2px 2px 5px #babecc,
+                inset -5px -5px 10px #ffffff73;
+    margin-bottom: 10px;
+}
+.inputStyle:focus {
+    box-shadow: inset 1px 1px 2px #babecc,
+                inset -1px -1px 2px #ffffff73;
+}
+.inputStyle::after{
+    box-shadow: inset 1px 1px 2px #babecc,
+    inset -1px -1px 2px #ffffff73;
+}
+.inputStyle:placeholder-shown{
+    font-size: 17px;
+}
+
+//-------------------------------------------------------
+
+.alert-danger{
+    margin-left: 15%;
+    padding: 5px;
+}
+
+// ----------------the icons style code ------------------
+
+// icon code lock
+.fa-lock{
+    padding-top: 10px;
+    font-size: 30px;
+    color: #595959;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+// icon code user
+.fa-user{
+    padding-top: 10px;
+    font-size: 30px;
+    color: #595959;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+//-------------------------------------------------------
+
+//the forgot link style
+.forgot-pass a{
+    font-weight: 500;
+}
+
+// -------------------style button submit-----------------
+.btnSubmit{
+    margin: 15px 0;
+    width: 100%;
+    height: 50px;
+    color:#595959;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #d0d5df;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    margin-top: 35px;
+    box-shadow: 2px 2px 5px #babecc,
+                -5px -5px 10px #ffffff73;
+  }
+  .btnSubmit:hover{
+      background-color: gray;
+      color: white;
+  }
+
+//-------------------------------------------------------
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>instructions</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Tapestry&display=swap" rel="stylesheet"> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="col-12">
+        <h1 id="mainTextH1">Editorial Board</h1>
+
+        <div *ngFor="let item of board ; let i=index;">
+            <p *ngIf="i==0" id="mainTextP" >{{item.text}}</p>
+        </div>
+
+        <div class="col-sm-3 reviewersDiv" data-aos="fade-up" data-aos-duration="2500">
+            <div *ngFor="let item of boardReviewers ; let i=index;">
+                <a routerLink="/reviewers-data/{{i}}"><p class="reviewer"> {{item.name}}</p></a>
+            </div>
+        </div>
+
+        <div class="col-sm-9">
+            <div *ngFor="let item of board ; let i=index;">
+                
+                <h2 *ngIf="item.title!='' && i>0"  data-aos="fade-up" data-aos-duration="2000">{{item.title}}</h2>
+    
+                <p *ngIf="i>0" data-aos="fade-up" data-aos-duration="2000" >{{item.text}}</p>
+            
+            </div>
+        </div>
+        
+        
+        
+    </div>
+
+</body>
+</html>

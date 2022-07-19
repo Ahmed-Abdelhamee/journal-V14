@@ -1,0 +1,62 @@
+[class*="col-"]{
+    float: left;
+    box-sizing: border-box;
+}
+
+@media only screen and (max-width: 600px) {
+    div .container{
+        padding: 20px;
+    }
+}
+
+.container{
+    padding: 20px 100px;
+}
+
+// basic topic style
+fieldset{
+    border: 1px solid gray ;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+legend{
+    padding-left: 20px;
+}
+// researches style
+.researches{
+    margin-bottom: 20px;
+}
+.titleDiv{
+    margin-bottom: 10px;
+}
+.titles{
+    font-size: 20px;
+    font-weight: 500;
+    margin-right: 20px;
+}
+.pdfImg{
+    height: 35px;
+    width: 35x;
+}
+.pages{
+    font-size: 17px;
+}
+.researcher{
+    font-size: 16px;
+    font-weight: 600;
+}
+.view{
+    color: blue;
+    font-size: 16px;
+    font-weight: 500;
+}
+a:active{
+    color: #007bff;
+}
+a:hover{
+    color: red;
+}
+
+// a:visited{
+//     color: palevioletred;
+// }

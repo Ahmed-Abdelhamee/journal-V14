@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+  <!-- the full div code  -->
+    <div class="col-12 fullViewDiv">
+        <!-- empty div for make the form in center -->
+        <div class="col-sm-3" style="height: 1px;"></div>
+
+        <!-- the form total div -->
+        <div class="col-sm-6">
+            <div class="registerFormDiv" data-aos="zoom-in" data-aos-duration="1000">
+                <!-- the form with class card  -->
+                <form #data="ngForm" [formGroup]="userRegist" (ngSubmit)="setData(data)" class=" card" novalidate>
+                    <!-- the form title  -->
+                    <p class="formTitle text-center text-capitalize">Sign Up Form</p>
+
+                    <!-- ------------the name(input) with user icon------------ -->
+                    <div class="form-group">
+                      <!-- icon -->
+                      <span class="Spanicon"><i class="fa fa-user"></i></span>
+                      <!-- input -->
+                      <span class="SpanInput">
+                          <input type="text" class="inputStyle form-control" placeholder="Please Enter Name" formControlName="name" >
+                          <small class="text-danger" *ngIf="name?.invalid && name?.touched">name is required</small>
+                      </span>
+                    </div>
+
+                    <!-- ------------the email(input) with email icon ----------- -->
+                    <div class="form-group">
+                      <!-- icon -->
+                      <span class="Spanicon"><i class="material-icons">mail</i></span>
+                      <!-- input -->
+                      <span class="SpanInput">
+                        <input type="email" class="inputStyle form-control" email  placeholder="Please Enter Email" formControlName="email"  [class.is-invalid]="email?.invalid && email?.touched" >
+                        <div *ngIf="email?.errors && email?.touched">
+                            <small class="text-danger" *ngIf="email?.errors?.['required'] && email?.pristine">email is required</small>
+                            <small class="text-danger" *ngIf="email?.invalid && email?.dirty && !email?.pristine">enter valid email</small>
+                        </div>
+                      </span>
+                    </div>
+
+                    <!-- ------------ the password(input) with lock icon ---------- -->
+                    <div class="form-group">
+                      <!-- icon -->
+                      <span class="Spanicon"><i class="fa fa-lock"></i></span>
+                      <!-- input -->
+                      <span class="SpanInput">
+                         <input type="password" class="inputStyle form-control" (keyup)="checkPass()"  placeholder="Please Enter Password" formControlName="password" [class.is-invalid]="password?.invalid && password?.touched" >
+                         <div *ngIf="password?.invalid && password?.touched">
+                            <small class="text-danger" *ngIf="password?.errors?.['required']">password is required</small>
+                            <small class="text-danger" *ngIf="password?.errors?.['minlength']">password must be 6 characters</small>
+                        </div>
+                      </span>
+                      
+                    </div>
+
+                    <!-- ---------- the confirm-password(input) with lock icon --------- -->
+                    <div class="form-group">
+                      <!-- icon -->
+                      <span class="Spanicon"><i class="fa fa-lock"></i></span>
+                      <!-- input -->
+                      <span class="SpanInput">
+                          <input type="password" class="inputStyle form-control" (keyup)="checkPass()"  placeholder="Please Confirm Password " formControlName="confirmPassword"  [class.is-invalid]="confirmPassword?.invalid && confirmPassword?.touched && password?.touched" >
+                          <small class="text-danger" *ngIf="passChecker && confirmPassword?.touched"> password and confirm-password must be equal</small>
+                      </span>
+                    </div>
+
+                    <!-- ---------------the phone(input) with phone icon---------------- -->
+                    <div class="form-group">
+                      <!-- icon -->
+                      <span class="Spanicon"><i class="fa fa-mobile-phone"></i></span>
+                      <!-- input -->
+                      <span class="SpanInput">
+                          <input type="tel" class="inputStyle form-control" placeholder="Please Enter You Phone " formControlName="phone"  [class.is-invalid]="phone?.invalid && phone?.touched" >
+                          <small class="text-danger" *ngIf="phone?.invalid && phone?.touched ">phone is required</small>
+                      </span>
+                    </div>
+
+                    <!-- ------------the faculty(input) with faculty icon-------------- -->
+                    <div class="form-group">
+                      <!-- icon -->
+                      <span class="Spanicon"><i class="fa fa-graduation-cap"></i></span>
+                      <!-- input -->
+                      <span class="SpanInput">
+                          <input type="text" class="inputStyle form-control" placeholder="Please Enter Your Faculty " formControlName="faculty" [class.is-invalid]="faculty?.invalid && faculty?.touched">
+                          <small class="text-danger" *ngIf="faculty?.invalid && faculty?.touched">faculty is required</small>
+                      </span>
+                    </div>
+
+                    <!-- the submit button div -->
+                    <div class="btnSubmitDiv">
+                        <button type="submit" class="btn btnSubmit">Sign Up</button>
+                    </div>
+                  </form>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

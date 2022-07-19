@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>author's approval</title>
+</head>
+<body>
+    <div class="container col-12">
+        <div class="col-sm-4" style="height: 1px;"></div>
+        <div class="col-sm-4 formApproval">
+            <form [formGroup]="approvalform" class="card" (ngSubmit)="submit(approvalform)" novalidate>
+                <img src="assets/note.jpg" alt="image">
+                <label for="note">upload pdf</label>
+                <input type="file" accept=".pdf" class="form-control inputFile" formControlName="formApprovalFile">
+                <button type="submit" class="btn btn-success">Send</button>
+                <div class="alert alert-success" *ngIf="uploaded">the file uploaded succssfully</div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

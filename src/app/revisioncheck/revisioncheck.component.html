@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>revision</title>
+</head>
+<body>
+    <div class="col-12 content">
+        <div class="col-sm-4" style="height: 1px;"></div>
+        <div class="col-sm-4 ">
+            <div *ngFor="let item of result" class="card">
+                <hr>
+                <p class="title" *ngIf="item.researchTitle !='' && item.researchTitle != undefined">{{item.researchTitle}}</p>
+                <p>{{item.text}}</p>
+                <br> <hr>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

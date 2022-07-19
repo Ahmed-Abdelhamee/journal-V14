@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>research-collection</title>
+</head>
+
+<body>
+    <!-- page =>  group of reasearches -->
+    <div class="col-12">
+        <div class="container ">
+            <!-- Basics Topics -->
+            <fieldset class="col-12">
+                <legend> Basics Topics / Feilds </legend>
+                <ul *ngFor="let item of researchGroupTitle; let i=index;">
+                    <li><a href="/research-collection"> {{item.title}} ( {{item.number}} )</a></li>
+                    <!-- <li><a routerLink="/research-details/group{{i}}"> {{item.title}} ( {{item.number}} )</a></li> -->
+                </ul>
+            </fieldset>
+            <!-- the data of researches -->
+            <div class="col-12 researches" *ngFor="let item of researches ; let i=index;">
+                <hr>
+                <div class="titleDiv">
+                    <!-- <span class="titles"><a routerLink="/research-details/{{item.id}}"> {{item.title}}</a></span> 
+                        <span><a href="assets/journalData/{{item.title}}.pdf" class="pdf" download="{{item.title}}"><img src="assets/download-pdf.png" class="pdfImg" alt="pdf img"></a></span> -->
+                    <span class="titles"><a routerLink="/research-details/{{i}}"> {{item.title}}</a></span>
+                    <span><a href="assets/journalData/cycle.pdf" class="pdf" download="cycle.pdf"><img src="assets/download-pdf.png" class="pdfImg" alt="pdf img"></a></span>
+                </div>
+                <p class="pages">pages : {{item.pages}}</p>
+                <p class="researcher">{{item.researcher}}</p>
+                <p class="view"><a routerLink="/research-details/{{i}}"> view artical</a></p>
+                <hr>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

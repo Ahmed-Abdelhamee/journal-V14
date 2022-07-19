@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Tapestry&display=swap" rel="stylesheet"> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <div class="col-12 container">
+            <div class="ModalButtons">
+                <!-- home buttons modal  -->
+                <button type="button" class="btn btn-primary btnModal" *ngIf="showHome" data-toggle="modal" data-target="#addImageMove">
+                    add image move
+                </button>
+                <button type="button" class="btn btn-primary btnModal" *ngIf="showHome" data-toggle="modal" data-target="#homePost">
+                    add Post in home
+                </button>
+                <button type="button" class="btn btn-primary btnModal" *ngIf="showHome" data-toggle="modal" data-target="#addPublishedVolumes">
+                    add published Volumes
+                </button>
+                <!-- -------------------- -->
+
+                <!-- ------------------- instruction button ------------------- -->
+                <button type="button" class="btn btn-primary btnModal" *ngIf="showAddInstructions" data-toggle="modal" data-target="#Instructions">
+                    add Instructions
+                </button>
+                <!-- ----------------------------------------------------------- -->
+
+                <!-- ------------------- Aim button ------------------- -->
+                <button type="button" class="btn btn-primary btnModal" *ngIf="showAddAim" data-toggle="modal" data-target="#Aim">
+                    add Aim text
+                </button>
+                <!-- ----------------------------------------------------------- -->
+
+                <!-- ------------------- Board buttons ------------------- -->
+                <button type="button" class="btn btn-primary btnModal" *ngIf="showBoard" data-toggle="modal" data-target="#board">
+                    add board data
+                </button>
+                <button type="button" class="btn btn-primary btnModal" *ngIf="showBoard" data-toggle="modal" data-target="#boardReviewers">
+                    add reviewer
+                </button>
+                <!-- ----------------------------------------------------------- -->
+
+
+            </div>
+            <hr>
+            <!-- --------------------------- divs to show data ----------------------- -->
+            <div class="homeShow" *ngIf="showHome">
+                <div class="col-12 carouselStyle" *ngFor="let item of homeCarousel; let i=index;">
+                    <button class="btn btn-danger btn-delete" (click)="deleteCarsouel(i)"> X</button>
+                    <p class="carouselText">{{item.title}} </p>
+                    <img [src]="item.photourl" alt="photo" width="100%" height="400">
+                    <!-- <button class="btn btn-danger btn-warning" (click)="updateCarsouel(i)"> X</button> -->
+
+                </div>
+
+                <div class="col-sm-3">
+                    <p class="reviewLinksTitle">Published Volumes</p>
+                    <div class="col-12 reviews" *ngFor="let item of publishReviews; let i=index;">
+                      <button class="btn btn-danger btn-delete" (click)="deletePublishReviews(i)"> X</button>
+                      <a routerLink="/research-collection">{{item.publishedVolumes}}</a>
+                    </div>
+                </div>
+                
+                <div class="col-sm-9">
+                    <div class="col-12 dataContent" *ngFor="let item of homeData; let i=index;">
+                      <button class="btn btn-danger btn-delete" (click)="deleteHomeData(i)"> X</button>
+
+                        <!-- the frist data without aos animation -->
+                        <div class="col-sm-8">
+                          <p class="discription" *ngIf="i==0 && item.text !='' && item.text !=undefined ">{{item.text}}</p>
+                        </div>
+                        <div class="col-sm-4">
+                          <img [src]="item.photourl" alt="image" *ngIf="i==0 && item.photourl != '' && item.photourl !=undefined && item.text !='' && item.text !=undefined">
+                        </div>
+              
+                        <!-- the remaining data with aos animation  -->
+                        <div class="col-sm-8">
+                          <p class="discription" *ngIf="i>0 && item.text !='' && item.text !=undefined">{{item.text}}</p>
+                        </div>
+                        <div class="col-sm-4">
+                          <img [src]="item.photourl" *ngIf="i>0 && item.photourl != '' && item.photourl !=undefined && item.text !='' && item.text !=undefined" alt="image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="instructionShow col-12"  *ngIf="showAddInstructions">
+                <div *ngFor="let item of instructionsArray ; let i=index;">
+            
+                    <h1 id="mainTextH1" *ngIf=" i==0" >INSTRUCTIONS TO AUTHORS  <a href="assets/journalData/cycle.pdf" download="instructions"><img src="assets/download-pdf.png" class="pdfImg" alt="pdf img"></a></h1> 
+                    
+                    <p id="mainTextP" *ngIf="i==0" >{{item.text}}</p>
+                    
+                    <button class="btn btn-danger btn-delete" *ngIf=" i>0" (click)="deleteIstructions(i)">X</button>
+
+                    <h2 class="instructionsTitle" *ngIf="item.title!='' && i>0">{{item.title}}</h2>
+        
+                    <p class="instructionsText" *ngIf="i>0">{{item.text}}</p>
+                
+                    <hr>
+                </div>
+            </div>
+            
+            <div class="aimShow col-12"  *ngIf="showAddAim">
+                <h1 class="aimTitle">Aim and Scope</h1>
+
+                <div *ngFor="let item of aimArray; let i=index">
+                    <button class="btn btn-danger btn-delete" (click)="deleteAim(i)">X</button>
+                    <p class="aimText">{{item.text}}</p>
+                </div>
+            </div>
+
+            <div class="boardShow col-12" *ngIf="showBoard">
+                <h1 id="mainTextH1">Editorial Board</h1>
+        
+                <div *ngFor="let item of boardArray ; let i=index;">
+                    <p *ngIf="i==0" id="mainTextP" >{{item.text}}</p>
+                </div>
+        
+                <div class="col-sm-3 reviewersDiv" data-aos="fade-up" data-aos-duration="2500">
+                    <div *ngFor="let item of boardReviewersArray ; let i=index;">
+                        <button class="btn btn-danger btn-delete" (click)="deleteReviewer(i)">X</button>
+                        <a routerLink="/reviewers-data/{{i}}"><p class="reviewer"> {{item.name}}</p></a>
+                    </div>
+                </div>
+        
+                <div class="col-sm-9">
+                    <div *ngFor="let item of boardArray ; let i=index;">
+                        
+                        <button class="btn btn-danger btn-delete" (click)="deleteBoard(i)" *ngIf=" i>0">X</button>
+                        
+                        <h2 class="boardTitle" *ngIf="item.title!='' && i>0">{{item.title}}</h2>
+            
+                        <p class="boardText" *ngIf="i>0">{{item.text}}</p>
+                    
+                    </div>
+                </div>
+            </div>
+            <!-- ----------------------------------------------------------------------- -->
+    </div>
+
+</body>
+</html>
+
+
+    
+<div class="col-12">
+    <div class="Modals">
+
+        <!-- ----------------------------- add Image Move ------------------------- -->
+        <div class="modal" id="addImageMove">
+            <div class="modal-dialog">
+              <div class="modal-content">
+          
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title"> 
+                     <p class="groubTitle">add image move</p>
+                  </h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+          
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="homeCarsoul card  col-12">
+                    <!-- home carsoul data -->
+                    <form class="form" #carsoul="ngForm" (ngSubmit)="carsoulSubmit(carsoul)">
+                            <div class="form-group">
+                                <label for="title">Enter photo Title</label>
+                                <input type="text" class="form-control" name="title" #title ngModel> 
+                            </div>
+                            <div class="form-group">
+                                <label for="file">upload photo</label>
+                                <input type="file" class="form-control" accept=".jpg , .png"  (change)="uploadCarsoulImg($event)">
+                            </div>
+                            <div class="form-group submit">
+                                <input type="submit" value="add" class="btn btn-info" *ngIf="!waiting1">
+                                <button class="btn btn-info" *ngIf="waiting1">
+                                    <span class="spinner-border spinner-border-sm"></span>
+                                    Loading photo ...
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+          
+              </div>
+            </div>
+          </div>
+        <!-- ---------------------------------------------------------------------- -->
+        <!-- ----------------------------- add home post -------------------------- -->
+        <div class="modal" id="homePost">
+            <div class="modal-dialog">
+              <div class="modal-content">
+          
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">
+                    <p class="groubTitle">add Home Post </p>
+                  </h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+          
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <!-- home post data -->
+                    <div class="homePost card  col-12">
+                        <form class="form" #HomePost="ngForm" (ngSubmit)="AddHomePostSubmit(HomePost)">
+                            <div class="form-group">
+                                <label for="text">Enter Describtion</label>
+                                <textarea type="text" class="form-control" name="text" #text ngModel rows="7"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="file">upload photo</label>
+                                <input type="file" class="form-control" accept=".jpg , .png" (change)=uploadHomeImgPost($event)>
+                            </div>
+                    
+                            <div class="form-group submit">
+                                <input type="submit" value="add" class="btn btn-info" *ngIf="!waiting2">
+                                <button class="btn btn-info" *ngIf="waiting2">
+                                    <span class="spinner-border spinner-border-sm"></span>
+                                    Loading photo ...
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                    
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+          
+              </div>
+            </div>
+        </div>
+        <!-- ----------------------------------------------------------------------- -->
+        <!-- ----------------------------- add Published Volumes ------------------- -->
+        <div class="modal" id="addPublishedVolumes">
+            <div class="modal-dialog">
+              <div class="modal-content">
+          
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+          
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <!-- published Volumes -->
+                    <div class="publishedVolumes card col-12">
+
+                        <form [formGroup]="addResearchData" (ngSubmit)="addResearch()">
+
+                            <div class="form-group">
+                                <label for="published volume">published volume</label>
+                                <input type="text" class="form-control" formControlName="folderName">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="research title">research title</label>
+                                <input type="text" class="form-control" formControlName="researchTitle">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pages">pages</label>
+                                <input type="text" class="form-control" formControlName="pages">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="researcher">researcher</label>
+                                <input type="text" class="form-control" formControlName="researcher">
+                            </div>
+                            
+                            <div class="form-group">
+
+                                <label for="presentation"> presentation</label>
+                                <input type="text" class="form-control" formControlName="presentation">
+                            </div>
+                                
+                            <div class="submit">
+                                <button class="btn btn-info" type="submit"> add </button>
+                            </div>
+                                
+                        </form>
+                    </div>
+                </div>
+          
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+          
+              </div>
+            </div>
+          </div>
+        <!-- ----------------------------------------------------------------------- -->
+
+
+        <!-- ------------------------------ add Instructions  ---------------------- -->
+        <div class="modal" id="Instructions">
+            <div class="modal-dialog">
+              <div class="modal-content">
+          
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+          
+                <!-- Modal body -->
+                <div class="modal-body">
+                   <!-- post Instructions -->
+                    <div class="postInstructions card col-12">
+                        <p class="groubTitle">post Instruction</p>
+                        <form [formGroup]="instruction" (ngSubmit)="addInstructions()">
+                            <div class="form-group">
+                                <label for="instructionTitle">Enter Instruction Title</label>
+                                <input type="text" class="form-control" formControlName="title">
+                            </div>
+                            <div class="form-group">
+                                <label for="instructionText">Enter Instruction Text</label>
+                                <textarea type="text" class="form-control" formControlName="text" rows="7"></textarea>
+                            </div>
+                            <div class="submit">
+                                <button class="btn btn-info" type="submit"> add </button>
+                                <!-- <button class="btn btn-primary btnAdd" type="button"> add </button> -->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                    
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+          
+              </div>
+            </div>
+        </div>
+        <!-- ----------------------------------------------------------------------- -->
+        
+        <!-- ------------------------------ add Aim  ---------------------- -->
+        <div class="modal" id="Aim">
+            <div class="modal-dialog">
+              <div class="modal-content">
+          
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <p class="groubTitle">add aim text </p>
+                    </h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+          
+                <!-- Modal body -->
+                <div class="modal-body">
+                   <!-- post Aim -->
+                    <div class="postAim card col-12">
+                        <p class="groubTitle">post Aim</p>
+                        <form [formGroup]="aim" (ngSubmit)="addAim()">
+                            <div class="form-group">
+                                <label for="instructionText">Enter Aim Text</label>
+                                <textarea type="text" class="form-control" formControlName="text" rows="7"></textarea>
+                            </div>
+                            <div class="submit">
+                                <button class="btn btn-info" type="submit"> add </button>
+                                <!-- <button class="btn btn-primary btnAdd" type="button"> add </button> -->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                    
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+          
+              </div>
+            </div>
+        </div>
+        <!-- ----------------------------------------------------------------------- -->
+
+        <!-- ------------------------------ add board  ---------------------- -->
+        <div class="modal" id="board">
+            <div class="modal-dialog">
+                <div class="modal-content">
+            
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+            
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <!-- post Board -->
+                        <div class="postBoard card col-12">
+                            <p class="groubTitle">post Board Content</p>
+                            <form [formGroup]="board" (ngSubmit)="addBoardData()">
+                                <div class="form-group">
+                                    <label for="boardTitle">Enter Board Title</label>
+                                    <input type="text" class="form-control" formControlName="title">
+                                </div>
+                                <div class="form-group">
+                                    <label for="boardText">Enter Board Text</label>
+                                    <textarea type="text" class="form-control" rows="7"  formControlName="text"></textarea>
+                                </div>
+                                <div class="submit">
+                                    <button class="btn btn-info" type="submit"> add </button>
+                                    <!-- <button class="btn btn-primary btnAdd" type="button"> add </button> -->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+            
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="boardReviewers">
+            <div class="modal-dialog">
+                <div class="modal-content">
+            
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+            
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <!-- post Board -->
+                        <div class="postBoard card col-12">
+                            <p class="groubTitle">post Board reviewer</p>
+                            <form [formGroup]="boardReviewers" (ngSubmit)="addboardReviewersData()">
+                                <div class="form-group">
+                                    <label for="name">Enter Name</label>
+                                    <input type="text" class="form-control" formControlName="name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="job">Enter job</label>
+                                    <input type="text" class="form-control" formControlName="job">
+                                </div>
+                                <div class="form-group">
+                                    <label for="generalSpecialty">Enter general Specialty</label>
+                                    <input type="text" class="form-control" formControlName="generalSpecialty">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Specialty">Enter Specialty</label>
+                                    <input type="text" class="form-control" formControlName="Specialty">
+                                </div>
+
+                                <div class="submit">
+                                    <button class="btn btn-info" type="submit"> add </button>
+                                    <!-- <button class="btn btn-primary btnAdd" type="button"> add </button> -->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+            
+                </div>
+            </div>
+        </div>
+        <!-- ----------------------------------------------------------------------- -->
+
+
+
+        <div class="updateDiv col-12" style="display: none;">  
+            <!-- home carsoul data -->
+            <div class="homeCarsoul card  col-12">
+                <p class="groubTitle">update image move</p>
+                
+                <form class="form" #carsoul="ngForm" (ngSubmit)="carsoulSubmit(carsoul)">
+                    <div class="form-group">
+                        <label for="title">Enter photo Title</label>
+                        <input type="text" class="form-control" name="title" #title ngModel> 
+                    </div>
+                    <div class="form-group">
+                        <label for="file">upload photo</label>
+                        <input type="file" class="form-control" accept=".jpg , .png"  (change)="uploadCarsoulImg($event)">
+                    </div>
+                    
+                    <div class="form-group submit">
+                        <input type="submit" value="update" class="btn btn-warning" *ngIf="!waiting1">
+                        <button class="btn btn-warning" *ngIf="waiting1">
+                            <span class="spinner-border spinner-border-sm"></span>
+                            Loading photo ...
+                        </button>
+                    </div>
+                    
+                </form>
+            </div>
+
+            <!-- home post data -->
+            <div class="homePost card  col-12">
+                <p class="groubTitle">update Post in home</p>
+                
+                <form class="form" #HomePost="ngForm" (ngSubmit)="AddHomePostSubmit(HomePost)">
+                    <div class="form-group">
+                        <label for="describtion">Enter Describtion</label>
+                        <textarea type="text" class="form-control" name="describtion" #describtion ngModel rows="7"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="file">upload photo</label>
+                        <input type="file" class="form-control" accept=".jpg , .png" (change)=uploadHomeImgPost($event)>
+                    </div>
+                    
+                    <div class="form-group submit">
+                        <input type="submit" value="update" class="btn btn-warning" *ngIf="!waiting2">
+                        <button class="btn btn-warning" *ngIf="waiting2">
+                            <span class="spinner-border spinner-border-sm"></span>
+                            Loading photo ...
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+
+            <!-- published Volumes -->
+            <div class="publishedVolumes card col-12">
+                <p class="groubTitle">update published Volumes or researsh</p>
+
+                <form [formGroup]="addResearchData" (ngSubmit)="addResearch()">
+
+                    <div class="form-group">
+                        <label for="published volume">published volume</label>
+                        <input type="text" class="form-control" formControlName="folderName">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="research title">research title</label>
+                        <input type="text" class="form-control" formControlName="researchTitle">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pages">pages</label>
+                        <input type="text" class="form-control" formControlName="pages">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="researcher">researcher</label>
+                        <input type="text" class="form-control" formControlName="researcher">
+                    </div>
+                    
+                    <div class="form-group">
+
+                        <label for="presentation"> presentation</label>
+                        <input type="text" class="form-control" formControlName="presentation">
+                    </div>
+                        
+                    <div class="submit">
+                        <button class="btn btn-warning" type="submit"> update </button>
+                    </div>
+                        
+                </form>
+            </div>
+
+            <!-- post Instructions -->
+            <div class="postInstructions card col-12">
+                <p class="groubTitle">update Instruction</p>
+                <form action="">
+                    <div class="form-group">
+                        <label for="instructionTitle">Enter Instruction Title</label>
+                        <input type="text" class="form-control" name="instructionTitle" #instructionTitle ngModel >
+                    </div>
+                    <div class="form-group">
+                        <label for="instructionText">Enter Instruction Text</label>
+                        <textarea type="text" class="form-control" name="instructionText" #instructionText ngModel rows="7"></textarea>
+                    </div>
+                    <div class="submit">
+                        <button class="btn btn-warning" type="submit"> update </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- post Aim -->
+            <div class="postAim card col-12">
+                <p class="groubTitle">update Aim</p>
+                <form action="">
+                    <div class="form-group">
+                        <label for="aimText">Enter aim Text</label>
+                        <textarea type="text" class="form-control" name="aimText" #aimText ngModel rows="7"></textarea>
+                    </div>
+                    <div class="submit">
+                        <button class="btn btn-warning" type="submit"> update </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- post Board -->
+            <div class="postBoard card col-12">
+                <p class="groubTitle">update Board Content</p>
+                <form action="">
+                    <div class="form-group">
+                        <label for="boardTitle">Enter Board Title</label>
+                        <input type="text" class="form-control" name="boardTitle" #boardTitle ngModel >
+                    </div>
+                    <div class="form-group">
+                        <label for="boardText">Enter Board Text</label>
+                        <textarea type="text" class="form-control" name="boardText" #boardText ngModel rows="7"></textarea>
+                    </div>
+                    <div class="submit">
+                        <button class="btn btn-warning" type="submit"> update </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+
+        <div class="updateProfile card  col-12" style="display: none;">
+            <p class="groubTitle">update Profile Texts</p>
+            
+            <!-- <form class="form" #profileTexts="ngForm" (ngSubmit)="updateProfileTexts(profileTexts)">
+                <div class="form-group">
+                    <label for="textNumber">Enter Text number </label>
+                    <input type="text" class="form-control" name="textNumber" #textNumber ngModel> 
+                </div>
+
+                <div class="form-group">
+                    <label for="text">Enter text for update </label>
+                    <input type="text" class="form-control" name="text" #text ngModel> 
+                </div>
+                
+                
+                <div class="form-group submit">
+                    <input type="submit" value="update" class="btn btn-warning" >
+                    
+                </div>
+                
+            </form> -->
+        </div>
+    </div>
+</div>
