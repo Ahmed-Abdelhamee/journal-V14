@@ -85,48 +85,9 @@
  }
 //------------------------------------------
 
-
-//--------------- sidebar view -------------
-
-// .sidebarTop{
-//     position: fixed;
-//     height: 13%;
-//     width: 350px;
-//     background-color: #54b3c1;
-//     top: 0px;
-//     left: 0px;
-//     z-index: -1;
-// }
-// .sidebar{
-//     position: fixed;
-//     // top: 12%;
-//     left: 0px;
-//     width: 350px;
-//     float: left;
-//     height: 88%;
-//     padding-top: 40px ;
-//     background-color: #54b3c1;
-//     padding: 100px 20px ;
-// }
-
-// .link{
-//     display: block;
-//     text-align: center;
-//     margin-top: 10px;
-//     margin-bottom: 10px;
-//     padding-top: 10px;
-//     padding-bottom: 10px;
-//     font-size: 20px;
-//     font-weight: bold;
-//     color: white;
-//     border-radius: 20px;
-//     cursor: pointer;
-// }
-
-// .link:hover{
-//     background-color: white;
-//     color: black;
-
-// }
-
- // ----------------------------------------
+input{
+    margin-bottom: 10px;
+}
+button{
+    margin: 5px;
+}

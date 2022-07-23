@@ -85,5 +85,35 @@ export class GetDataService {
     return this.http.get<researchDetails[]>(this.researchDetailsURL) //*********************************** */
   }
 
-//---------------------------------------------------------------------------------------------------
+//------------------------------------------ add data-------------------------------------------------
+
+  addHomeCarousel(data:HomeCarsoulData){
+    this.http.post("http://localhost:3000/home-carousel",data).subscribe()
+  }
+  addHomData(data:homePosts){
+    this.http.post("http://localhost:3000/home-data",data).subscribe()
+  }
+  addResearch(data:any){
+    this.http.post("http://localhost:3000/researches",data).subscribe()
+  }
+
+
+  //----------------------------------------------------------------------------------------------------
+
+  //------------------------------------------ delete data---------------------------------------------
+  deleteHomeCarousel(id:number){
+    this.http.delete(`http://localhost:3000/home-carousel/${id}`).subscribe()
+  }
+  deleteHomedata(id:number){
+    this.http.delete(`http://localhost:3000/home-data/${id}`).subscribe()
+  }
+  //----------------------------------------------------------------------------------------------------
+
+  updateHomeCarousel(id:number,data:any){
+    this.http.put(`http://localhost:3000/home-carousel/${id}`,data).subscribe()
+  }
+  updateHomeData(id:number,data:any){
+    this.http.put(`http://localhost:3000/home-data/${id}`,data).subscribe()
+  }
+
 }
