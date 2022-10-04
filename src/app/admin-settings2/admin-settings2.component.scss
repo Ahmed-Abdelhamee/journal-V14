@@ -1,0 +1,76 @@
+[class*="col-"]{
+    width: 100%;
+    float: left;
+}
+
+@media only screen and (max-width: 600px) {
+    div .col-sm-3{
+        margin: 0px;
+        padding: 0px;
+    }
+    div .col-sm-3 img{
+        width: 1000px;
+    }
+}
+
+.Basictitle{
+    color: rgb(13, 115, 178);
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    padding: 25px;
+}
+
+.setCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.col-sm-3{
+    margin : 20px 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.col-sm-4{
+    height: 400px;
+    padding: 10px;
+}
+.card{
+    height: 350px;
+}
+.submit{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+img{
+    height: 200px;
+}
+.btn-warning{
+    margin-right: 20px;
+    margin-left: 20px;
+}
+input{
+    margin: 10px 0px;
+}
+#sendingNotess{
+width: 100%;
+padding: 10px;
+height: 400px;
+}
+#compeleted .card{
+    width: 100%;
+    height: 300px;
+    margin-bottom: 10px;
+}
+.card-img{
+    width: 100px;
+    height: 70px;
+    padding: 10px 20px;
+}
+.compeletedModelCard{
+    height: 260px;
+}
+.contactSideTitle{
+    padding-top: 15px
+}

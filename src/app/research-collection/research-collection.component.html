@@ -1,39 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>research-collection</title>
-</head>
 
 <body>
     <!-- page =>  group of reasearches -->
     <div class="col-12">
-        <div class="container ">
+        <div class="container " *ngIf="!viewResearch">
             <!-- Basics Topics -->
             <fieldset class="col-12">
                 <legend> Basics Topics / Feilds </legend>
-                <ul *ngFor="let item of researchGroupTitle; let i=index;">
-                    <li><a href="/research-collection"> {{item.title}} ( {{item.number}} )</a></li>
-                    <!-- <li><a routerLink="/research-details/group{{i}}"> {{item.title}} ( {{item.number}} )</a></li> -->
+                <ul *ngFor="let item of researchgroupNames;">
+                    <li><a class="text-primary" (click)="showGroup(item)" style="font-weight: 600;"> {{item.id}} ( {{item.researches?.length}} )</a></li>
                 </ul>
+                <a href="/research-collection/{{Published_Id}}" class="btn btn-outline-secondary" *ngIf="groupClicked"> view all</a>
+
             </fieldset>
             <!-- the data of researches -->
-            <div class="col-12 researches" *ngFor="let item of researches ; let i=index;">
-                <hr>
-                <div class="titleDiv">
-                    <!-- <span class="titles"><a routerLink="/research-details/{{item.id}}"> {{item.title}}</a></span> 
-                        <span><a href="assets/journalData/{{item.title}}.pdf" class="pdf" download="{{item.title}}"><img src="assets/download-pdf.png" class="pdfImg" alt="pdf img"></a></span> -->
-                    <span class="titles"><a routerLink="/research-details/{{i}}"> {{item.title}}</a></span>
-                    <span><a href="assets/journalData/cycle.pdf" class="pdf" download="cycle.pdf"><img src="assets/download-pdf.png" class="pdfImg" alt="pdf img"></a></span>
+            <div *ngFor="let item of researchgroupNames">
+                <h3 class="text-center text-warning ">{{item.id}}</h3>
+                <div class="col-12 researches" *ngFor="let temp of item.researches ; let i=index;">
+                    <hr>
+                    <div class="titleDiv">
+                        <span class="titles"><a class="text-primary " style="font-weight: 600;" (click)="viewResearchFunction(Published_Id,item.id,temp.title)"> {{temp.title}}</a></span>
+                        <span><a href="{{temp.researchfile}}" class="pdf" download="{{temp.researchfile}}"><img src="assets/download-pdf.png" class="pdfImg" alt="pdf img"></a></span>
+                    </div>
+                    <p class="pages">pages : {{temp.pages}}</p>
+                    <p> 
+                        Authors : 
+                        <span *ngFor="let toc of temp.researchers" style="margin-left: 14px;">
+                            <span class="researcher">{{toc.researcherName}} </span>
+                        </span>
+                    </p>
+                    <p class="view"><a class="text-primary " style="font-weight: 600;" (click)="viewResearchFunction(Published_Id,item.id,temp.title)"> view artical</a></p>
+                    <hr>
                 </div>
-                <p class="pages">pages : {{item.pages}}</p>
-                <p class="researcher">{{item.researcher}}</p>
-                <p class="view"><a routerLink="/research-details/{{i}}"> view artical</a></p>
-                <hr>
             </div>
         </div>
     </div>
+
+
+    <div class="container" *ngIf="viewResearch">
+        <hr  style="padding: 55px 100px;">
+        <div *ngFor="let item of research">
+
+            <p class="researchTitle"> {{item.title}} </p>
+            <span>
+                <a href="assets/journalData/{{item.researchfile}}" class="pdf" download="{{item.researchfile}}">
+                <img src="assets/download-pdf.png" class="pdfImg" alt="pdf img"></a>
+            </span>
+        
+            <p class="subTitle" style="padding-left: 25px;"> Articale pages :  {{item.pages}} </p>
+
+            <p class="subTitle" style="padding-left: 25px;"> Authors : </p>
+            <ul style="padding-left: 75px;">
+                <li class="researches" *ngFor="let temp of item.researchers;">  {{temp.researcherName}}  </li>
+            </ul>
+
+            <p class="subTitle" style="padding-left: 25px;"> The Summary :</p>
+            <p class="contentsData" style="padding-left: 50px;"> {{item.summary}}</p>
+
+            <p class="subTitle" style="padding-left: 25px;">Basic Words :</p>
+            <p class="contentsData" style="padding-left: 50px;">  {{item.basicWords}} </p>
+            <hr>
+
+            <a routerLink="/research-collection/{{Published_Id}}" (click)="showResearches()"> go back to published Volume >> {{Published_Id}}</a>
+
+        </div>
+    </div>
 </body>
-</html>

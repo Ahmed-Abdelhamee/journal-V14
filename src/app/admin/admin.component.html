@@ -9,6 +9,12 @@
 <body>
 
     <div class="col-12 container">
+        <h3 class="text-center text-info bigTitle"> Edit Site Data</h3>
+
+        <div class="col-sm-3 card">
+            <img src="assets/main change.png" alt="photo">
+            <a routerLink="/admin-settings/logo"> <p class="card-title"> Logo & Title</p> </a>
+        </div>
 
         <div class="col-sm-3 card" id="home" >
             <img src="assets/home.png" alt="photo">
@@ -26,6 +32,16 @@
         </div>
 
         <div class="col-sm-3 card">
+            <img src="assets/who.png" alt="photo">
+            <a routerLink="/admin-settings/board"> <p class="card-title"> editorial board</p> </a>
+        </div>
+
+        <div class="col-sm-3 card">
+            <img src="assets/fix-delete.png" alt="photo" id="new-researchesPhoto">
+            <a routerLink="/edit-delete-research" class="edit_deleteResearches"> <p class="card-title"> Edit & Delete researches in site</p> </a>
+        </div>
+
+        <div class="col-sm-3 card">
             <img src="assets/about.png" alt="photo">
             <a routerLink="/admin-settings/about"> <p class="card-title"> about us </p> </a>
         </div>
@@ -34,11 +50,51 @@
             <img src="assets/profile.png" alt="photo">
             <a routerLink="/admin-settings/profile"> <p class="card-title"> profile</p> </a>
         </div>
+        
+        <div class="col-sm-3 card">
+            <img src="assets/contactUs.png" alt="photo" id="view new-researchesPhoto">
+            <a routerLink="/admin-settings/contact"> <p class="card-title"> Contact us</p> </a>
+        </div>
 
         <div class="col-sm-3 card">
-            <img src="assets/who.png" alt="photo">
-            <a routerLink="/admin-settings/board"> <p class="card-title"> editorial board</p> </a>
+            <img src="assets/support.png" alt="photo" id="view new-researchesPhoto">
+            <a routerLink="/admin-settings/support"> <p class="card-title"> Support  </a>
         </div>
+
+        
+    </div>
+
+
+
+
+    <div class="col-12 container">
+        <h3 class="text-center text-warning bigTitle"> New Researches & Act With Users</h3>
+
+        <div class="col-sm-3 card">
+            <img src="assets/researches.png" alt="photo" id="view">
+            <a routerLink="/new-researches"> <p class="card-title"> new researches</p> </a>
+        </div>
+
+        <div class="col-sm-3 card">
+            <img src="assets/whitepaper.png" alt="photo" id="view UsersResearches">
+            <a routerLink="/admin-settings2/approval"> <p class="card-title">  author’s approval</p> </a>
+        </div>
+
+        <div class="col-sm-3 card">
+            <img src="assets/note.png" alt="photo" id="view UsersResearches">
+            <a routerLink="/admin-settings2/sendingNotes"> <p class="card-title"> Sending Notes</p> </a>
+        </div>
+
+        <div class="col-sm-3 card">
+            <img src="assets/research-result.png" alt="photo" id="view new-researchesPhoto">
+            <a routerLink="/admin-settings2/research-result"> <p class="card-title"> research result</p> </a>
+        </div>        
+
+        <div class="col-sm-3 card">
+            <img src="assets/complete.png" alt="photo" id="view new-researchesPhoto">
+            <a routerLink="/admin-settings2/compeletedResearch"> <p class="card-title"> compeleted research</p> </a>
+        </div>
+
 
     </div>
 

@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import * as AOS from 'aos';
 import * as $ from 'jquery';
+import { AuthService } from '../services/auth.service';
 // import Swal from 'sweetalert2';
 
 @Component({
@@ -13,7 +14,9 @@ import * as $ from 'jquery';
 })
 export class LoginComponent implements OnInit {
 
-  constructor( private route:Router , private formBuilder:FormBuilder,private title:Title) { }
+  loginToken:any
+
+  constructor( private route:Router , private formBuilder:FormBuilder,private title:Title , private authService:AuthService) { }
 
   userLogin=this.formBuilder.group({
     email:['',Validators.required],
@@ -23,7 +26,6 @@ export class LoginComponent implements OnInit {
   
   ngOnInit(): void {
     this.title.setTitle("Sign In")
-
     AOS.init();
 
   }
@@ -36,53 +38,22 @@ export class LoginComponent implements OnInit {
   }
 
   // the on submit function
-  getData(data:any){
-    // check input validate
-    if(data.valid){
-    console.log(this.userLogin.value)
-    console.log(data.value);
-      // this.successAlert()
+  login(){
+    if(this.userLogin.valid){
+      this.authService.login(this.userLogin.value).subscribe( result =>{
+        if (result != null){
+          this.loginToken=result
+          localStorage.setItem("token",this.loginToken.jwtToken)
+          console.log(this.loginToken)
+          this.route.navigate(['/profile'])
+        }
+      })
+      console.log(this.userLogin.value)
     }else{
-      // this.erroralert()
+      alert( " please enter valid data")
     }
   }
 
 
-//success alert code for true --------
-  // successAlert(){
 
-  //   Swal.fire({
-  //     position: 'center',
-  //     icon: 'success',
-  //     title: 'Login Successfully , Welcome Sir',
-  //     customClass: {
-  //       confirmButton: 'btn btn-success',
-  //     },
-  //   }).then((result:any)=>{
-  //     if(result.isConfirmed){
-  //       this.route.navigate(["/"])
-  //     }
-  //   })
-  // }
-//------------------------------------
-
-
-
-  // error alert code for false------
-  // erroralert(){
-
-  //   Swal.fire({
-  //     position: 'center',
-  //     icon: 'error',
-  //     title: 'please enter valid data',
-  //     showConfirmButton: false,
-  //     showCancelButton:true,
-  //     cancelButtonText:"OK",
-  //     confirmButtonColor:"btn btn-danger",
-  //     customClass:{
-  //       cancelButton:"btn btn-danger"
-  //     }
-  //   })
-  // }
-  //---------------------------------
 }

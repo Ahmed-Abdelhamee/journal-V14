@@ -9,7 +9,6 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
-import { AimComponent } from './aim/aim.component';
 import { AuthorsapprovalComponent } from './authorsapproval/authorsapproval.component';
 import { BoardComponent } from './board/board.component';
 import { BoardReviewersDataComponent } from './board-reviewers-data/board-reviewers-data.component';
@@ -20,12 +19,17 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { ResearchCollectionComponent } from './research-collection/research-collection.component';
-import { ResearchDetailsComponent } from './research-details/research-details.component';
 import { RevisioncheckComponent } from './revisioncheck/revisioncheck.component';
 import { RevisionwaitingComponent } from './revisionwaiting/revisionwaiting.component';
 import { SubmissioncheckComponent } from './submissioncheck/submissioncheck.component';
 import { SubmitpaperComponent } from './submitpaper/submitpaper.component';
 import { ZfooterComponent } from './zfooter/zfooter.component';
+import { NewResearchesComponent } from './new-researches/new-researches.component';
+import { EditDeleteResearchComponent } from './edit-delete-research/edit-delete-research.component';
+import { AdminSettings2Component } from './admin-settings2/admin-settings2.component';
+import { AboutComponent } from './about/about.component';
+import { SupportComponent } from './support/support.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,6 @@ import { ZfooterComponent } from './zfooter/zfooter.component';
     HomeComponent,
     AdminComponent,
     AdminSettingsComponent,
-    AimComponent,
     AuthorsapprovalComponent,
     BoardComponent,
     BoardReviewersDataComponent,
@@ -45,12 +48,17 @@ import { ZfooterComponent } from './zfooter/zfooter.component';
     ProfileComponent,
     RegisterComponent,
     ResearchCollectionComponent,
-    ResearchDetailsComponent,
     RevisioncheckComponent,
     RevisionwaitingComponent,
     SubmissioncheckComponent,
     SubmitpaperComponent,
     ZfooterComponent,
+    NewResearchesComponent,
+    EditDeleteResearchComponent,
+    AdminSettings2Component,
+    AboutComponent,
+    SupportComponent,
+    ContactComponent,
    
 
   ],

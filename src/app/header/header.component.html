@@ -24,9 +24,9 @@
         <div class="col-sm-2" style="height: 1px;"></div>
 
         <!-- nav logo text  -->
-        <div class="col-sm-8 logoDiv" *ngFor="let item of headerData">
-            <a href="/"><span><img [src]="item.logoImg" alt="journalLogo" class="logoImg"></span>
-                 <span><p class="logo">{{item.journalname}} </p> </span></a>
+        <div class="col-sm-8 logoDiv">
+            <a href="/"><span><img [src]="headerData.logoImg" alt="journalLogo" class="logoImg"></span>
+                 <span><p class="logo">{{headerData.journalname}} </p> </span></a>
         </div>
 
         <!-- <div class="col-sm-2 linksSide">
@@ -35,19 +35,19 @@
 
         <div class="col-sm-2 linksSide" *ngFor="let item of profileData">
             <!-- <a routerLink="/profile" (click)="pageTitleName('profile')"><i class="fa fa-user-circle profileIcon"></i></a> -->
-            <a routerLink="/profile" (click)="pageTitleName('profile')"><img [src]="item.img" alt="user icon "class="profileIcon"></a>
+            <a routerLink="/profile" (click)="pageTitleName('profile')"><img src="assets/profileIcon.png" alt="user icon "class="profileIcon"></a>
             
             <button class="toggleButtonMobile  showMOBILE btn btn-outline-light" id="btn" (click)="showsliderMobile()"><i class="material-icons btnmenuIcon">menu</i></button>
 
             <button class="toggleButton desktopShow btn btn-outline-light"><i class="material-icons btnmenuIcon">menu</i>
             
-                <div class="sidebar text-capitalize" *ngFor="let item of headerData">
+                <div class="sidebar text-capitalize">
 
                     <!-- this button for close the sidebar-->
                     <!-- <h2><button class="btnHide btn btn-danger">X</button></h2> -->
     
                     <!-- side bar tile -->
-                    <p class="titleSidebar">{{item.journalname}}</p>
+                    <p class="titleSidebar">{{headerData.journalname}}</p>
     
                     <!-- sidebar links -->
                     <a  class="active sidebarLink" href="/">Home</a>

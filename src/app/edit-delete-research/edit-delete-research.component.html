@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <div class="container">
+
+        <button type="button" class="btn btn-warning btn-edit" data-toggle="modal" data-target="#editPublishedVolume">
+            Edit published Volume
+          </button>
+
+          <button type="button" class="btn btn-warning btn-edit" data-toggle="modal" data-target="#editGroupName">
+            Edit research group name
+          </button>
+
+          <button type="button" class="btn btn-warning btn-edit" data-toggle="modal" data-target="#editPublishedResearch">
+            Edit research Details
+          </button>
+          
+        
+        
+          <div class="modal" id="editPublishedVolume">
+            <div class="modal-dialog">
+              <div class="modal-content">
+          
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Edit published volume</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+          
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form [formGroup]="editPublishedVolumeName" (ngSubmit)="updatePublishedChange()">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder=" published old volume " formControlName="oldId">
+                            <input type="text" class="form-control" placeholder=" published new volume " formControlName="newId">
+                            <button class="btn btn-success" type="submit"> update</button>
+                        </div>
+                    </form>
+                </div>
+          
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+          
+              </div>
+            </div>
+          </div>
+
+
+          <div class="modal" id="editGroupName">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Edit Group Name</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form [formGroup]="editGroupName" (ngSubmit)="updateGroupChange()">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder=" published volume name" formControlName="id">
+                            <input type="text" class="form-control" placeholder=" old group name" formControlName="oldGroupNameId">
+                            <input type="text" class="form-control" placeholder=" new group name" formControlName="newGroupNameId">
+                            <button class="btn btn-success" type="submit"> update</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+          
+              </div>
+            </div>
+          </div>
+        
+        
+          <div class="modal" id="editPublishedResearch">
+            <div class="modal-dialog">
+              <div class="modal-content">
+          
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+          
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <!-- published Volumes -->
+                    <div class="publishedVolumes card col-12">
+    
+                        <form [formGroup]="publishedVolumes" (ngSubmit)="saveResearch()">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Enter published volume name" formControlName="id">
+                                <div class="form-group" formArrayName="researchGroupNames">
+                                    <div class="card form-group " *ngFor="let item of getresearchesGroups.controls;let index1=index">
+                                        <div [formGroupName]="index1">
+                                            <input type="text" class="form-control researchGroupName" formControlName="id"  placeholder="research group name">
+                                            <div formArrayName="researches">
+                                                <div class="card form-group" *ngFor="let item of getResearches.controls;let index2=index">
+                                                    <div [formGroupName]="index2">
+                                                        <input type="text" class="form-control" placeholder="research title" formControlName="title">
+                                                        <input type="text" class="form-control" placeholder="pages" formControlName="pages">
+                                                        <textarea rows="5" type="text" class="form-control" placeholder="Abstract" formControlName="summary"></textarea>
+                                                        <input type="text" class="form-control" placeholder=" key words " formControlName="basicWords">
+                                                        <input type="file" name="file" id="file" accept=".pdf , .docx" class="form-control" (change)="uploadResearchFile($event)">
+                                                        
+                                                        <div formArrayName="researchers"  class="card">
+                                                            <div  *ngFor="let temp of researchersArray.controls ; let index3=index">
+                                                                <div [formGroupName]="index3">
+                                                                    <input type="text" class="form-control" placeholder="Author" formControlName="researcherName">
+                                                                </div>
+                                                            </div>
+                                                            <button type="button" class="btn btn-info" (click)=" addReseachers()">+ Author</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="form-group lastBtns">
+                                <button type="button" class="btn btn-info " (click)="addResearch()" *ngIf="btnAddNewResearch">new research</button> 
+                                <button type="submit" class="btn btn-primary" >save</button>
+                            </div>
+                        </form>
+            
+                    </div>
+                </div>
+          
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+          
+              </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="container">
+
+            <button type="button" class="btn btn-danger btn-edit" data-toggle="modal" data-target="#deletePublishedVolume">
+                Delete published Volume
+              </button>
+    
+              <button type="button" class="btn btn-danger btn-edit" data-toggle="modal" data-target="#deleteGroupName">
+                Delete research group name
+              </button>
+    
+              <button type="button" class="btn btn-danger btn-edit" data-toggle="modal" data-target="#deletePublishedResearch">
+                Delete research Details
+              </button>
+
+
+              <div class="modal" id="deletePublishedVolume">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">delete published volume</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form [formGroup]="deletePublishedVolume_" (ngSubmit)="deletePublishedVolume()">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder=" published volume " formControlName="id">
+                                <button class="btn btn-danger" type="submit"> delete</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+              
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="modal" id="deleteGroupName">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">delete group</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form [formGroup]="deleteGroup_" (ngSubmit)="deleteGroup()">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder=" published volume " formControlName="id">
+                                <input type="text" class="form-control" placeholder=" research group name " formControlName="GroupNameId">
+                                <button class="btn btn-danger" type="submit"> delete</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+              
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="modal" id="deletePublishedResearch">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">delete research</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form [formGroup]="deleteResearch_" (ngSubmit)="deleteResearch()">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder=" published volume " formControlName="id">
+                                <input type="text" class="form-control" placeholder=" research group name " formControlName="GroupNameId">
+                                <input type="text" class="form-control" placeholder=" research title " formControlName="title">
+                                <button class="btn btn-danger" type="submit"> delete</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+              
+                  </div>
+                </div>
+              </div>
+            
+
+          </div>    
+    </div>
+</body>
+
+</html>

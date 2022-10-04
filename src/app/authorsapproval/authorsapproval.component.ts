@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { GetDataService } from '../services/get-data.service';
 
 @Component({
   selector: 'app-authorsapproval',
@@ -9,23 +10,28 @@ import { Title } from '@angular/platform-browser';
 })
 export class AuthorsapprovalComponent implements OnInit {
 
-  constructor(private title:Title,private formBuilder:FormBuilder) { }
+  constructor(private title:Title,private formBuilder:FormBuilder,private service:GetDataService) { }
 
+  
   approvalform=this.formBuilder.group({
-    formApprovalFile:["",Validators.required]
+    file:["",Validators.required],
+    userId:["",Validators.required]
   })
 
   uploaded:boolean=false;
 
   ngOnInit(): void {
     this.title.setTitle("author's approval")
+
+    this.approvalform.patchValue({
+      userId:""
+    })
   }
 
   submit(values:any){
-    if(values.valid){
       console.log(this.approvalform.value);
       this.uploaded=true;
-    }
+      this.service.addAuthoAapprovalFile(this.approvalform.value);
   }
   
 }

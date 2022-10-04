@@ -8,10 +8,25 @@ export interface addHomePost{
     photourl?:any
 }
 
-export interface addResearchData{
-    folderName:"",
-    researchTitle:"",
-    pages:"",
-    researcher:"",
-    presentation:"",
+export interface addResearchAdmin{
+    id?: string,
+      researchGroupNames?: [
+        {
+          id?: string,
+          researches?: {
+            title?: string,
+            pages?: string,
+            summary?: string,
+            basicWords?: string,
+            researchers?: string[],
+            researchfile?: string
+          }
+        }
+      ]
+}
+
+export interface authoAapprovalFile{
+  file:string,
+  userId:string,
+  id:string
 }

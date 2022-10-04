@@ -15,6 +15,9 @@
         margin-top: 35px;
         font-size: 21px;
     }
+    div .otherData{
+        display: none;
+    }
     div .bigText{
         font-size: 20px;
     }
@@ -52,4 +55,12 @@
 ul li{
     font-size: 20px;
     font-weight: bold;
+}
+.otherData{
+    margin-top:65px;
+    margin-left:25px;
+    font-size: 17px;
+    font-weight: 600;
+    color: gray;
+    text-transform: capitalize;
 }

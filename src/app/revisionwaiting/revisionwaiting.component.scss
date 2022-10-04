@@ -27,26 +27,18 @@
 }
 
 .contant{
-    padding: 15px;
+    padding: 15px  30px;
     padding-top: 0px;
-    margin-top: 15px;
-}
-.title{
-    padding-top: 15px;
-    color: red;
-    text-align: center;
-    text-transform: capitalize;
-    font-size: 25px;
-    font-weight: bold;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 15px;
+    margin-bottom: 40px;
 }
 p{
-    font-size: 17px;
+    font-size: 15px;
     color: gray;
     font-weight: 500;
 }
 p b{
-    font-size: 20px;
+    font-size: 15px;
     color: rgb(28, 27, 27);
     text-transform: capitalize;
     font-weight: bold;
@@ -54,14 +46,17 @@ p b{
 .additionalReviewers{
     margin-top: 20px;
 }
-.groupTitle{
-    font-size: 20px;
-    font-weight: bold;
-}
+
 ul li{
-    font-size: 17px;
+    font-size: 15px;
     color: gray;
     font-weight: 500;
     list-style: none;
-    margin-bottom: 10px;
+}
+.pdfImg{
+    height: 30px;
+    width: 35x;
+    margin-bottom: 7px;
+    margin-left: 20px;
+    border-radius: 15px;
 }

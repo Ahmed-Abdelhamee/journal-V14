@@ -18,6 +18,7 @@
 
 <body>
 
+  <!-- ------------------------- carsoul data ------------------------ -->
   <div class="thecarousel">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
@@ -29,7 +30,7 @@
         <div class="carousel-inner">
           <div class="carousel-item active ">
             <p class="carouselText">International Journal of Technological Sciences (IJTS) </p>
-            <img src="assets/img2.jpg" alt="photo" width="100%" height="400">
+            <img src="assets/Electronics.png" alt="photo" width="100%" height="400">
           </div>
           <div class="carousel-item " *ngFor="let item of homeCarousel">
             <p class="carouselText">{{item.title}} </p>
@@ -45,25 +46,30 @@
         </a>
       </div>
   </div>
+  <!-- ------------------------------------------------------------- -->
 
-  <!-- the static photo Div -->
-  <div class="col-12 staticPhotoDiv">
-    <div class="col-sm-4" style="height:1px;"></div>
-    <div class="col-sm-4">
-      <img [src]="backImage.backImage" alt="home" class=" staticImage">
+
+    <!-- the static photo Div -->
+    <div class="col-12 staticPhotoDiv">
+      <div class="col-sm-4" style="height:1px;"></div>
+      <div class="col-sm-4">
+        <img [src]="backImage.backImage" *ngIf="backImage.backImage!='0' &&  backImage.backImage!=undefined  && backImage.backImage!='';" alt="home" class=" staticImage">
+      </div>
+      <div class="col-sm-4" style="height:1px;"></div>
     </div>
-    <div class="col-sm-4" style="height:1px;"></div>
-  </div>
+    <!-- ------------------------- -->
     
-  <!-- div content  -->
+    
+  <!-- ---------- div content ---------- -->
   <div class="col-12 content">
       <div class="col-sm-3 reviewslinks" >
         <p class="reviewLinksTitle">Published Volumes</p>
         <div class="col-12 reviews" *ngFor="let item of publishReviews; let i=index;">
-          <a routerLink="/research-collection/{{item.publishedVolumes}}">{{item.publishedVolumes}}</a>
+          <a routerLink="/research-collection/{{item.id}}">{{item.id}}</a>
         </div>
         <br>
-      </div>
+    </div>
+    <!-- ------------------------- -->
 
       <div class="col-sm-9 data">
         <div class="col-12 dataContent" *ngFor="let item of homeData; let i=index;">

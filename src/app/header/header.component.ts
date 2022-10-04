@@ -3,7 +3,9 @@ import * as $ from "jquery" ;
 import * as AOS from "aos" ;
 import { Title } from '@angular/platform-browser';
 import { GetDataService } from '../services/get-data.service';
-import { userprofileData } from '../interfaces/profileData.interface';
+import { userProfile, userprofileData } from '../interfaces/profileData.interface';
+import { headerData } from '../interfaces/headerData.interface';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,10 +14,13 @@ import { userprofileData } from '../interfaces/profileData.interface';
 })
 export class HeaderComponent implements OnInit {
 
-  headerData:any[]=[];
-  profileData:userprofileData[]=[]
+  headerData:headerData={
+    journalname:"",
+    logoImg:"",
+  };
+  profileData:userProfile[]=[]
 
-  constructor( private pageTitle:Title, private HeaderServiceData:GetDataService) { }
+  constructor( private pageTitle:Title, private HeaderServiceData:GetDataService, private authService:AuthService) { }
 
   pageTitleName(title:string){
     this.pageTitle.setTitle(title)
@@ -31,7 +36,7 @@ export class HeaderComponent implements OnInit {
       this.headerData=data;
     })
 
-    this.HeaderServiceData.getProfileData().subscribe (data=>{
+    this.authService.getProfileData().subscribe (data=>{
       this.profileData=data
     })
 

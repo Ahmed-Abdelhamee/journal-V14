@@ -9,8 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Tapestry&display=swap" rel="stylesheet"> -->
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
 </head>
 
@@ -19,7 +17,7 @@
     <div class="col-12">
         <div *ngFor="let item of instructions ; let i=index;">
             
-            <h1 id="mainTextH1" *ngIf="i==0" > INSTRUCTIONS TO AUTHORS    <a href="assets/journalData/cycle.pdf" download="instructions"><img src="assets/download-pdf.png" class="pdfImg" alt="pdf img"></a></h1> 
+            <h1 id="mainTextH1" *ngIf="i==0" > INSTRUCTIONS TO AUTHORS    <a href="{{instructionsFileURL}}" download="instructions"><img src="assets/download-pdf.png" class="pdfImg" alt="pdf img"></a></h1> 
 
             <p id="mainTextP" *ngIf="i==0" >{{item.text}}</p>
             

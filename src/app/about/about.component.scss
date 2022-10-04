@@ -1,0 +1,36 @@
+[class*="col-"]{
+    float: left;
+    width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+
+}
+
+
+.basicTitle{
+    font-family: 'Lobster', cursive;
+    text-transform: capitalize;
+    font-weight: bold;
+    text-align: center;
+    font-size: 35px;
+    padding: 15px;
+    color: rgb(0, 126, 180);
+}
+
+.bigTitle{
+    text-transform: capitalize;
+    color: rgb(34, 34, 150);
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 40px;
+}
+.sideTitle{
+    color: rgb(27, 25, 25);
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.text{
+    font-weight: 500;
+}

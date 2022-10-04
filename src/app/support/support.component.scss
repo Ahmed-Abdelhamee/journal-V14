@@ -1,0 +1,30 @@
+[class*="col-"] {
+    float: left;
+}
+
+@media only screen and (max-width: 768px) {
+
+}
+
+.col-12{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+input{
+    margin: 15px 0px;
+}
+.submit{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.basicTitle{
+    font-family: 'Lobster', cursive;
+    font-weight: bold;
+    text-align: center;
+    font-size: 35px;
+    padding: 15px;
+    color: rgb(0, 126, 180);
+}

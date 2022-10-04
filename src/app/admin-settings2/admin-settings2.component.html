@@ -1,0 +1,282 @@
+
+<!-- ------------------------------  show data --------------------------------------- -->
+<!--
+    <table class="table table-striped">
+        <thead>
+            <tr>
+            <th scope="col" class="text-center">#</th>
+            <th scope="col" class="text-center">Title</th>
+            <th scope="col" class="text-center">Text</th>
+            <th scope="col" class="text-center">Delete</th>
+            <th scope="col" class="text-center">Update></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr  *ngFor="let item of ; let i=index;" >
+            <th scope="row">{{i+1}}</th>
+            <td class=" text-center"><p class="Basictitle pt-2" >{{item.}} </p></td>
+            <td class=" text-center"><p class="text pt-2" >{{item.}} </p></td>
+            <td class=" text-center"><button class="btn btn-danger" (click)=""> X</button></td>
+            <td class=" text-center"><button class="btn btn-warning" (click)=""  data-toggle="modal" data-target="#">Edit</button></td>
+            </tr>
+        </tbody>
+    </table>
+-->
+
+<div class="container">
+  <!-- *************** show Approval data *****************  -->
+  <div  *ngIf="approvalCheck">
+    <h2 class=" col-12 text-center Basictitle">author’s approval</h2>
+    <table class="table table-striped">
+      <thead>
+          <tr>
+          <th scope="col" class="text-center">#</th>
+          <th scope="col" class="text-center">pdf</th>
+          <th scope="col" class="text-center">user ID</th>
+          <th scope="col" class="text-center">Delete</th>
+          </tr>
+      </thead>
+
+      <tbody   >
+          <tr *ngFor="let item of approval; let i=index;">
+          <th scope="row">{{i+1}}</th>
+          <td class=" text-center"><p class="Basictitle pt-1" ><a href="{{item.file}}" download="receipt">  <img class="card-img" src="assets/download-pdf.png" alt="Card image"> </a> </p></td>
+          <td class=" text-center"><p class="text pt-1" >{{item.userId}} </p></td>
+          <td class=" text-center"><button class="btn btn-danger" (click)="deleteReceipt(item.id)"> X</button></td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+
+  
+
+  <!-- ******************  show Sending Notes Check data ******************** -->
+  <div  *ngIf="sendingNotesCheck">
+   <div class="col-12">
+      <div class=" setCenter ">
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#sendingNotes" (click)="forSendNotes()">
+          Sending Notes
+        </button>
+      </div>
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+          <tr>
+          <th scope="col" class="text-center">#</th>
+          <th scope="col" class="text-center">Title</th>
+          <th scope="col" class="text-center">Notes</th>
+          <th scope="col" class="text-center">user ID</th>
+          <th scope="col" class="text-center">Delete</th>
+          <th scope="col" class="text-center">Update></th>
+          </tr>
+      </thead>
+
+      <tbody>
+          <tr  *ngFor="let item of sendingNotes; let i=index;" >
+          <th scope="row">{{i+1}}</th>
+          <td class=" text-center"><p class="Basictitle pt-2" >{{item.researchTitle}} </p></td>
+          <td class=" text-center"><p class="text pt-2" >{{item.notes}} </p></td>
+          <td class=" text-center"><p class="text pt-2" >{{item.userId}} </p></td>
+          <td class=" text-center"><button class="btn btn-danger" (click)="deleteNote(item.id)"> X</button></td>
+          <td class=" text-center"><button class="btn btn-warning" (click)="forupdateNotes(item)"  data-toggle="modal" data-target="#sendingNotes">Edit</button></td>
+          </tr>
+      </tbody>
+  </table>
+
+  </div>
+  <!-- ------------------------------------- -->
+
+
+  <!-- show research-result data -->
+  <div  *ngIf="researchCheck_OR_result_Boolean">
+    <div class="col-12">
+       <div class=" setCenter ">
+         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#researchCheck" (click)="foraddResearchResultL()">
+          add research result
+         </button>
+       </div>
+     </div>
+
+      <table class="table table-striped">
+        <thead>
+            <tr>
+            <th scope="col" class="text-center">#</th>
+            <th scope="col" class="text-center">Title</th>
+            <th scope="col" class="text-center">Text</th>
+            <th scope="col" class="text-center">user ID</th>
+            <th scope="col" class="text-center">Delete</th>
+            <th scope="col" class="text-center">Update></th>
+            </tr>
+        </thead>
+
+        <tbody  *ngFor="let item of researchCheck_result; let i=index;" >
+            <tr>
+            <th scope="row">{{i+1}}</th>
+            <td class=" text-center"><p class="Basictitle pt-2" >{{item.researchTitle}} </p></td>
+            <td class=" text-center"><p class="text pt-2" >{{item.text}} </p></td>
+            <td class=" text-center"><p class="text pt-2" >{{item.userId}} </p></td>
+            <td class=" text-center"><button class="btn btn-danger" (click)="deleteResearchResult(item.id)"> X</button></td>
+            <td class=" text-center"><button class="btn btn-warning" (click)="forupdateResearchResult(item)"  data-toggle="modal" data-target="#researchCheck">Edit</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+   </div>
+  <!-- ------------------------------------- -->
+
+  <div *ngIf="completed_researches_check">
+    <div class="col-12">
+      <div class=" setCenter ">
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#compeletedResearch">
+         add compeleted research
+        </button>
+      </div>
+    </div>
+
+      <table class="table">
+        <thead>
+            <tr>
+            <th scope="col" class="text-center">#</th>
+            <th scope="col" class="text-center">Title</th>
+            <th scope="col" class="text-center">Text</th>
+            <th scope="col" class="text-center">user ID</th>
+            <th scope="col" class="text-center">Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr  *ngFor="let item of completed_researches; let i=index;" >
+            <th scope="row">{{i+1}}</th>
+            <td class=" text-center"><p class="Basictitle pt-2" >{{item.researchTitle}} </p></td>
+            <td class=" text-center"><p class="Basictitle pt-2"  [style.color]="item.status">{{item.text}} </p></td>
+            <td class=" text-center"><p class="text pt-2" >{{item.userId}} </p></td>
+            <td class=" text-center"><button class="btn btn-danger" (click)="deleteCompeletedResearch(item.id)"> X</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+  </div>
+  <!-- ------------------------------ -->
+
+  <!-- ---------------------------------------------------- -->
+</div>
+
+
+
+
+<!-- ----------------------------------------------------------------------------------------- -->
+
+
+
+
+<!-- ----------------------------------------- Modals -------------------------------------- -->
+
+<!-- Sending Notes Modal -->
+<div class="modal" id="sendingNotes">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Sending Notes</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form [formGroup]="researchNotes" class="col-12 card">
+          <div class="form-group">
+            <input type="text" formControlName="researchTitle" placeholder="Research Title" class="form-control">
+            <textarea type="text" formControlName="notes" placeholder="Notes" class="form-control" rows="4">  </textarea>
+            <input type="text" formControlName="userId" placeholder="user Id" class="form-control">
+          </div>
+          <div class="submit">
+            <button class="btn btn-primary" type="submit" (click)="saveNotes()" *ngIf="show_btn_Save_Note"> send </button>
+            <button class="btn btn-warning" type="submit" (click)="updateNote()" *ngIf="show_btn_Update_Note"> update </button>
+          </div>
+        </form>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Sending research result Modal -->
+<div class="modal" id="researchCheck">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Resaerch Results</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form [formGroup]="researchResult" class="col-12 card">
+          <div class="form-group">
+            <input type="text" formControlName="researchTitle" placeholder="Research Title" class="form-control">
+            <textarea type="text" formControlName="text" placeholder="put text" class="form-control" rows="4">  </textarea>
+            <input type="text" formControlName="userId" placeholder="user Id" class="form-control">
+          </div>
+          <div class="submit">
+            <button class="btn btn-primary" type="submit" (click)="saveResearchResult()" *ngIf="show_btn_Save_ResearchResult"> send </button>
+            <button class="btn btn-warning" type="submit" (click)="updateResearchResult()" *ngIf="show_btn_Update_ResearchResult"> update </button>
+          </div>
+        </form>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- add compeleted Modal -->
+<div class="modal" id="compeletedResearch">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Compeleted Research</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form [formGroup]="compeletedResearches" class="col-12 card compeletedModelCard">
+          <div class="form-group">
+            <input type="text" formControlName="researchTitle" placeholder="Research Title" class="form-control">
+            <input type="text" formControlName="text" placeholder="status " class="form-control" >
+            <input type="text" formControlName="status" placeholder="status color" class="form-control">
+            <input type="text" formControlName="userId" placeholder="user Id" class="form-control">
+          </div>
+          <div class="submit">
+            <button class="btn btn-primary" type="submit" (click)="addCompeletedresearch()"> send </button>
+            <!-- <button class="btn btn-primary" type="submit" (click)="saveResearchResult()" *ngIf="show_btn_Save_ResearchResult"> send </button> -->
+            <!-- <button class="btn btn-warning" type="submit" (click)="updateResearchResult()" *ngIf="show_btn_Update_ResearchResult"> update </button> -->
+          </div>
+        </form>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+  <!-- ---------------------------------------------------------------------------------- -->

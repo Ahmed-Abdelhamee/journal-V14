@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery'
 import * as Aos from 'aos'
 import { backImg, HomeCarsoulData, homePosts } from '../interfaces/HomeData.interface';
-import { review } from '../interfaces/reviewsData.interface';
 import { GetDataService } from '../services/get-data.service';
 import { Title } from '@angular/platform-browser';
+import { publishedVolume } from '../interfaces/viewResearches.interface';
 
 @Component({
   selector: 'app-home',
@@ -15,10 +15,11 @@ export class HomeComponent implements OnInit {
 
   homeCarousel:HomeCarsoulData[]=[];
   homeData:homePosts[]=[]
-  publishReviews:review[]=[];
+  publishReviews:publishedVolume[]=[];
   backImage:backImg={
-    backImage:""
-  };
+    backImage:"",
+    id:0
+  }
 
 
   constructor(private getDataSevice:GetDataService,private title:Title) { }
@@ -34,7 +35,7 @@ export class HomeComponent implements OnInit {
     this.getDataSevice.gethomeData().subscribe(data=>{
       this.homeData=data;
     })
-    this.getDataSevice.getHomeReviews().subscribe(data=>{
+    this.getDataSevice.getPublishedVolume().subscribe(data=>{
       this.publishReviews=data;
     })
     this.getDataSevice.getHomeBackImage().subscribe(data=>{

@@ -24,7 +24,7 @@
         <div class="col-sm-6">
             <div class="registerFormDiv" data-aos="zoom-in" data-aos-duration="1000">
                 <!-- the form with class card  -->
-                <form #data="ngForm" [formGroup]="userRegist" (ngSubmit)="setData(data)" class=" card" novalidate>
+                <form [formGroup]="userRegist" (ngSubmit)="setData()" class=" card" novalidate>
                     <!-- the form title  -->
                     <p class="formTitle text-center text-capitalize">Sign Up Form</p>
 
@@ -85,7 +85,7 @@
                       <span class="Spanicon"><i class="fa fa-mobile-phone"></i></span>
                       <!-- input -->
                       <span class="SpanInput">
-                          <input type="tel" class="inputStyle form-control" placeholder="Please Enter You Phone " formControlName="phone"  [class.is-invalid]="phone?.invalid && phone?.touched" >
+                          <input type="number" class="inputStyle form-control" placeholder="Please Enter You Phone " formControlName="phone"  [class.is-invalid]="phone?.invalid && phone?.touched" >
                           <small class="text-danger" *ngIf="phone?.invalid && phone?.touched ">phone is required</small>
                       </span>
                     </div>

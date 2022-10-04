@@ -1,0 +1,144 @@
+<div class="col-12">
+    <div class="col-sm-4" *ngFor="let item of revisionData">
+        <div class=" card content">
+            <p class="title"> </p>
+            <p> <b>artical type</b> : {{item.articleType}}</p>
+            <p><b>attached files : </b></p>
+            <ul>
+                <li>file 1 : {{item.attachFiles.file1}} <span><a href="{{item.attachFiles.file1}}" download="file1"><img src="assets/download-pdf.png" *ngIf="item.attachFiles.file1 !='' && item.attachFiles.file1 !=undefined" class="pdfImg" alt="pdf img"></a></span></li>
+                <li>file 2 : {{item.attachFiles.file2}} <span><a href="{{item.attachFiles.file2}}" download="file1"><img src="assets/download-pdf.png" *ngIf="item.attachFiles.file2 !='' && item.attachFiles.file2 !=undefined" class="pdfImg" alt="pdf img"></a></span></li>
+                <li>file 3 : {{item.attachFiles.file3}} <span><a href="{{item.attachFiles.file3}}" download="file1"><img src="assets/download-pdf.png" *ngIf="item.attachFiles.file3 !='' && item.attachFiles.file3 !=undefined" class="pdfImg" alt="pdf img"></a></span></li>
+                <li>file 4 : {{item.attachFiles.file4}} <span><a href="{{item.attachFiles.file4}}" download="file1"><img src="assets/download-pdf.png" *ngIf="item.attachFiles.file4 !='' && item.attachFiles.file4 !=undefined" class="pdfImg" alt="pdf img"></a></span></li>
+            </ul>
+                
+            <p>
+                <b>General Information :</b> 
+                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#GeneralInformation " (click)="showGeneralInformation(item.GeneralInformationText1,item.GeneralInformationText2)">
+                  show   
+                </button>
+            </p>
+
+            <p class="groupTitle"><b>Reviewers</b></p>
+            <ul>
+                <li> reviewer Name : {{item.reviewerName}}</li>
+                <li>reviewer Jop : {{item.reviewerJop}}</li>
+                <li> contact : {{item.contact}}</li>
+                <div *ngFor="let subitem of item.additionalReviewPreferences" class="additionalReviewers">
+                    <li *ngIf=" subitem.reviewerName != '' && subitem.reviewerName !=undefined  ">reviewer Name : {{subitem.reviewerName}}</li>
+                    <li *ngIf=" subitem.reviewerJop != ''  && subitem.reviewerJop !=undefined ">reviewer Jop : {{subitem.reviewerJop}}</li>
+                    <li *ngIf=" subitem.contact != ''  && subitem.contact !=undefined ">contact : {{subitem.contact}}</li>
+                </div>
+            </ul>
+            
+            <p class="groupTitle"><b>Manuscript data</b></p>
+            <ul>
+                <li><b>title :</b> {{item.manuScriptData.title}}</li>
+                <li><b>Abstract :</b> 
+                    <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#abstract " (click)="showAbstract(item.manuScriptData.Abstract)">
+                        show   
+                    </button>
+                </li>
+                <li><b>KeyWords :</b> {{item.manuScriptData.KeyWords}}</li>
+                <li><b>FundingInfo :</b> {{item.manuScriptData.FundingInfo}}</li>
+            </ul>
+
+            <p><b>Comments :</b> 
+                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#comment " (click)="showComments(item.comment)">
+                    show   
+                </button>
+            </p>
+
+            <p><b>receipt number :</b> {{item.receiptnumber}}</p>
+            <p><b>receipt Photo :</b> {{item.receiptPhoto}} <span><a href="{{item.receiptPhoto}}" download="receiptPhoto"><img src="assets/download-pdf.png" class="pdfImg" alt="pdf img"></a></span></p>
+            <p><b>User Id :</b> {{item.userId}}</p>
+
+            <br> <hr>
+
+            <button class=" btn btn-danger" (click)="deleteItem(item)">Delete From Revision</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- The Modal of GeneralInformation-->
+<div class="modal" id="GeneralInformation">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Genral Information </h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+            <p>Small Text : {{GeneralInformationText1}}</p>
+            <p>********************************************************</p>
+            <p>Big Text : {{GeneralInformationText2}}</p>
+            <p>********************************************************</p>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+
+  <!-- The Modal of comment-->
+<div class="modal" id="comment">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Comments : </h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+            <p> Comment : {{comment}}</p>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+
+
+    <!-- The Modal of Abstract -->
+<div class="modal" id="abstract">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Abstract : </h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+            <p> Abstract : {{abstract}}</p>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>

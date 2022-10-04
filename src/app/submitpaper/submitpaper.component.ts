@@ -5,6 +5,7 @@ import * as AOS from 'aos';
 // import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { GetDataService } from '../services/get-data.service';
 
 @Component({
   selector: 'app-submitpaper',
@@ -23,7 +24,7 @@ export class SubmitpaperComponent implements OnInit {
   progressShowCounter:number=1;
   
 
-  constructor(private formBuilder:FormBuilder ,private route:Router,private title:Title) { }
+  constructor(private formBuilder:FormBuilder ,private route:Router,private title:Title , private service:GetDataService) { }
 
   // form builder variable
   AthorSubmitPaper=this.formBuilder.group({
@@ -43,13 +44,13 @@ export class SubmitpaperComponent implements OnInit {
 
     GeneralInformationText1:['',Validators.required],
 
-    generalInformationText2:['',Validators.required],
+    GeneralInformationText2:['',Validators.required],
 
     additionalReviewPreferences:this.formBuilder.array([]),
 
     comment:[""],
 
-    receiptnumber:["",[Validators.required,Validators.pattern("[0-9]+")]],
+    receiptnumber:[0,[Validators.required,Validators.pattern("[0-9]+")]],
 
     receiptPhoto:["",Validators.required],
 
@@ -58,7 +59,8 @@ export class SubmitpaperComponent implements OnInit {
       Abstract:['',Validators.required],
       KeyWords:['',Validators.required],
       FundingInfo:['',Validators.required],
-    })
+    }),
+    userId:["",Validators.required]
 
   })
 
@@ -186,7 +188,7 @@ export class SubmitpaperComponent implements OnInit {
     this.data.KeyWords=getdata.manuScriptData.KeyWords;
     this.data.FundingInfo=getdata.manuScriptData.FundingInfo;
     this.data.GeneralInformationText1=getdata.GeneralInformationText1;
-    this.data.GeneralInformationText2=getdata.generalInformationText2;
+    this.data.GeneralInformationText2=getdata.GeneralInformationText2;
 
     console.log(this.AthorSubmitPaper.value)
   }
@@ -194,16 +196,8 @@ export class SubmitpaperComponent implements OnInit {
 
   // the Submit function 
   savePaper(values:any){
-    if(values.valid){
-      console.log(this.AthorSubmitPaper.value)
-      // this.checkSubmit=true;
-      this.successAlert()
-    }
-    else {
-      this.erroralert();
-      // this.checkSubmit=false;
-      console.log(this.AthorSubmitPaper.errors)
-    }
+    this.service.add_UserResearch_forRevision(this.AthorSubmitPaper.value)
+   this.route.navigate(["/revisionwaiting"]) 
   }
   //******************* */
 

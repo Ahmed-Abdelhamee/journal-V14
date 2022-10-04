@@ -1,0 +1,14 @@
+<div class="col-12">
+    <div class="col-sm-4 card">
+        <h1 class="basicTitle">Get support</h1>
+        <form [formGroup]="support" (ngSubmit)="save()">
+            <input type="text" class="form-control" placeholder="enter your name" formControlName="userName">
+            <textarea type="text" class="form-control" placeholder="enter your comment" formControlName="text" rows="5"></textarea>
+            <input type="text" class="form-control" placeholder="enter your profile ID" formControlName="userId">
+
+            <div class="submit">
+                <button type="submit" class="btn btn-info">send</button>
+            </div>
+        </form>
+    </div>
+</div>

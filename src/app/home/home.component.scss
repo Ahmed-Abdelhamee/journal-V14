@@ -94,14 +94,13 @@ $basicColor:#465d7e;
     position: fixed;
     z-index: -1;
     opacity: .2;
-    margin-top: 90px;
+    margin-top: 120px;
     justify-content: center;
 }
 .staticImage{
-    height: 100%;
-    width: 400px;
+    height: 330px;
+    width: 330px;
     border-radius: 15px;
-
 }
 //******************************************
 
@@ -123,8 +122,9 @@ $basicColor:#465d7e;
     font-size: 25px;
     margin-bottom: 15px;
 }
-.reviews{
-    font-size: 25px;
+.reviews a{
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .discription{

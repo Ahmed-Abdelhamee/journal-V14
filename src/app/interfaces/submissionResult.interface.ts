@@ -1,4 +1,6 @@
 export interface result{
     researchTitle?:string,
-    text?:string
+    text?:string,
+    userId?:string,
+    id?:number
 }

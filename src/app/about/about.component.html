@@ -1,0 +1,13 @@
+
+
+<div class=" container text-center">
+    <p class="basicTitle"> About US</p>
+    
+    <div *ngFor="let item of aboutUsArray">
+        <p class="bigTitle" *ngIf="item.BigTitle !='' ">{{item.BigTitle}}</p>
+        <p>
+            <span class="sideTitle" *ngIf="item.sideTitle !='' ">{{item.sideTitle}} : </span>
+            <span class="text" *ngIf="item.text!='' ">{{item.text}}</span>
+        </p>
+    </div>
+</div>

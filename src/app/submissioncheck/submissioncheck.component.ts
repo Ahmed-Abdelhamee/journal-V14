@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { notes } from '../interfaces/submission.interface';
+import { notes } from '../interfaces/notes.interface';
 import { GetDataService } from '../services/get-data.service';
 
 @Component({

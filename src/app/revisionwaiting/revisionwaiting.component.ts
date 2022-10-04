@@ -20,6 +20,7 @@ export class RevisionwaitingComponent implements OnInit {
     this.getserviceData.getRevisionData().subscribe(data=>{
       this.revisionData=data
     })
+
     
   }
 

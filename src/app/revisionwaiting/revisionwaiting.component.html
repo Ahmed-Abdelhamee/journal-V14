@@ -13,12 +13,12 @@
             <div class=" contant card" *ngFor="let item of revisionData">
                 <p class="title"> </p>
                 <p> <b>artical type</b> : {{item.articleType}}</p>
-                <p class="groupTitle"><b>attached files : </b></p>
+                <p><b>attached files : </b></p>
                 <ul>
-                    <li>file 1 : {{item.file1}}</li>
-                    <li>file 2 : {{item.file2}}</li>
-                    <li>file 3 : {{item.file3}}</li>
-                    <li>file 4 : {{item.file4}}</li>
+                    <li>file 1 : {{item.attachFiles.file1}} <span><a href="{{item.attachFiles.file1}}" download="file1"><img src="assets/download-pdf.png" *ngIf="item.attachFiles.file1 !='' && item.attachFiles.file1 !=undefined" class="pdfImg" alt="pdf img"></a></span></li>
+                    <li>file 2 : {{item.attachFiles.file2}} <span><a href="{{item.attachFiles.file2}}" download="file1"><img src="assets/download-pdf.png" *ngIf="item.attachFiles.file2 !='' && item.attachFiles.file2 !=undefined" class="pdfImg" alt="pdf img"></a></span></li>
+                    <li>file 3 : {{item.attachFiles.file3}} <span><a href="{{item.attachFiles.file3}}" download="file1"><img src="assets/download-pdf.png" *ngIf="item.attachFiles.file3 !='' && item.attachFiles.file3 !=undefined" class="pdfImg" alt="pdf img"></a></span></li>
+                    <li>file 4 : {{item.attachFiles.file4}} <span><a href="{{item.attachFiles.file4}}" download="file1"><img src="assets/download-pdf.png" *ngIf="item.attachFiles.file4 !='' && item.attachFiles.file4 !=undefined" class="pdfImg" alt="pdf img"></a></span></li>
                 </ul>
                     
                 <p><b>General Information :</b></p>
@@ -32,24 +32,29 @@
                     <li> reviewer Name : {{item.reviewerName}}</li>
                     <li>reviewer Jop : {{item.reviewerJop}}</li>
                     <li> contact : {{item.contact}}</li>
-                    <div *ngFor="let subitem of item.additionalReviewers" class="additionalReviewers">
+                    <div *ngFor="let subitem of item.additionalReviewPreferences" class="additionalReviewers">
                         <li *ngIf=" subitem.reviewerName != '' && subitem.reviewerName !=undefined  ">reviewer Name : {{subitem.reviewerName}}</li>
                         <li *ngIf=" subitem.reviewerJop != ''  && subitem.reviewerJop !=undefined ">reviewer Jop : {{subitem.reviewerJop}}</li>
                         <li *ngIf=" subitem.contact != ''  && subitem.contact !=undefined ">contact : {{subitem.contact}}</li>
                     </div>
                 </ul>
                 
-                <p><b>title :</b> {{item.title}}</p>
-                <p><b>Abstract :</b> {{item.Abstract}}</p>
-                <p><b>KeyWords :</b> {{item.KeyWords}}</p>
-                <p><b>FundingInfo :</b> {{item.FundingInfo}}</p>
+                <p class="groupTitle"><b>Manuscript data</b></p>
+                <ul>
+                    <li><b>title :</b> {{item.manuScriptData.title}}</li>
+                    <li><b>Abstract :</b> {{item.manuScriptData.Abstract}}</li>
+                    <li><b>KeyWords :</b> {{item.manuScriptData.KeyWords}}</li>
+                    <li><b>FundingInfo :</b> {{item.manuScriptData.FundingInfo}}</li>
+                </ul>
         
                 
                 <p><b>Comments :</b> {{item.comment}}</p>
                 <p><b>receipt number :</b> {{item.receiptnumber}}</p>
-                <p><b>receipt Photo :</b> {{item.receiptPhoto}}</p>
+                <p><b>receipt Photo :</b> {{item.receiptPhoto}} <span><a href="{{item.receiptPhoto}}" download="receiptPhoto"><img src="assets/download-pdf.png" class="pdfImg" alt="pdf img"></a></span></p>
                 
-                <br> <hr> <hr>
+                <p><b>User Id :</b> {{item.userId}}</p>
+
+                <br> <hr>
         
             </div>
         </div>
