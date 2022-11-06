@@ -7,11 +7,13 @@ import { backImg, HomeCarsoulData, homePosts } from '../interfaces/HomeData.inte
 import { ActivatedRoute, Router } from '@angular/router';
 import { instrctions, instrctionsFile } from '../interfaces/instructions.interface';
 import { aimdata } from '../interfaces/aimdata.interface';
-import { board, reviewers } from '../interfaces/board.interface';
+import { board, reviewers, reviewersGroup } from '../interfaces/board.interface';
 import { addResearchAdmin} from '../interfaces/admin.interface';
 import { headerData } from '../interfaces/headerData.interface';
 import { profileSettings } from '../interfaces/profileData.interface';
 import { about, contact, support } from '../interfaces/footer.interface';
+
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-admin-settings',
@@ -25,8 +27,8 @@ export class AdminSettingsComponent implements OnInit {
 
 hideAddResearch:boolean=false
 
+// objects for view help
 addCarsoul:any={ title:"", photourl:"" };
-
 addHomePost:any={ text:"", photourl:"" };
 
 // boolean properity to show the loading button while the photo uploaded
@@ -46,8 +48,15 @@ addHomePost:any={ text:"", photourl:"" };
     support_Check:boolean=false;
     contact_Check:boolean=false;
 
+
+// control buttons view of save or update in modals
     contact_Save_btn:boolean=false;
     Contact_update_btn:boolean=false;
+    ViewCarsoulData:boolean=true
+    ViewHomeData:boolean=false
+    ViewPublished:boolean=false
+    ViewBoardData:boolean=true
+    ViewBoardreviewerData:boolean=false
 
   // ------------------------------------------------------- form builder variable  -------------------------------------------------
   
@@ -128,10 +137,15 @@ addHomePost:any={ text:"", photourl:"" };
     text:["",Validators.required],
   })
   boardReviewers=this.formbuilder.group({
-    name:["",Validators.required],
-    job:["",Validators.required],
-    generalSpecialty:["",Validators.required],
-    Specialty:["",Validators.required],
+    groupName:["",Validators.required],
+    groupNameArray:this.formbuilder.array([]),
+  })
+  editReviewer=this.formbuilder.group({
+      groupName:[{ value: '', disabled: true },Validators.required],
+      name:["",Validators.required],
+      job:["",Validators.required],
+      generalSpecialty:["",Validators.required],
+      Specialty:["",Validators.required],
   })
   // --------------------------------------------------------------------
 
@@ -170,6 +184,8 @@ addHomePost:any={ text:"", photourl:"" };
 
   backImageURL:backImg={"backImage":""} ;
 
+  headerDataObject:headerData={}
+
   homeCarousel:HomeCarsoulData[]=[ ];
 
   publishReviews:addResearchAdmin[]=[];
@@ -186,9 +202,9 @@ addHomePost:any={ text:"", photourl:"" };
 
   boardArray:board[]=[];
 
-  headerDataObject:headerData={}
-  
-  boardReviewersArray:reviewers[]=[]
+  boardReviewersArray:reviewersGroup[]=[]
+
+  Find_reviewersGroup:reviewersGroup={}
 
   profileSettingsObject:profileSettings={
     text1:"",
@@ -209,6 +225,7 @@ addHomePost:any={ text:"", photourl:"" };
 
   ngOnInit(): void {
     this.title.setTitle("journal admin");
+    // window.location.reload()
 
     let routerValue=this.route.snapshot.paramMap.get("id");
 
@@ -245,8 +262,7 @@ addHomePost:any={ text:"", photourl:"" };
       this.instructionsFileURL=this.getinstructionsFile[0].file
     })
     // console.log(this.getinstructionsFile)
-    }
-    else if(routerValue=="aim"){
+    }else if(routerValue=="aim"){
       this.showHome=false;
       this.showAddInstructions=false;
       this.showAddAim=true;
@@ -260,8 +276,7 @@ addHomePost:any={ text:"", photourl:"" };
       this.service.getAimData().subscribe(data=>{
         this.aimArray=data
       })
-    }
-    else if(routerValue=="board"){
+    }else if(routerValue=="board"){
       this.showHome=false;
       this.showAddInstructions=false;
       this.showAddAim=false;
@@ -278,8 +293,7 @@ addHomePost:any={ text:"", photourl:"" };
       this.service.getBoardReviewer().subscribe(data=>{
         this.boardReviewersArray=data
       })
-    }
-    else if(routerValue=="profile"){
+    }else if(routerValue=="profile"){
       this.showHome=false;
       this.showAddInstructions=false;
       this.showAddAim=false;
@@ -352,31 +366,43 @@ addHomePost:any={ text:"", photourl:"" };
     
   }
 
-  // ------------------------------------------------- view home data ------------------------------------------
-  
-ViewCarsoulData:boolean=true
-ViewHomeData:boolean=false
-
+  // ------------------------------------------------- control view data ------------------------------------------
   ViewCarsoul(){
     this.ViewCarsoulData=true;
     this.ViewHomeData=false
+    this.ViewPublished=false;
   }
   ViewData(){
     // get home data
     this.service.gethomeData().subscribe(data=>{
       this.homeData=data
     })
+    this.ViewCarsoulData=false;
+    this.ViewHomeData=true;
+    this.ViewPublished=false;
+  }
+  Viewpublished(){
+    this.ViewPublished=true;
+    this.ViewCarsoulData=false;
+    this.ViewHomeData=false 
     this.service.getResearches().subscribe(data=>{
       this.publishReviews=data
     })
-    this.ViewCarsoulData=false;
-    this.ViewHomeData=true;
   }
-  //------------------------------------------------------------------------
+  
+  viewBoard(){
+    this.ViewBoardData=true
+    this.ViewBoardreviewerData=false
+  }
+  viewBoardReviewer(){
+    this.ViewBoardData=false
+    this.ViewBoardreviewerData=true
+  }
+  //----------------------------------------------------------------------------------------------------------------
 
  
 
-  // -------------------------------------------------- posting data -----------------------------------------------------
+  // -------------------------------------------------- posting data ------------------------------------------------
 
   // --------------------------- add carsoul image -----------------------------
   // for upload image 
@@ -415,10 +441,14 @@ ViewHomeData:boolean=false
     this.service.addHomData(this.addHomePost) // usimg service function
     window.location.reload()
   }
-  //------------------------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------
 
   
-  // ---------------------------------------------- adding research ---------------------------------------------
+
+
+  
+  
+  // ------------------------------------------------------ adding research ------------------------------------------
   
   get getresearchesGroups(){  // get the big array of group names
     return this.publishedVolumes.get("researchGroupNames") as FormArray
@@ -448,40 +478,73 @@ ViewHomeData:boolean=false
   }
   // ----------------------------------------------------------------------------------------------------
 
-  //---------------------------------------------- add instructions --------------------------------------
+
+
+
+
+
+
+
+  //--------------------------- add instructions -----------------------
   addInstructions(){
     console.log(this.instruction.value)
     this.service.addInstructions(this.instruction.value)
     window.location.reload()
   }
-  //--------------------------------------------------------------------------------------------
+  //---------------------------------------------------------------------
 
-  //-------------------------------------------  add Aim  -----------------------------------------
+  //--------------------------------  add Aim  ---------------------------
   addAim(){
     this.service.addAim(this.aim.value)
     window.location.reload()
   }
-  //--------------------------------------------------------------------------------------------
+  //--------------------------------------------------------------------
 
-  //-------------------------------------------  add board  -----------------------------------------
+
+
+
+
+
+  //--------------------------------  add board  -------------------------
   addBoardData(){
     this.service.addBoard(this.board.value)
     window.location.reload()
   }
   // add boardReviewers
+  get boardReviewersGroupName(){
+    return this.boardReviewers.get("groupNameArray") as FormArray
+  }
+  addBoardReviewer(){
+    let reviewerData=this.formbuilder.group({
+      name:["",Validators.required],
+      job:["",Validators.required],
+      generalSpecialty:["",Validators.required],
+      Specialty:["",Validators.required],
+      })
+    let arr=this.boardReviewersGroupName as FormArray
+    arr.push(reviewerData)
+  }
   addboardReviewersData(){
+    console.log(this.boardReviewers.value)
     this.service.addBoardReviewers(this.boardReviewers.value)
     window.location.reload()
   }
+  //--------------------------------------------------------------------
 
-  // ------------------------------------------ add about -------------------------------------
+
+
+
+
+
+
+  // ------------------------------- add about ----------------------------
   addAbout(){
     this.service.addAbout(this.about.value)
     window.location.reload()
   }
-  //--------------------------------------------------------------------------------------------
+  //-----------------------------------------------------------------------
 
-  // ---------------------------------- contact  -----------------------------------
+  // ------------------------------- contact  -----------------------------
   SetAddContact(){
     this.contact_Save_btn=true;
     this.Contact_update_btn=false;
@@ -490,14 +553,14 @@ ViewHomeData:boolean=false
     this.service.addContact(this.contact.value)
     window.location.reload()
   }
-  // --------------------------------------------------------------------------------
+  // ----------------------------------------------------------------------
 
 
-  //---------------------------------------------------------------------------------------------------------
-  //---------------------------------------------------------------------------------------------------------
 
 
-  // ---------------------------------- update site data -----------------------------------------------
+
+
+  // --------------------------------------------------      update site data       --------------------------------------------
   
   // -------------------- site header ------------------
   setHeaderData(){
@@ -566,9 +629,9 @@ ViewHomeData:boolean=false
     this.service.updateHomeData(this.homeID,this.updateHomeObject);
     window.location.reload()
   }
-  // ---------------------------------------------
+  // ----------------------------------------------------
 
-  // ------------------ image back ---------------
+  // --------------------- image back -------------------
   url:any="0"
   uploadbackImage(event:any){
     let loader=new FileReader();
@@ -585,11 +648,11 @@ ViewHomeData:boolean=false
       // this.router.navigate(["/"])
       window.location.reload()
   }
-  // ---------------------------------------------
+  // ----------------------------------------------------
 
 
   
-  // --------- update instructions -----------
+  // ---------------- update instructions ---------------
   idInstruction:number=0
   setInstructionID(item:any){
     this.idInstruction=item.id;
@@ -606,10 +669,10 @@ ViewHomeData:boolean=false
     this.service.updateInstructionFile(this.instructionFile.value)
     window.location.reload()
   }
-  //-------------------------------------------
+  //-----------------------------------------------------
 
 
-  // --------------- update Aim ----------------
+  // -------------------- update Aim --------------------
   idAim:number=0
   setAim(item:any){
     this.idAim=item.id;
@@ -621,11 +684,17 @@ ViewHomeData:boolean=false
     this.service.updateAim(this.idAim,this.aim.value)
     window.location.reload()
   }
+  //-----------------------------------------------------
 
-  //-------------------------------------------
+
+
+
+
+
 
   // --------------- update Board ----------------
   idBoard:number=0
+  // update board data 
   setBoard(item:any){
     this.idBoard=item.id;
     this.board.patchValue({
@@ -637,23 +706,54 @@ ViewHomeData:boolean=false
     this.service.updateBoard(this.idBoard,this.board.value)
     window.location.reload()
   }
-  idBoardReviewer:number=0
-  setBoardReviewer(item:any){
-    this.idBoardReviewer=item.id;
+
+  // update board Reviewers data 
+  idBoardReviewerGroup:number=0;
+  idBoardReviewer:number=0;
+
+  get boardReviewersGroup(){
+    return this.boardReviewers.get("groupName")?.value
+  }
+  setboardReviewersGroup(item:any){
+    this.idBoardReviewerGroup=item.id;
     this.boardReviewers.patchValue({
-      name:item.name,
-      job:item.job,
-      generalSpecialty:item.generalSpecialty,
-      Specialty:item.Specialty,
+      groupName:item.groupName,
     })
   }
-  updateBoardReviewer(){
-    this.service.updateBoardReviewer(this.idBoardReviewer,this.boardReviewers.value)
+  editReviewersGroup(){
+    this.service.updateBoardReviewerGroup(this.idBoardReviewerGroup,this.boardReviewers.value)
     window.location.reload()
   }
+
+
+  setBoardReviewer(DataItem:any,groupName:string){
+    this.idBoardReviewer=DataItem.id;
+    this.editReviewer.patchValue({
+      groupName:groupName,
+      name:DataItem.name,
+      job:DataItem.job,
+      generalSpecialty:DataItem.generalSpecialty,
+      Specialty:DataItem.Specialty,
+    })
+    // this.Find_reviewersGroup=this.boardReviewersArray.find(item => item.groupName== DataItem.groubName)!;
+  }
+  updateBoardReviewer(){
+    // this.service.updateBoardReviewer(this.idBoardReviewer,this.boardReviewers.value)
+    window.location.reload()
+  }
+  
+  
   //-------------------------------------------
 
-  // -------------- update profile ------------
+
+
+
+
+
+
+
+
+  // -------------- update profile -------------
   setProfileValue(){
     this.profile.patchValue({
       text1:this.profileSettingsObject.text1,
@@ -668,9 +768,9 @@ ViewHomeData:boolean=false
     this.service.updateProfile(this.profile.value)
     window.location.reload()
   }
-  // -----------------------------------------
+  // --------------------------------------------
 
-  //--------------- update about ------------
+  //--------------- update about ----------------
   aboutItem:any={}
   setAbout(item:any){
     this.aboutItem=item;
@@ -684,9 +784,9 @@ ViewHomeData:boolean=false
     this.service.updateAbout(this.aboutItem.id!,this.about.value);
     window.location.reload();
   }
-  //-----------------------------------------
+  //----------------------------------------------
 
-  //----------------------- update contact --------------------
+  //--------------- update contact ---------------
   updateContactItem:any;
   setUpdateContact(item:any){
     this.contact_Save_btn=false;
@@ -701,54 +801,140 @@ ViewHomeData:boolean=false
     this.service.updateContact(this.updateContactItem.id!,this.contact.value)
     window.location.reload()
   }
-  //------------------------------------------------------------
+  //----------------------------------------------
+
+
+
+
 
  // ----------------------------------------------- deleting data -------------------------------------------
- deleteCarsouel(id: number){
+
+swalDelete(identify:any , id:any){
+  // ------------------------------------ code for design --------------------------------
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: 'btn btn-success',
+      cancelButton: 'btn btn-danger',
+    },
+    // buttonsStyling: false,
+  })
+  
+  swalWithBootstrapButtons.fire({
+    title: 'Are you sure?',
+    text: "You want to remove this item!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Yes, delete it!',
+    cancelButtonText: 'No, cancel! ',
+    reverseButtons: true,
+    
+  }).then((result) => {
+    if (result.isConfirmed) {
+      swalWithBootstrapButtons.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+      ).then(()=>{
+        if(identify=="delete_carsoul"){
+          this.deleteCarsouel(id)
+        }else if(identify=="delete_HomeData"){
+          this.deleteHomeData(id)
+        }else if(identify=="delete_Istructions"){
+          this.deleteIstructions(id)
+        }else if(identify=="delete_Aim"){
+          this.deleteAim(id)
+        }else if(identify=="delete_Board"){
+          this.deleteBoard(id)
+        }else if(identify=="delete_Reviewer"){
+          this.deleteReviewer(id)
+        }else if(identify=="delete_ReviewersGroup"){
+          this.deleteReviewersGroup(id)
+        }else if(identify=="delete_About"){
+          this.deleteAbout(id)
+        }else if(identify=="delete_Support"){
+          this.deleteSupport(id)
+        }else if(identify=="delete_Contact"){
+          this.deleteContact(id)
+        }
+      })
+      
+  }else if (
+      /* Read more about handling dismissals below */
+      result.dismiss === Swal.DismissReason.cancel
+    ) {
+      swalWithBootstrapButtons.fire(
+        'Cancelled',
+        'Your imaginary file is safe :)',
+        'error'
+      )
+    }
+  })
+}
+
+deleteCarsouel(id: number){
   this.service.deleteHomeCarousel(id)
   window.location.reload()
 }
 
 deleteHomeData(id: number){
-  this.service.deleteHomedata(id);
-  window.location.reload()
+this.service.deleteHomedata(id);
+window.location.reload()
 }
 
+// we but type any to get the ID for the item
 deleteIstructions(item: any){
-  this.service.deleteInstruction(item.id)
-  window.location.reload()
+this.service.deleteInstruction(item.id)
+window.location.reload()
 }
 
 deleteAim(item: any){
-  this.service.deleteAim(item.id)
-  window.location.reload()
+this.service.deleteAim(item.id)
+window.location.reload()
 }
 
 deleteBoard(item: any){
-  this.service.deleteBoard(item.id)
-  window.location.reload()
+this.service.deleteBoard(item.id)
+window.location.reload()
 }
 
 deleteReviewer(item: any){
-  this.service.deleteBoardReviewer(item.id)
-  window.location.reload()
+// this.service.deleteBoardReviewer(item.id)
+window.location.reload()
+}
+deleteReviewersGroup(item:any){
+this.service.deleteBoardReviewerGroup(item.id)
+window.location.reload()
 }
 
 deleteAbout(item:any){ 
-  this.service.deleteAbout(item.id)
-  window.location.reload()
- 
+this.service.deleteAbout(item.id)
+window.location.reload()
+
 }
 
 deleteSupport(item:any){
-  this.service.deleteSupport(item.id)
-  window.location.reload()
+this.service.deleteSupport(item.id)
+window.location.reload()
 }
 deleteContact(item:any){
-  this.service.deleteContact(item.id)
-  window.location.reload()
+this.service.deleteContact(item.id)
+window.location.reload()
 }
 //-----------------------------------------------------------------------------------------------------------
 
+showItem_Photo:any;
+showItem_Text:any;
+showItem_TiTle:any;
+showData_image(item:any){
+  if(item.photourl==null ){
+    this.showItem_Photo=null;
+    this.showItem_Text=item.text;
+    this.showItem_TiTle=item.title;
+  }else{
+    this.showItem_Photo=item.photourl;
+    this.showItem_Text=item.text;
+    this.showItem_TiTle="";
+  }
+}
 
 }

@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import * as AOS from 'aos';
 import * as $ from 'jquery';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../services/auth.service';
 // import Swal from 'sweetalert2';
 
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
 
   loginToken:any
 
-  constructor( private route:Router , private formBuilder:FormBuilder,private title:Title , private authService:AuthService) { }
+  constructor( private route:Router , private formBuilder:FormBuilder,private title:Title ,
+               private authService:AuthService, private taostr:ToastrService) { }
 
   userLogin=this.formBuilder.group({
     email:['',Validators.required],
@@ -27,7 +29,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.title.setTitle("Sign In")
     AOS.init();
-
   }
 
   get email(){
@@ -43,14 +44,19 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.userLogin.value).subscribe( result =>{
         if (result != null){
           this.loginToken=result
-          localStorage.setItem("token",this.loginToken.jwtToken)
-          console.log(this.loginToken)
-          this.route.navigate(['/profile'])
+          localStorage.setItem("token",this.authService.loginType)
+          // localStorage.setItem("token",this.loginToken.jwtToken)
+          // console.log(this.loginToken.jwtToken)
+          this.route.navigate(['/'])
+          this.taostr.success("Login Successfully", "login" ,{
+            positionClass:'toast-top-right'
+          });
+          
         }
       })
       console.log(this.userLogin.value)
     }else{
-      alert( " please enter valid data")
+      this.taostr.error( " please enter valid data")
     }
   }
 

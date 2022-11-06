@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import * as AOS from "aos";
-import { board, reviewers } from '../interfaces/board.interface';
+import { board, reviewersGroup } from '../interfaces/board.interface';
 
 import { GetDataService } from '../services/get-data.service';
 
@@ -15,10 +15,13 @@ export class BoardComponent implements OnInit {
   constructor(private service:GetDataService,private title:Title) { }
 
   board:board[]=[];
-  boardReviewers:reviewers[]=[]
+  boardReviewers:reviewersGroup[]=[];
+
+  loading:Boolean=false;
 
   ngOnInit(): void {
     this.title.setTitle("Editorial Board")
+    this.loading=true 
 
     // get board data
     this.service.getBoard().subscribe(data=>
@@ -31,6 +34,7 @@ export class BoardComponent implements OnInit {
     }
 
     )
+    this.loading=false 
 
     AOS.init()
   }

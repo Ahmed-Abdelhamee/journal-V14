@@ -28,8 +28,30 @@
 }
 
 
-.reviewerData{
-    padding: 100px 0px;
+.static{
+    position: fixed;
+    top: 100px;
+    left:0;
+    right:0;
+    bottom:0;
+    height: 100%;
+    width: 100%;
+    padding-top: 15%;
+    background-color: white;
+    z-index: 2;
+    scroll-behavior: smooth;
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    color: cadetblue;
+    opacity: .85;
+}
+
+
+.card{
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: -2px -2px 5px rgb(203, 225, 252),2px 2px 5px rgb(206, 228, 255);
 }
 
 p{
@@ -45,24 +67,24 @@ p{
 
 .name{
     font-weight: bold;
-    font-size: 25px;
+    font-size: 20px;
     color: rgb(16, 16, 16);
 
 }
 
 .job{
-    font-size: 20px;
+    font-size: 18px;
     color: rgb(16, 16, 16);
 
 }
 
 .generalSpecialty{
-    font-size: 20px;
+    font-size: 18px;
     color: rgb(16, 16, 16);
 
 }
 
 .Specialty{
-    font-size: 20px;
+    font-size: 18px;
     color: rgb(16, 16, 16);
 }

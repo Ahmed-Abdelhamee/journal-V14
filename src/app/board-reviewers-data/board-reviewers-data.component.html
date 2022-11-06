@@ -11,15 +11,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <div class="col-12 static" *ngIf="loading">
+        <b class="text-secondary">loading ... </b>
+        <div class="spinner-grow text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-primary" style="width: 2rem; height: 2rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-primary" style="width: 2rem; height: 2rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    
     <div class="col-12">
-        <div class="container">
-            <div class="col-sm-3" style="height: 10px;"></div>
-            <div class="reviewerData col-sm-6">
-                <h1 class="title">reviewer</h1>
-                <p class="name">{{reviewerData.name}}</p>
-                <p class="job">{{reviewerData.job}}</p>
-                <p class="generalSpecialty">{{reviewerData.generalSpecialty}}</p>
-                <p class="Specialty">{{reviewerData.Specialty}}</p>
+        <div class="container text-center">
+            <h1 class="title mt-4 text-info">{{Find_reviewersGroup.groupName}}</h1>
+
+            <div class="col-12 text-center">
+                <div class="col-sm-4" *ngFor="let item of Find_reviewersGroup.groupNameArray">
+                    <div class="card">
+                        <p class="name">{{item.name}}</p>
+                        <p class="job">{{item.job}}</p>
+                        <p class="generalSpecialty">{{item.generalSpecialty}}</p>
+                        <p class="Specialty">{{item.Specialty}}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

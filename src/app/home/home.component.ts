@@ -21,13 +21,14 @@ export class HomeComponent implements OnInit {
     id:0
   }
 
+  loading:Boolean=false;
 
   constructor(private getDataSevice:GetDataService,private title:Title) { }
 
   ngOnInit(): void {
     this.title.setTitle("International Journal");
 
-    
+    this.loading=true 
 
     this.getDataSevice.gethomeCarousel().subscribe(data=>{
       this.homeCarousel=data
@@ -42,5 +43,8 @@ export class HomeComponent implements OnInit {
       this.backImage=data;
       console.log(data)
     })
+
+    this.loading=false 
+
   }
 }

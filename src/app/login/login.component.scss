@@ -4,7 +4,7 @@
 }
 
 // ---------------code for  the mobile view---------------
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 770px) {
     .col-12{
         padding: 0px;
     }
@@ -27,10 +27,6 @@
     }
    
     // button submit style in mobile view
-    div div div .btnSubmitDiv{
-        padding-left: 35%;
-        padding-right: 35%;
-    }
 
     div div div .btnSubmitDiv .btnSubmit{
         font-size: 17px;
@@ -43,8 +39,9 @@
     }
 
     //  icons style
-    div div div form div span .fa-user{ font-size: 22px; padding-top: 7px;}
-    div div div form div span .fa-lock{ font-size: 22px; padding-top: 7px;}
+    div div div form div span .fa-user{ font-size: 25px; padding-top: 7px;}
+    div div div form div span .fa-lock{ font-size: 25px; padding-top: 7px;}
+    div div div form div .iconSpan{ margin: 0px 3%;}
     // input style
     div div div form div span .inputStyle{height: 40px;}
     // input placeholder style
@@ -58,6 +55,8 @@
 .fullViewDiv{
     background-color: #dde1e7;
     padding-bottom: 100px;
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -104,20 +103,21 @@ span{
     float: left;
 }
 .iconSpan{
-    width: 10%; margin-left: 4%;
+    width: 10%; margin: 0px 4%;
 }
 .inputSpan{
-    width: 85%;
+    width: 80%;
 }
 // --------------------------
 
 
 // ------------------------inputs style------------------------
 .inputStyle{
-    height: 50px;
+    margin-top: 5px;
+    height: 45px;
     width: 100%;
-    padding-left: 20px;
-    font-size: 18px;
+    padding-left: 10px;
+    font-size: 14px;
     outline: none;
     border: 1px solid rgb(193, 187, 187);
     color: #595959;
@@ -172,10 +172,11 @@ span{
 }
 
 // -------------------style button submit-----------------
+// .btnSubmitDiv{}
 .btnSubmit{
-    margin: 15px 0;
-    width: 100%;
-    height: 50px;
+    margin: 15px 0px;
+    width: 100px;
+    height: 40px;
     color:#595959;
     font-size: 18px;
     font-weight: 600;

@@ -33,37 +33,39 @@
             <button class="toggleButtonMObILE btn btn-outline-light" id="btn"><i class="material-icons btnmenuIcon">menu</i></button>
         </div> -->
 
-        <div class="col-sm-2 linksSide" *ngFor="let item of profileData">
-            <!-- <a routerLink="/profile" (click)="pageTitleName('profile')"><i class="fa fa-user-circle profileIcon"></i></a> -->
-            <a routerLink="/profile" (click)="pageTitleName('profile')"><img src="assets/profileIcon.png" alt="user icon "class="profileIcon"></a>
-            
-            <button class="toggleButtonMobile  showMOBILE btn btn-outline-light" id="btn" (click)="showsliderMobile()"><i class="material-icons btnmenuIcon">menu</i></button>
+        <div *ngFor="let item of profileData ; let i = index">
+            <div class="col-sm-2 linksSide" *ngIf="i==0">
+                <!-- <a routerLink="/profile" (click)="pageTitleName('profile')"><i class="fa fa-user-circle profileIcon"></i></a> -->
+                <a routerLink="/profile" (click)="pageTitleName('profile')"><img src="assets/manIcon.png" alt="user icon "class="profileIcon"></a>
+                
+                <button class="toggleButtonMobile  showMOBILE btn btn-outline-light" id="btn" (click)="showsliderMobile()"><i class="material-icons btnmenuIcon">menu</i></button>
 
-            <button class="toggleButton desktopShow btn btn-outline-light"><i class="material-icons btnmenuIcon">menu</i>
-            
-                <div class="sidebar text-capitalize">
+                <button class="toggleButton desktopShow btn btn-outline-light"><i class="material-icons btnmenuIcon">menu</i>
+                
+                    <div class="sidebar text-capitalize">
 
-                    <!-- this button for close the sidebar-->
-                    <!-- <h2><button class="btnHide btn btn-danger">X</button></h2> -->
-    
-                    <!-- side bar tile -->
-                    <p class="titleSidebar">{{headerData.journalname}}</p>
-    
-                    <!-- sidebar links -->
-                    <a  class="active sidebarLink" href="/">Home</a>
-                    <a  class="sidebarLink" href="/board">Editorial board</a>
-                    <a  class="sidebarLink" href="/aim">Aims and Scope</a>
-                    <a  class="sidebarLink" href="instructions">Instructions to Authors</a>
-                    <a  class="sidebarLink" href="/submitpaper">Submit Your Paper</a>
-                    <a  class="sidebarLink" href="/login">login</a>
-                    <a  class="sidebarLink" href="/register">register</a>
-                    <a  class="sidebarLink" href="/jour-Admin-nal">jour-Admin-nal</a>
-                    <a  class="sidebarLink" (click)="logout()" >Logout</a>
-    
-                </div>
-    
-            
-            </button>
+                        <!-- this button for close the sidebar-->
+                        <!-- <h2><button class="btnHide btn btn-danger">X</button></h2> -->
+        
+                        <!-- side bar tile -->
+                        <p class="titleSidebar">{{headerData.journalname}}</p>
+        
+                        <!-- sidebar links -->
+                        <a  class="active sidebarLink" href="/">Home</a>
+                        <a  class="sidebarLink" href="/board">Editorial board</a>
+                        <a  class="sidebarLink" href="/aim">Aims and Scope</a>
+                        <a  class="sidebarLink" href="instructions">Instructions to Authors</a>
+                        <a  class="sidebarLink" href="/submitpaper">Submit Your Paper</a>
+                        <a  class="sidebarLink" href="/login" >login</a>
+                        <a  class="sidebarLink" href="/register">register</a>
+                        <a  class="sidebarLink" href="/jour-Admin-nal/0" >jour-Admin-nal</a>
+                        <a  class="sidebarLink" href="/jour-Admin-nal/00">jour-secret-nal</a>
+                        <a  class="sidebarLink" (click)="logout()" >Logout</a>
+        
+                    </div>
+                
+                </button>
+            </div>
         </div>
 
     </div>
@@ -93,7 +95,8 @@
                 <a (click)="pageTitleName('Submit Your Paper')" class="sidebarLink" href="/submitpaper">Submit Your Paper</a>
                 <a (click)="pageTitleName('login')" class="sidebarLink" href="/login">login</a>
                 <a (click)="pageTitleName('register')" class="sidebarLink" href="/register">register</a>
-                <a  class="sidebarLink" href="/jour-Admin-nal">jour-Admin-nal</a>
+                <a  class="sidebarLink" href="/jour-Admin-nal/0">jour-Admin-nal</a>
+                <a  class="sidebarLink" href="/jour-Admin-nal/00">jour-secret-nal</a>
                 <a  class="sidebarLink" (click)="logout()" >Logout</a>
             </div>
            

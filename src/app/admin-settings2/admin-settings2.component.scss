@@ -4,22 +4,81 @@
 }
 
 @media only screen and (max-width: 600px) {
+    div .content{
+        padding: 0%;
+    }
+    div div .Basictitle{
+        font-size: 17px;
+        font-weight: bold;
+    }
+    div div .BasictitleRow{
+        font-size: 13px;
+    }
+    div div table{
+        font-size: 12px;
+    }
     div .col-sm-3{
         margin: 0px;
         padding: 0px;
     }
-    div .col-sm-3 img{
-        width: 1000px;
+    div div div .table{
+        width:100%;
     }
+    div .table .card-img{
+        height: 30px;
+        width: 25px;
+        padding: 0%;
+    }
+    div .table .btn{
+        font-size: 12px;
+    }
+}
+
+
+.content{
+    padding: 0% 14%;
+}
+
+#loginDiv{
+    padding: 0% 25%;
+}
+
+.emailText{
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .Basictitle{
     color: rgb(13, 115, 178);
     font-family: 'Oswald', sans-serif;
     font-weight: bold;
-    padding: 25px;
+    padding: 20px;
+    font-size: 25px;
+    text-transform: capitalize;
+}
+.BasictitleRow{
+    color: rgb(13, 115, 178);
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    padding: 20px;
+    font-size: 20px;
+    text-transform: capitalize;
 }
 
+.table .text{
+    font-size: 15px;
+    font-family: 'Fjalla One', sans-serif;
+    font-family: 'Tapestry', cursive;
+    height: 50px;
+    overflow: hidden;
+}
+
+
+[class*="btn-outline"]{
+    font-weight: 600;
+    text-transform: capitalize;
+ }
+ 
 .setCenter{
     display: flex;
     justify-content: center;
@@ -67,6 +126,12 @@ height: 400px;
     width: 100px;
     height: 70px;
     padding: 10px 20px;
+}
+.card-img-icon{
+    width: 40px;
+    height:40px;
+    border-radius: 10px;
+    float: auto;
 }
 .compeletedModelCard{
     height: 260px;

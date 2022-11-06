@@ -11,17 +11,18 @@ import { GetDataService } from '../services/get-data.service';
 export class RevisionwaitingComponent implements OnInit {
 
   revisionData:data[]=[]
+  loading:Boolean=false;
   
   constructor(private title:Title, private getserviceData:GetDataService) { }
 
   ngOnInit(): void {
+    this.loading=true 
     this.title.setTitle("waiting revisions");
 
     this.getserviceData.getRevisionData().subscribe(data=>{
       this.revisionData=data
     })
-
-    
+    this.loading=false 
   }
 
 }

@@ -4,7 +4,7 @@
 }
 
 //--------------------- the mobile code style code; -----------------------
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 770px) {
 
     .col-12{
         padding: 0px;
@@ -51,8 +51,8 @@
     }
     //---------------------------- the icons style --------------------------
 
-    div div div form div span .fa-user{ font-size: 22px; padding-top: 7px;}
-    div div div form div span .fa-lock{ font-size: 22px; padding-top: 7px;}
+    div div div form div span .fa-user{ font-size: 25px; padding-top: 7px;}
+    div div div form div span .fa-lock{ font-size: 25px; padding-top: 7px;}
     div div div form div span .fa-mobile-phone{ font-size: 30px; padding-top: 7px;}
     div div div form div span .fa-graduation-cap{ font-size: 17px; padding-top: 7px;}
     div div div form div span .material-icons{ font-size: 20px; padding-top: 12px;}

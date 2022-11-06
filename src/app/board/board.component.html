@@ -16,6 +16,19 @@
 
 <body>
 
+    <div class="col-12 static" *ngIf="loading">
+        <b class="text-secondary">loading ... </b>
+        <div class="spinner-grow text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-primary" style="width: 2rem; height: 2rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-primary" style="width: 2rem; height: 2rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
     <div class="col-12">
         <h1 id="mainTextH1">Editorial Board</h1>
 
@@ -24,8 +37,8 @@
         </div>
 
         <div class="col-sm-3 reviewersDiv" data-aos="fade-up" data-aos-duration="2500">
-            <div *ngFor="let item of boardReviewers ; let i=index;">
-                <a routerLink="/reviewers-data/{{i}}"><p class="reviewer"> {{item.name}}</p></a>
+            <div *ngFor="let item of boardReviewers ;">
+                <a routerLink="/reviewers-data/{{item.groupName}}"><p class="reviewer"> {{item.groupName}}</p></a>
             </div>
         </div>
 

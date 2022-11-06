@@ -1,6 +1,7 @@
 export interface notes{
     researchTitle?:string,
-    notes?:string,
+    text?:string,
     userId?:string,
+    file?:string,
     id?:number
 }

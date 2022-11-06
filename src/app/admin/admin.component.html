@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <div class="col-12 container">
+    <div class="col-12 container" *ngIf="viewAdmin">
         <h3 class="text-center text-info bigTitle"> Edit Site Data</h3>
 
         <div class="col-sm-3 card">
@@ -38,7 +38,7 @@
 
         <div class="col-sm-3 card">
             <img src="assets/fix-delete.png" alt="photo" id="new-researchesPhoto">
-            <a routerLink="/edit-delete-research" class="edit_deleteResearches"> <p class="card-title"> Edit & Delete researches in site</p> </a>
+            <a routerLink="/edit-delete-research" class="edit_deleteResearches"> <p class="card-title"> edit & delete researches in site</p> </a>
         </div>
 
         <div class="col-sm-3 card">
@@ -53,12 +53,12 @@
         
         <div class="col-sm-3 card">
             <img src="assets/contactUs.png" alt="photo" id="view new-researchesPhoto">
-            <a routerLink="/admin-settings/contact"> <p class="card-title"> Contact us</p> </a>
+            <a routerLink="/admin-settings/contact"> <p class="card-title"> contact us</p> </a>
         </div>
 
         <div class="col-sm-3 card">
             <img src="assets/support.png" alt="photo" id="view new-researchesPhoto">
-            <a routerLink="/admin-settings/support"> <p class="card-title"> Support  </a>
+            <a routerLink="/admin-settings/support"> <p class="card-title"> support  </a>
         </div>
 
         
@@ -67,8 +67,8 @@
 
 
 
-    <div class="col-12 container">
-        <h3 class="text-center text-warning bigTitle"> New Researches & Act With Users</h3>
+    <div class="col-12 container" *ngIf="viewSecret">
+        <h3 class="text-center text-warning bigTitle"> New Researches  &  Act With Users</h3>
 
         <div class="col-sm-3 card">
             <img src="assets/researches.png" alt="photo" id="view">
@@ -82,7 +82,7 @@
 
         <div class="col-sm-3 card">
             <img src="assets/note.png" alt="photo" id="view UsersResearches">
-            <a routerLink="/admin-settings2/sendingNotes"> <p class="card-title"> Sending Notes</p> </a>
+            <a routerLink="/admin-settings2/sendingNotes"> <p class="card-title"> sending notes</p> </a>
         </div>
 
         <div class="col-sm-3 card">
@@ -95,9 +95,26 @@
             <a routerLink="/admin-settings2/compeletedResearch"> <p class="card-title"> compeleted research</p> </a>
         </div>
 
+        <div class="col-sm-3 card">
+            <img src="assets/login.png" alt="photo" id="view ">
+            <a routerLink="/admin-settings2/login"> <p class="card-title"> login</p> </a>
+        </div>
+
+        <div class="col-sm-3 card">
+            <img src="assets/register.png" alt="photo" id="view ">
+            <a routerLink="/admin-settings2/register"> <p class="card-title"> register</p> </a>
+        </div>
 
     </div>
 
+
+    <!-- // // for text Editor code in angular -->
+    <!-- <angular-editor [placeholder]="'Enter text here...'" [config]="editorConfig" [(ngModel)]="htmlContent"></angular-editor>
+
+    <body [innerHTML]="htmlContent">
+        
+    </body> -->
+    <!-- {{htmlContent}} -->
 </body>
 </html>
 

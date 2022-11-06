@@ -6,6 +6,7 @@ import * as AOS from 'aos';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { GetDataService } from '../services/get-data.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-submitpaper',
@@ -24,7 +25,8 @@ export class SubmitpaperComponent implements OnInit {
   progressShowCounter:number=1;
   
 
-  constructor(private formBuilder:FormBuilder ,private route:Router,private title:Title , private service:GetDataService) { }
+  constructor(private formBuilder:FormBuilder ,private route:Router,private title:Title ,
+     private service:GetDataService , private taostr:ToastrService) { }
 
   // form builder variable
   AthorSubmitPaper=this.formBuilder.group({
@@ -50,7 +52,7 @@ export class SubmitpaperComponent implements OnInit {
 
     comment:[""],
 
-    receiptnumber:[0,[Validators.required,Validators.pattern("[0-9]+")]],
+    receiptnumber:[0,Validators.required],
 
     receiptPhoto:["",Validators.required],
 
@@ -60,7 +62,7 @@ export class SubmitpaperComponent implements OnInit {
       KeyWords:['',Validators.required],
       FundingInfo:['',Validators.required],
     }),
-    userId:["",Validators.required]
+    // userId:["",Validators.required]
 
   })
 
@@ -196,43 +198,17 @@ export class SubmitpaperComponent implements OnInit {
 
   // the Submit function 
   savePaper(values:any){
-    this.service.add_UserResearch_forRevision(this.AthorSubmitPaper.value)
-   this.route.navigate(["/revisionwaiting"]) 
+    if(this.AthorSubmitPaper.valid==true){
+      this.service.add_UserResearch_forRevision(this.AthorSubmitPaper.value)
+      this.route.navigate(["/revisionwaiting"]) 
+      this.taostr.success("Research", "uplaoded successfully !" ,{
+        positionClass:'toast-top-right'
+      });
+    }else{
+      this.taostr.error( " please enter all valid data")
+    }
   }
-  //******************* */
 
-  // function for alert Success
- successAlert(){
-    // Swal.fire({
-    //   position: 'center',
-    //   icon: 'success',
-    //   title: 'your data sended successfully',
-    //   customClass: {
-    //     confirmButton: 'btn btn-success',
-    //   },
-    // }).then((result:any)=>{
-    //   if(result.isConfirmed){
-        this.route.navigate(["/"])
-    //   }
-    // })
-  }
-  //************************* */
-
-  // function for alert Error
-  erroralert(){
-    // Swal.fire({
-    //   position: 'center',
-    //   icon: 'error',
-    //   title: 'please check your data entered',
-    //   showConfirmButton: false,
-    //   showCancelButton:true,
-    //   cancelButtonText:"OK",
-    //   confirmButtonColor:"btn btn-danger",
-    //   customClass:{
-    //     cancelButton:"btn btn-danger"
-    //   }
-    // })
-  }
   //************************ */
 
 }

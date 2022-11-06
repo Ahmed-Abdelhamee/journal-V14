@@ -21,8 +21,13 @@ export class InstructionsComponent implements OnInit {
   
   instructionsFileURL:any="";
 
+  loading:Boolean=false;
+
+
   ngOnInit(): void {
     this.title.setTitle("INSTRUCTIONS")
+
+    this.loading=true 
 
     this.getInstructions.getInsturctions().subscribe(data=>
       this.instructions=data
@@ -34,6 +39,8 @@ export class InstructionsComponent implements OnInit {
     })
 
     AOS.init()
+
+    this.loading=false 
   }
 
 }

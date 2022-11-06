@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { addCarsoul, addHomePost, addResearchAdmin, authoAapprovalFile } from '../interfaces/admin.interface';
 import { aimdata } from '../interfaces/aimdata.interface';
-import { reviewers } from '../interfaces/board.interface';
+import { board, reviewers, reviewersGroup } from '../interfaces/board.interface';
 import { complete } from '../interfaces/complete.interface';
 import { headerData } from '../interfaces/headerData.interface';
 import { backImg, HomeCarsoulData, homePosts } from '../interfaces/HomeData.interface';
@@ -16,6 +16,8 @@ import { result } from '../interfaces/submissionResult.interface';
 import { publishedVolume } from '../interfaces/viewResearches.interface';
 import { about, contact, support } from '../interfaces/footer.interface';
 import { serverURL } from 'src/environments/environment';
+import { register } from '../interfaces/register.interface';
+import { login } from '../interfaces/login.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -41,11 +43,11 @@ export class GetDataService {
    getProfileSettings():Observable<profileSettings>{
     return this.http.get<profileSettings>(serverURL.serverURL+"profile-settings") //*********************************** */
    }
-   getBoard():Observable<instrctions[]>{
-    return this.http.get<instrctions[]>(serverURL.serverURL+"board-data")
+   getBoard():Observable<board[]>{
+    return this.http.get<board[]>(serverURL.serverURL+"board-data")
    }
-   getBoardReviewer():Observable<reviewers[]>{
-    return this.http.get<reviewers[]>(serverURL.serverURL+"board-reviewers")
+   getBoardReviewer():Observable<reviewersGroup[]>{
+    return this.http.get<reviewersGroup[]>(serverURL.serverURL+"board-reviewers")
    }
    getAimData():Observable<aimdata[]>{
     return this.http.get<aimdata[]>(serverURL.serverURL+"aim-data")
@@ -69,6 +71,16 @@ export class GetDataService {
      return this.http.get<complete[]>(serverURL.serverURL+"complete-reseaches")
    }
 
+   getRegisterData():Observable<register[]>{
+    return this.http.get<register[]>(serverURL.serverURL+"register")
+   }
+   getLoginData():Observable<login[]>{
+    return this.http.get<login[]>(serverURL.serverURL+"login")
+   }
+
+
+
+
    // get researches data
    getPublishedVolume():Observable<publishedVolume[]>{
     return this.http.get<publishedVolume[]>(serverURL.serverURL+"researches")
@@ -76,6 +88,12 @@ export class GetDataService {
    getResearches():Observable<addResearchAdmin[]>{//  this function for adding the published volume
     return this.http.get<addResearchAdmin[]>(serverURL.serverURL+"researches") //*********************************** */
   }
+
+
+
+
+
+
 
   getAuthoAapprovalFile():Observable<authoAapprovalFile[]>{
     return this.http.get<authoAapprovalFile[]>(serverURL.serverURL+"authorsapproval")
@@ -102,6 +120,12 @@ export class GetDataService {
   addHomData(data:homePosts){
     this.http.post(serverURL.serverURL+"home-data",data).subscribe()
   }
+
+
+
+
+
+
 
   addResearch(data:any){
     let researches:any[]=[];   // to get researches for test them
@@ -135,6 +159,10 @@ export class GetDataService {
     })
   }
 
+
+
+
+
   addInstructions(data:instrctions){
     this.http.post(serverURL.serverURL+"instruction-data",data).subscribe()
   }
@@ -143,14 +171,22 @@ export class GetDataService {
     this.http.post(serverURL.serverURL+"aim-data",data).subscribe()
   }
 
-  addBoard(data:aimdata){
+  addBoard(data:board){
     this.http.post(serverURL.serverURL+"board-data",data).subscribe()
   }
 
-  addBoardReviewers(data:aimdata){
+
+
+
+
+  addBoardReviewers(data:reviewersGroup){
     this.http.post(serverURL.serverURL+"board-reviewers",data).subscribe()
   }
 
+
+
+
+  
   add_UserResearch_forRevision(data:data){
     this.http.post(serverURL.serverURL+"revisions",data).subscribe()
   }
@@ -201,6 +237,9 @@ export class GetDataService {
     this.http.delete(serverURL.serverURL+`board-data/${id}`).subscribe()
   }
   deleteBoardReviewer(id:number){
+    // this.http.delete(serverURL.serverURL+`board-reviewers/${id}`).subscribe()
+  }
+  deleteBoardReviewerGroup(id:number){
     this.http.delete(serverURL.serverURL+`board-reviewers/${id}`).subscribe()
   }
   delete_from_NewResearch(id:number){
@@ -254,9 +293,21 @@ export class GetDataService {
   updateBoard(id:number, data:any){
     this.http.put(serverURL.serverURL+`board-data/${id}`,data).subscribe()
   }
-  updateBoardReviewer(id:number, data:any){
+
+
+
+
+  updateBoardReviewerGroup(id:number, data:any){
     this.http.put(serverURL.serverURL+`board-reviewers/${id}`,data).subscribe()
   }
+  updateBoardReviewer(id:number, data:any){
+    // this.http.put(serverURL.serverURL+`board-reviewers/${id}`,data).subscribe()
+  }
+
+
+
+
+
   updateProfile(data:any){
     this.http.put(serverURL.serverURL+`profile-settings`,data).subscribe()
   }
@@ -269,9 +320,6 @@ export class GetDataService {
   updateAbout(id:number,data:about){
     this.http.put(serverURL.serverURL+`about/${id}`,data).subscribe()
   }
-  // updateSupport(id:number,data:support){
-  //   this.http.put(serverURL.serverURL+`support/${id}`,data).subscribe()
-  // }
   updateContact(id:number,data:contact){
     this.http.put(serverURL.serverURL+`contact/${id}`,data).subscribe()
   }

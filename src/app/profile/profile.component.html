@@ -6,11 +6,11 @@
     <title>profile</title>
 </head>
 <body>
-    <div class="col-12 userTop" *ngFor="let item of profileData">
-            <img src="assets/profileIcon.png" alt="user profile" class="profileImage">
-            <h1 class="uname">{{item.name}}</h1>
-            <p class="otherData"> faculty : {{item.faculty}}</p>
-            <p class="otherData"> phone : {{item.phone}}</p>
+    <div class="col-12 userTop" *ngFor="let item of profileData ; let i=index">
+            <img src="assets/manIcon.png" alt="user profile" class="profileImage" *ngIf="i==0">
+            <h1 class="uname" *ngIf="i==0">{{item.name}}</h1>
+            <p class="otherData" *ngIf="i==0"> faculty : {{item.faculty}}</p>
+            <p class="otherData" *ngIf="i==0"> phone : {{item.phone}}</p>
     </div>
     <div class="col-12 content">
         <p class="bigText">New submission</p>

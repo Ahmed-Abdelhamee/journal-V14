@@ -4,10 +4,14 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { authoAapprovalFile } from '../interfaces/admin.interface';
 import { complete } from '../interfaces/complete.interface';
-import { contact, support } from '../interfaces/footer.interface';
+import { login } from '../interfaces/login.interface';
 import { notes } from '../interfaces/notes.interface';
+import { register } from '../interfaces/register.interface';
 import { result } from '../interfaces/submissionResult.interface';
 import { GetDataService } from '../services/get-data.service';
+
+import Swal from 'sweetalert2'
+
 
 @Component({
   selector: 'app-admin-settings2',
@@ -22,6 +26,8 @@ export class AdminSettings2Component implements OnInit {
   sendingNotes : notes[]=[]
   researchCheck_result:result[]=[]
   completed_researches:complete[]=[]
+  loginArray:login[]=[]
+  registerArray:register[]=[]
 
   
   //-------------------------------------
@@ -32,6 +38,8 @@ export class AdminSettings2Component implements OnInit {
   sendingNotesCheck:boolean=false;
   researchCheck_OR_result_Boolean:boolean=false;
   completed_researches_check:boolean=false;
+  login:boolean=false;
+  register:boolean=false;
 
   //-------------------------------------
 
@@ -49,7 +57,8 @@ export class AdminSettings2Component implements OnInit {
   // ------ form builder variables -------
   researchNotes=this.formbuilder.group({
     researchTitle:["",Validators.required],
-    notes:["",Validators.required],
+    text:["",Validators.required],
+    file:["",Validators.required],
     userId:["",Validators.required],
   })
 
@@ -91,6 +100,8 @@ export class AdminSettings2Component implements OnInit {
         this.sendingNotesCheck=false;
         this.researchCheck_OR_result_Boolean=false;
         this.completed_researches_check=false;
+        this.login=false;
+        this.register=false;
     }else if(this.routeId=="sendingNotes"){
       this.service.getsubmissioncheck().subscribe(data=>{
         this.sendingNotes=data
@@ -99,7 +110,8 @@ export class AdminSettings2Component implements OnInit {
         this.sendingNotesCheck=true;
         this.researchCheck_OR_result_Boolean=false;
         this.completed_researches_check=false;
-        
+        this.login=false;
+        this.register=false;
     }else if(this.routeId=="research-result"){
       this.service.getresultData().subscribe(data =>{
         this.researchCheck_result=data
@@ -108,7 +120,8 @@ export class AdminSettings2Component implements OnInit {
         this.sendingNotesCheck=false;
         this.researchCheck_OR_result_Boolean=true;
         this.completed_researches_check=false;
-        
+        this.login=false;
+        this.register=false;
     }else if(this.routeId=="compeletedResearch"){
       this.service.getcompleted().subscribe(data =>{
         this.completed_researches=data
@@ -117,7 +130,28 @@ export class AdminSettings2Component implements OnInit {
         this.sendingNotesCheck=false;
         this.researchCheck_OR_result_Boolean=false;
         this.completed_researches_check=true;
-        
+        this.login=false;
+        this.register=false;
+    }else if(this.routeId=="login"){
+      this.service.getLoginData().subscribe(data=>{
+        this.loginArray=data
+      })
+      this.approvalCheck=false;
+      this.sendingNotesCheck=false;
+      this.researchCheck_OR_result_Boolean=false;
+      this.completed_researches_check=false;
+      this.login=true;
+      this.register=false;
+    }else if(this.routeId=="register"){
+      this.service.getRegisterData().subscribe(data=>{
+        this.registerArray=data
+      })
+      this.approvalCheck=false;
+      this.sendingNotesCheck=false;
+      this.researchCheck_OR_result_Boolean=false;
+      this.completed_researches_check=false;
+      this.login=false;
+      this.register=true;
     }
   }
   //----------------------------------------------------------------------------------------------
@@ -140,7 +174,7 @@ export class AdminSettings2Component implements OnInit {
     this.item_For_Update_Notes=item;  /* *********** */
     this.researchNotes.patchValue({
       researchTitle:item.researchTitle,
-      notes:item.notes,
+      text:item.text,
       userId:item.userId
     })
   }
@@ -185,7 +219,58 @@ export class AdminSettings2Component implements OnInit {
 
 
 
+// ----------------------------- delete functions -----------------------
 
+
+swalDelete(identify:any , id:any){
+  // ------------------------------------ code for design --------------------------------
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: 'btn btn-success',
+      cancelButton: 'btn btn-danger',
+    },
+    // buttonsStyling: false,
+  })
+  
+  swalWithBootstrapButtons.fire({
+    title: 'Are you sure?',
+    text: "You want to remove this item!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Yes, delete it!',
+    cancelButtonText: 'No, cancel! ',
+    reverseButtons: true,
+    
+  }).then((result) => {
+    if (result.isConfirmed) {
+      swalWithBootstrapButtons.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+      ).then(()=>{
+        if(identify=="Receipt"){
+          this.deleteReceipt(id)
+        }else if(identify=="Note"){
+          this.deleteNote(id)
+        }else if(identify=="ResearchResult"){
+          this.deleteResearchResult(id)
+        }else if(identify=="CompeletedResearch"){
+          this.deleteCompeletedResearch(id)
+        }
+      })
+      
+  }else if (
+      /* Read more about handling dismissals below */
+      result.dismiss === Swal.DismissReason.cancel
+    ) {
+      swalWithBootstrapButtons.fire(
+        'Cancelled',
+        'Your imaginary file is safe :)',
+        'error'
+      )
+    }
+  })
+}
 
 
   deleteReceipt(id:any){
@@ -205,5 +290,19 @@ export class AdminSettings2Component implements OnInit {
     window.location.reload()
   }
   
+//----------------------------------------------------------------------------
 
+
+
+  // --------------------------------- show data ------------------------------
+
+  showItem_file:any;
+  showItem_Text:any;
+  showItem_TiTle:any;
+  showData_image(item:any){
+      this.showItem_Text=item.text;
+      this.showItem_TiTle=item.researchTitle;
+      this.showItem_file=item.file;
+  }
+  
 }

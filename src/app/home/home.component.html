@@ -18,6 +18,21 @@
 
 <body>
 
+  
+  <div class="col-12 static" *ngIf="loading">
+    <b class="text-secondary">loading ... </b>
+    <div class="spinner-grow text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow text-primary" style="width: 2rem; height: 2rem;" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow text-primary" style="width: 2rem; height: 2rem;" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+
   <!-- ------------------------- carsoul data ------------------------ -->
   <div class="thecarousel">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -30,7 +45,7 @@
         <div class="carousel-inner">
           <div class="carousel-item active ">
             <p class="carouselText">International Journal of Technological Sciences (IJTS) </p>
-            <img src="assets/Electronics.png" alt="photo" width="100%" height="400">
+            <img src="assets/Electronics.png" alt="photo" width="100%" height="350">
           </div>
           <div class="carousel-item " *ngFor="let item of homeCarousel">
             <p class="carouselText">{{item.title}} </p>
@@ -63,7 +78,7 @@
   <!-- ---------- div content ---------- -->
   <div class="col-12 content">
       <div class="col-sm-3 reviewslinks" >
-        <p class="reviewLinksTitle">Published Volumes</p>
+        <p class="reviewLinksTitle">* Published Volumes *</p>
         <div class="col-12 reviews" *ngFor="let item of publishReviews; let i=index;">
           <a routerLink="/research-collection/{{item.id}}">{{item.id}}</a>
         </div>

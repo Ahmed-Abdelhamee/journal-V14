@@ -12,6 +12,27 @@
     }
 }
 
+
+.static{
+    position: fixed;
+    top: 100px;
+    left:0;
+    right:0;
+    bottom:0;
+    height: 100%;
+    width: 100%;
+    padding-top: 15%;
+    background-color: white;
+    z-index: 2;
+    scroll-behavior: smooth;
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    color: cadetblue;
+    opacity: .85;
+}
+
+
 .col-12{
     padding-top: 40px;
 }

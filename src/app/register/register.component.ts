@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../services/auth.service';
-// import Swal from 'sweetalert2';
 import { checkpass } from '../validators/checkpass.validators';
 
 
@@ -14,7 +14,8 @@ import { checkpass } from '../validators/checkpass.validators';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private route:Router , private formBuilder:FormBuilder,private title:Title,private authService:AuthService) { }
+  constructor(private route:Router , private formBuilder:FormBuilder,private title:Title,
+              private authService:AuthService,private taostr:ToastrService) { }
 
   // form gruob variable
   userRegist=this.formBuilder.group({
@@ -25,7 +26,7 @@ export class RegisterComponent implements OnInit {
     phone:['',[Validators.required,Validators.minLength(10)]],
     faculty:['',Validators.required]
 
-  },{Validators:[checkpass]})
+  })
 
   // get form groub functions
   get name(){
@@ -71,7 +72,13 @@ export class RegisterComponent implements OnInit {
     // check form validate
     if(this.userRegist.valid && this.password?.value==this.confirmPassword?.value){
         this.authService.register(this.userRegist.value)
-        this.route.navigate([''])        
+        this.route.navigate(['']) 
+        this.taostr.success("Successfully", "Sign Up" ,{
+          positionClass:'toast-top-right'
+        })
+    }else{
+      this.taostr.error( " please enter valid data")
+
     }
   }
 

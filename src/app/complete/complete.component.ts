@@ -14,11 +14,19 @@ export class CompleteComponent implements OnInit {
 
   completed:complete[]=[];
 
+  loading:Boolean=false;
+
+
   ngOnInit(): void {
     this.title.setTitle("compeleted");
+
+    this.loading=true 
 
     this.getDataSevice.getcompleted().subscribe(data =>{
       this.completed=data
     })
+
+    this.loading=false 
+
   }
 }

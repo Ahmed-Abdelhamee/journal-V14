@@ -7,6 +7,21 @@
     <title>complete</title>
 </head>
 <body>
+
+
+    <div class="col-12 static" *ngIf="loading">
+        <b class="text-secondary">loading ... </b>
+        <div class="spinner-grow text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-primary" style="width: 2rem; height: 2rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-primary" style="width: 2rem; height: 2rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    
     <div class="col-12">
         <!-- <h1>Accepted & Refused researches</h1> -->
         <div class="col-sm-3" style="height: 1px;"></div>

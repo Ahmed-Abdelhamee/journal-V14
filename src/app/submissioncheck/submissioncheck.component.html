@@ -12,9 +12,9 @@
         <div class="col-sm-6 content">
             <ul  *ngFor="let item of notes">
                 <li>
-                    <p class="researchTitle">For Reasearch : {{item.researchTitle }} </p>
+                    <p class="researchTitle">For Reasearch : {{item.researchTitle }} <a href="{{item.file}}" download="{{item.researchTitle }}">  <img class="card-img" src="assets/download-pdf.png" alt="Card image"> </a>  </p>
                     <ul>
-                        <li>{{item.notes}}</li>
+                        <li>{{item.text}}</li>
                     </ul>
                 </li>
             </ul>

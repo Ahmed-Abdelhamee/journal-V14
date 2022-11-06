@@ -31,6 +31,10 @@ import { AboutComponent } from './about/about.component';
 import { SupportComponent } from './support/support.component';
 import { ContactComponent } from './contact/contact.component';
 
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +64,6 @@ import { ContactComponent } from './contact/contact.component';
     SupportComponent,
     ContactComponent,
    
-
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,9 @@ import { ContactComponent } from './contact/contact.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    AngularEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

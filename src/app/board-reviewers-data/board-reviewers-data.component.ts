@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { reviewers } from '../interfaces/board.interface';
+import { reviewers, reviewersGroup } from '../interfaces/board.interface';
 import { GetDataService } from '../services/get-data.service';
 
 @Component({
@@ -12,19 +12,28 @@ export class BoardReviewersDataComponent implements OnInit {
 
   constructor(private service:GetDataService, private route:ActivatedRoute) { }
   
-  id:any="";
-  getData:reviewers[]=[];
-  reviewerData:reviewers={};
+  groubName:any="";
+  reviewersGroup:reviewersGroup[]=[];
+  Find_reviewersGroup:reviewersGroup={};
+
+  loading:Boolean=false;
+
+
+  // reviewerData:reviewers[]=[];
 
   ngOnInit(): void {
-    this.id=this.route.snapshot.paramMap.get("id");
+    this.groubName=this.route.snapshot.paramMap.get("groubName");
 
+    this.loading=true 
+    
     this.service.getBoardReviewer().subscribe( data =>{
-      this.getData=data;
+      this.reviewersGroup=data;
 
-      this.reviewerData=this.getData[this.id];
-      console.log(this.reviewerData)
+      this.Find_reviewersGroup=this.reviewersGroup.find(item => item.groupName== this.groubName)!;
     })
+
+    this.loading=false 
+
   }
 
 }

@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="col-md-12 mx-0">
 
-                            <form id="msform" [formGroup]="AthorSubmitPaper" (ngSubmit)="savePaper(AthorSubmitPaper)">
+                            <form id="msform" [formGroup]="AthorSubmitPaper" (ngSubmit)="savePaper(AthorSubmitPaper)" novalidate>
                                 <!-- progressbar -->
                                 <ul id="progressbar">
                                     <li class="active" id="step1" (click)="setprogressShowCounter(1)"><strong>step 1</strong></li>

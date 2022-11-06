@@ -7,6 +7,20 @@
     <title>revision waiting</title>
 </head>
 <body>
+    
+    <div class="col-12 static" *ngIf="loading">
+        <b class="text-secondary">loading ... </b>
+        <div class="spinner-grow text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-primary" style="width: 2rem; height: 2rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-primary" style="width: 2rem; height: 2rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    
     <div class="col-12">
         <div class="col-sm-3" style="height: 1px;"></div>
         <div class="col-sm-6">
@@ -16,9 +30,9 @@
                 <p><b>attached files : </b></p>
                 <ul>
                     <li>file 1 : {{item.attachFiles.file1}} <span><a href="{{item.attachFiles.file1}}" download="file1"><img src="assets/download-pdf.png" *ngIf="item.attachFiles.file1 !='' && item.attachFiles.file1 !=undefined" class="pdfImg" alt="pdf img"></a></span></li>
-                    <li>file 2 : {{item.attachFiles.file2}} <span><a href="{{item.attachFiles.file2}}" download="file1"><img src="assets/download-pdf.png" *ngIf="item.attachFiles.file2 !='' && item.attachFiles.file2 !=undefined" class="pdfImg" alt="pdf img"></a></span></li>
-                    <li>file 3 : {{item.attachFiles.file3}} <span><a href="{{item.attachFiles.file3}}" download="file1"><img src="assets/download-pdf.png" *ngIf="item.attachFiles.file3 !='' && item.attachFiles.file3 !=undefined" class="pdfImg" alt="pdf img"></a></span></li>
-                    <li>file 4 : {{item.attachFiles.file4}} <span><a href="{{item.attachFiles.file4}}" download="file1"><img src="assets/download-pdf.png" *ngIf="item.attachFiles.file4 !='' && item.attachFiles.file4 !=undefined" class="pdfImg" alt="pdf img"></a></span></li>
+                    <li>file 2 : {{item.attachFiles.file2}} <span><a href="{{item.attachFiles.file2}}" download="file2"><img src="assets/download-pdf.png" *ngIf="item.attachFiles.file2 !='' && item.attachFiles.file2 !=undefined" class="pdfImg" alt="pdf img"></a></span></li>
+                    <li>file 3 : {{item.attachFiles.file3}} <span><a href="{{item.attachFiles.file3}}" download="file3"><img src="assets/download-pdf.png" *ngIf="item.attachFiles.file3 !='' && item.attachFiles.file3 !=undefined" class="pdfImg" alt="pdf img"></a></span></li>
+                    <li>file 4 : {{item.attachFiles.file4}} <span><a href="{{item.attachFiles.file4}}" download="file4"><img src="assets/download-pdf.png" *ngIf="item.attachFiles.file4 !='' && item.attachFiles.file4 !=undefined" class="pdfImg" alt="pdf img"></a></span></li>
                 </ul>
                     
                 <p><b>General Information :</b></p>
