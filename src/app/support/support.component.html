@@ -1,5 +1,5 @@
 <div class="col-12">
-    <div class="col-sm-4 card">
+    <div class="col-sm-4 card"  data-aos="zoom-in" data-aos-duration="1000">
         <h1 class="basicTitle">Get support</h1>
         <form [formGroup]="support" (ngSubmit)="save()">
             <input type="text" class="form-control" placeholder="enter your name" formControlName="userName">
@@ -7,8 +7,10 @@
             <input type="text" class="form-control" placeholder="enter your profile ID" formControlName="userId">
 
             <div class="submit">
-                <button type="submit" class="btn btn-info">send</button>
+                <button type="submit" class="btn btn-info" (click)="showAlert()">send</button>
             </div>
+            <div class="alert alert-success text-center font-weight-bold" *ngIf="show"> sended successfully !</div>
+
         </form>
     </div>
 </div>

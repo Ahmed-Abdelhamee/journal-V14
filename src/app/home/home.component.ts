@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery'
-import * as Aos from 'aos'
+import * as AOS from 'aos'
 import { backImg, HomeCarsoulData, homePosts } from '../interfaces/HomeData.interface';
 import { GetDataService } from '../services/get-data.service';
 import { Title } from '@angular/platform-browser';
@@ -45,6 +45,6 @@ export class HomeComponent implements OnInit {
     })
 
     this.loading=false 
-
+    AOS.init();
   }
 }

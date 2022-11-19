@@ -1,0 +1,25 @@
+
+  <!-- ---------------- login -------------- -->
+  <div class="col-12" id="loginDiv">
+    <div class="container">
+        <h3 class="text-center Basictitle pt-3">* login data *</h3>
+        <table class="table">
+        <thead>
+            <tr>
+            <th scope="col" class="text-center">#</th>
+            <th scope="col" class="text-center">email</th>
+            <th scope="col" class="text-center">password</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr  *ngFor="let item of loginArray; let i=index;" >
+            <th scope="row">{{i+1}}</th>
+            <td class=" text-center"><p class="text-info pt-2 emailText" >{{item.email}} </p></td>
+            <td class=" text-center"><p class="text pt-2" >{{item.password}} </p></td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+</div>
+<!-- ------------------------------ -->

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../services/auth.service';
 import { checkpass } from '../validators/checkpass.validators';
+import * as AOS from 'aos'
 
 
 @Component({
@@ -49,7 +50,9 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.title.setTitle("Sign Up")
+    this.title.setTitle("Sign Up");
+
+    AOS.init();
   }
 
   // ---------- the alert msg variable ----------

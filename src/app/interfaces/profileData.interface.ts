@@ -1,7 +1,8 @@
 export interface userprofileData{
     img?:string,
     username?:string,
-    userId:string;
+    userId:string,
+    id?:number
 }
 
 export interface profileSettings{
@@ -20,4 +21,5 @@ export interface userProfile{
     confirmPassword: string,
     phone: number,
     faculty: string,
+    id?:number
 }

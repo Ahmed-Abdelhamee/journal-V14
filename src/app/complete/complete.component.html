@@ -23,11 +23,11 @@
     </div>
     
     <div class="col-12">
-        <!-- <h1>Accepted & Refused researches</h1> -->
+        <p class=" pageTitle text-center">* Accepted & Refused researches *</p>
         <div class="col-sm-3" style="height: 1px;"></div>
         <div class="col-sm-6 content">
             <div *ngFor="let item of completed">
-                <p [style.color]="item.status"> <b>{{item.researchTitle}}</b> : {{item.text}}</p>
+                <p [style.color]="item.status"> <b>* {{item.researchTitle}} *</b> : {{item.text}}</p>
             </div>
         </div>
     </div>

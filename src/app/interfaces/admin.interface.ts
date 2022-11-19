@@ -1,11 +1,13 @@
 export interface addCarsoul{
     title?:string,
-    photourl?:string
+    photourl?:string,
+    id?:any
 }
 
 export interface addHomePost{
     describtion?:string,
-    photourl?:any
+    photourl?:any,
+    id?:any
 }
 
 export interface addResearchAdmin{

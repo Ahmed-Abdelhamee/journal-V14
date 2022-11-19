@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 
 
@@ -15,23 +16,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private formbuilder:FormBuilder , private route:ActivatedRoute) { }
+  constructor(private formbuilder:FormBuilder , private route:ActivatedRoute, private title:Title) { }
 
   viewAdmin:boolean=false;
   viewSecret:boolean=false;
 
   ngOnInit(): void {
-    let id = this.route.snapshot.paramMap.get('id')
-    if(id=='0'){
-      this.viewAdmin=true;
-      this.viewSecret=false;
-    }else {
-      this.viewAdmin=false;
-      this.viewSecret=true;
-    }
+    this.title.setTitle("Admin")
   }
 
   // // for text Editor code in angular
+  
   // htmlContent:any;
   // editorConfig: AngularEditorConfig = {
   //   editable: true,

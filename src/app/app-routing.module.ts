@@ -1,8 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
+import { AdminAboutComponent } from './admin-about/admin-about.component';
+import { AdminAimComponent } from './admin-aim/admin-aim.component';
+import { AdminBoardComponent } from './admin-board/admin-board.component';
+import { AdminContactComponent } from './admin-contact/admin-contact.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { AdminInstructionsComponent } from './admin-instructions/admin-instructions.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { AdminResearchesComponent } from './admin-researches/admin-researches.component';
 import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
-import { AdminSettings2Component } from './admin-settings2/admin-settings2.component';
+import { AdminSupportComponent } from './admin-support/admin-support.component';
 import { AdminComponent } from './admin/admin.component';
 import { AuthorsapprovalComponent } from './authorsapproval/authorsapproval.component';
 import { BoardReviewersDataComponent } from './board-reviewers-data/board-reviewers-data.component';
@@ -20,6 +28,13 @@ import { RegisterComponent } from './register/register.component';
 import { ResearchCollectionComponent } from './research-collection/research-collection.component';
 import { RevisioncheckComponent } from './revisioncheck/revisioncheck.component';
 import { RevisionwaitingComponent } from './revisionwaiting/revisionwaiting.component';
+import { SecertApproveComponent } from './secert-approve/secert-approve.component';
+import { SecertLoginComponent } from './secert-login/secert-login.component';
+import { SecertRegisterComponent } from './secert-register/secert-register.component';
+import { SecertResearchCompletedComponent } from './secert-research-completed/secert-research-completed.component';
+import { SecertResearchNotesComponent } from './secert-research-notes/secert-research-notes.component';
+import { SecertResearchResultComponent } from './secert-research-result/secert-research-result.component';
+import { SecertaryComponent } from './secertary/secertary.component';
 import { SubmissioncheckComponent } from './submissioncheck/submissioncheck.component';
 import { SubmitpaperComponent } from './submitpaper/submitpaper.component';
 import { SupportComponent } from './support/support.component';
@@ -42,15 +57,32 @@ const routes: Routes = [
   {path:"complete",component:CompleteComponent},
   {path:"research-collection",component:ResearchCollectionComponent},
   {path:"research-collection/:id",component:ResearchCollectionComponent},
-  {path:"jour-Admin-nal/:id",component:AdminComponent},
-  {path:"admin-settings/:id",component:AdminSettingsComponent},
-  {path:"admin-settings2/:id",component:AdminSettings2Component},
   {path:"new-researches",component:NewResearchesComponent},
   {path:"edit-delete-research",component:EditDeleteResearchComponent},
   {path:"about-us",component:AboutComponent},
   {path:"support",component:SupportComponent},
   {path:"contact",component:ContactComponent},
 
+  {path:"jour-Admin-nal",component:AdminComponent},
+  {path:"admin-settings",component:AdminSettingsComponent},
+  {path:"admin-home",component:AdminHomeComponent},
+  {path:"admin-instructions",component:AdminInstructionsComponent},
+  {path:"admin-aim",component:AdminAimComponent},
+  {path:"admin-board",component:AdminBoardComponent},
+  {path:"admin-researches",component:AdminResearchesComponent},
+  {path:"admin-about",component:AdminAboutComponent},
+  {path:"admin-profile",component:AdminProfileComponent},
+  {path:"admin-contact",component:AdminContactComponent},
+  {path:"admin-support",component:AdminSupportComponent},
+  // {path:"",component:},
+
+  {path:"jour-secertary-nal",component:SecertaryComponent},
+  {path:"secert-approve",component:SecertApproveComponent},
+  {path:"secert-sendingNotes",component:SecertResearchNotesComponent},
+  {path:"secert-compeletedResearch",component:SecertResearchCompletedComponent},
+  {path:"secert-research-result",component:SecertResearchResultComponent},
+  {path:"secert-login",component:SecertLoginComponent},
+  {path:"secert-register",component:SecertRegisterComponent},
 
 
 

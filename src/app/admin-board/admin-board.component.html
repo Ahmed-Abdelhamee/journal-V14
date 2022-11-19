@@ -1,0 +1,313 @@
+
+
+
+
+
+<div class="col-12 container text-center">
+    
+            <!-- ------------------- Board buttons ------------------- -->
+            <button type="button" class="btn btn-outline-primary btnModal" data-toggle="modal" data-target="#board">
+                add board data
+            </button>
+            <button type="button" class="btn btn-outline-primary btnModal" data-toggle="modal" data-target="#boardReviewers">
+                add reviewer
+            </button>
+<hr>
+            <!-- ----------------------------------------------------------- -->
+</div>
+
+
+<!-- ----------------------------- show board data ------------------------- -->
+<div class="boardShow col-12 text-center">
+    <h1 class="groubTitle">Editorial Board</h1>
+    <div class="col-12">
+        <button class="btn btn-outline-dark" (click)="viewBoard()">Board Data</button>
+        <button class="btn btn-outline-dark"(click)="viewBoardReviewer()">Board Reviewers</button>
+    </div>
+
+
+    <div class="col-12 text-center"  *ngIf="ViewBoardData">
+        <div class="col-sm-1" style="height:10px"></div>
+        <!-- show board data -->
+        <div class="col-sm-10">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <th scope="col" class="text-center">#</th>
+                    <th scope="col" class="text-center">Title</th>
+                    <th scope="col" class="text-center">Text</th>
+                    <th scope="col" class="text-center"></th>
+                    <th scope="col" class="text-center">Update</th>
+                    <th scope="col" class="text-center">Delete</th>
+                    </tr>
+                </thead>
+
+                <tbody  *ngFor="let item of boardArray; let i=index;" >
+                    <tr>
+                    <th scope="row">{{i+1}}</th>
+                    <td class=" text-center"><p class="text Basictitle pt-1">{{item.title}} </p></td>
+                    <td class=" text-center"><p class="text pt-1">{{item.text}} </p></td>
+                    <td class=" text-center"><button class="btn btn-info" (click)="showData_image(item)"  data-toggle="modal" data-target="#show">Show</button></td>
+                    <td class=" text-center"><button class="btn btn-warning" (click)="setBoard(item)"  data-toggle="modal" data-target="#updateBoard">Edit</button></td>
+                    <td class=" text-center"><button class="btn btn-danger" *ngIf="item.title!='' && i>0" (click)="swalDelete('delete_Board',item)"> X</button></td>
+                    </tr>
+                </tbody>
+            </table> 
+        </div>
+    </div>
+
+    <div class="col-12 text-center"  *ngIf=" ViewBoardreviewerData ">
+        <div class="col-sm-1" style="height:10px"></div>
+        <!-- show reviewers data  -->
+        <div class="col-sm-10 reviewersDiv">
+            <div *ngFor="let item of boardReviewersArray ; let i=index;">
+                
+                <p class="reviewer  col-12">* {{item.groupName}} *
+                    <span>
+                        <button class="btn btn-warning btn-update" style="float: left; margin-top:0;" (click)="setboardReviewersGroup(item)"  data-toggle="modal" data-target="#updateBoardReviewerGroup">Edit</button>
+                        <button class="btn btn-danger btn-delete" style="float: right;" (click)="swalDelete('delete_ReviewersGroup',item)">X</button>
+                    </span>
+                </p>
+                <table class="table table-striped col-12">
+                    <thead>
+                        <tr>
+                        <th scope="col" class="text-center">#</th>
+                        <th scope="col" class="text-center">name</th>
+                        <th scope="col" class="text-center">job</th>
+                        <th scope="col" class="text-center">generalSpecialty</th>
+                        <th scope="col" class="text-center">Specialty</th>
+                        <th scope="col" class="text-center">Update</th>
+                        <th scope="col" class="text-center">Delete</th>
+                        </tr>
+                    </thead>
+
+                    <tbody  *ngFor="let temp of item.groupNameArray; let i=index;" >
+                        <tr>
+                            <th scope="row">{{i+1}}</th>
+                            <td class=" text-center"><p class="Basictitle pt-3">{{temp.name}} </p></td>
+                            <td class=" text-center"><p class="text pt-1">{{temp.job}} </p></td>
+                            <td class=" text-center"><p class="text pt-1">{{temp.generalSpecialty}} </p></td>
+                            <td class=" text-center"><p class="text pt-1">{{temp.Specialty}} </p></td>
+
+                            <td><button class="btn btn-warning btn-update" (click)="setBoardReviewer(temp,item.groupName!)"  data-toggle="modal" data-target="#updateBoardReviewer">Edit</button> </td> 
+                            <td><button class="btn btn-danger btn-delete" (click)="swalDelete('delete_Reviewer',temp)">X</button></td>
+                        </tr>
+                    </tbody>
+                </table> 
+
+            </div>
+        </div>
+    </div>
+    
+</div>
+<!-- ----------------------------------------------------------------------- -->
+
+
+
+
+<!-- ------------------------------ add board  ---------------------- -->
+<div class="modal" id="board">
+    <div class="modal-dialog">
+        <div class="modal-content">
+    
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <!-- post Board -->
+                <div class="postBoard card col-12">
+                    <p class="groubTitle">post Board Content</p>
+                    <form [formGroup]="board" (ngSubmit)="addBoardData()">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Enter Board Title" formControlName="title">
+                        </div>
+                        <div class="form-group">
+                            <textarea type="text" class="form-control" rows="7" placeholder="Enter Board Text" formControlName="text"></textarea>
+                        </div>
+                        <div class="submit">
+                            <button class="btn btn-info" type="submit"> add </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="boardReviewers">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <!-- post Board -->
+                <div class="postBoard card col-12">
+                    <p class="groubTitle">post Board reviewer</p>
+                    <form [formGroup]="boardReviewers" (ngSubmit)="addboardReviewersData()">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Enter Group Name" formControlName="groupName">
+                        </div>
+                        <div formArrayName="groupNameArray" >
+                            <div *ngFor="let item of boardReviewersGroupName.controls ; let i=index" >
+                                <div [formGroupName]="i">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Enter Name" formControlName="name">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Enter job" formControlName="job">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Enter general Specialty" formControlName="generalSpecialty">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Enter Specialty" formControlName="Specialty">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        <div class="submit">
+                            <button type="button" class="btn btn-outline-primary" *ngIf="ViewBtnAddreviewer" (click)="addBoardReviewer()">
+                                add reviewer
+                            </button>
+                            <button class="btn btn-info" type="submit" *ngIf="!ViewBtnAddreviewer"> Save </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- ----------------------------------------------------------------------- -->
+
+
+
+<!-- --------------------------------------- update Board ---------------------------- -->
+<div class="modal" id="updateBoard">
+    <div class="modal-dialog">
+        <div class="modal-content">
+    
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+    
+            <!-- Modal body -->
+            <div class="modal-body">
+                <!-- post Board -->
+                <div class="postBoard card col-12">
+                    <p class="groubTitle">update Board Content</p>
+                    <form [formGroup]="board" (ngSubmit)="updateBoard()">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Enter Board Title" formControlName="title">
+                        </div>
+                        <div class="form-group">
+                            <textarea type="text" class="form-control" rows="7" placeholder="Enter Board Text" formControlName="text"></textarea>
+                        </div>
+                        <div class="submit">
+                            <button class="btn btn-warning" type="submit"> update </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="updateBoardReviewer">
+    <div class="modal-dialog">
+        <div class="modal-content">
+    
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+    
+            <!-- Modal body -->
+            <div class="modal-body">
+                <!-- post Board -->
+                <div class="postBoard card col-12">
+                    <p class="groubTitle">Update Board reviewer</p>
+                    <form [formGroup]="editReviewer" (ngSubmit)="updateBoardReviewer()">
+                        
+                        <div class="card">
+                            <input type="text" class="form-control text-center font-weight-bold text-warning bg-dark" formControlName="groupName">
+                            <input type="text" class="form-control" formControlName="name">
+                            <input type="text" class="form-control" formControlName="job">
+                            <input type="text" class="form-control" formControlName="generalSpecialty">
+                            <input type="text" class="form-control" formControlName="Specialty">
+                        </div>
+                        <div class="submit">
+                            <button class="btn btn-warning" type="submit"> update </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="updateBoardReviewerGroup">
+    <div class="modal-dialog">
+        <div class="modal-content">
+    
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+    
+            <!-- Modal body -->
+            <div class="modal-body">
+                <!-- post Board -->
+                <div class="postBoard card col-12">
+                    <p class="groubTitle">Update Board reviewer</p>
+                    <form [formGroup]="boardReviewers" (ngSubmit)="editReviewersGroup()">
+                        
+                        <div class="card">
+                            <input type="text" class="form-control text-center" formControlName="groupName">
+                        </div>
+                        <div class="submit">
+                            <button class="btn btn-warning" type="submit"> update </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+</div>
+
+<!-- ----------------------------------------------------------------------------------- -->
+
+
+
+<!-- Modal SHow Data -->
+<div class="col-12">
+    <div class="modal fade " id="show" aria-labelledby="show" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"> Show Details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <p class="Basictitle text-center" style="font-size: 20px;" *ngIf="showItem_TiTle!=''">{{showItem_TiTle}}</p>
+                <span class="text-center">{{showItem_Text}}</span>
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

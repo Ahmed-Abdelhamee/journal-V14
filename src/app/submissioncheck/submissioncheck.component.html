@@ -8,14 +8,17 @@
 </head>
 <body>
     <div class="col-12">
-        <div class="col-sm-3" style="height:1px;"></div>
-        <div class="col-sm-6 content">
+        <div class="col-sm-2" style="height:1px;"></div>
+        <div class="col-sm-8 content">
+            <p class="pageTitle text-info text-center">* researches checked *</p>
             <ul  *ngFor="let item of notes">
                 <li>
-                    <p class="researchTitle">For Reasearch : {{item.researchTitle }} <a href="{{item.file}}" download="{{item.researchTitle }}">  <img class="card-img" src="assets/download-pdf.png" alt="Card image"> </a>  </p>
+                    <p class="researchTitle" > <span> research :</span> {{item.researchTitle }} <a href="{{item.file}}" download="{{item.researchTitle }}">  <img class="card-img" src="assets/download-pdf.png" alt="Card image"> </a>  </p>
                     <ul>
-                        <li>{{item.text}}</li>
+                        <li class="">{{item.text}}</li>
                     </ul>
+
+                    <p class="text-center text-info pt-4" style="margin-left: -15px; font-size: 20px;">* * * * * * * * * * * * * * * * *</p>
                 </li>
             </ul>
         </div>

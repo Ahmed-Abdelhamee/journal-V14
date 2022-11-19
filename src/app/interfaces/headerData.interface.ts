@@ -1,4 +1,5 @@
 export interface headerData{
     journalname?:string,
-    logoImg?:string
+    logoImg?:string,
+    id?:number
 }

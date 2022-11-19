@@ -26,7 +26,6 @@ import { SubmitpaperComponent } from './submitpaper/submitpaper.component';
 import { ZfooterComponent } from './zfooter/zfooter.component';
 import { NewResearchesComponent } from './new-researches/new-researches.component';
 import { EditDeleteResearchComponent } from './edit-delete-research/edit-delete-research.component';
-import { AdminSettings2Component } from './admin-settings2/admin-settings2.component';
 import { AboutComponent } from './about/about.component';
 import { SupportComponent } from './support/support.component';
 import { ContactComponent } from './contact/contact.component';
@@ -34,6 +33,23 @@ import { ContactComponent } from './contact/contact.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { AdminInstructionsComponent } from './admin-instructions/admin-instructions.component';
+import { AdminAimComponent } from './admin-aim/admin-aim.component';
+import { AdminBoardComponent } from './admin-board/admin-board.component';
+import { AdminResearchesComponent } from './admin-researches/admin-researches.component';
+import { AdminAboutComponent } from './admin-about/admin-about.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { AdminContactComponent } from './admin-contact/admin-contact.component';
+import { AdminSupportComponent } from './admin-support/admin-support.component';
+
+import { SecertApproveComponent } from './secert-approve/secert-approve.component';
+import { SecertResearchNotesComponent } from './secert-research-notes/secert-research-notes.component';
+import { SecertResearchCompletedComponent } from './secert-research-completed/secert-research-completed.component';
+import { SecertResearchResultComponent } from './secert-research-result/secert-research-result.component';
+import { SecertLoginComponent } from './secert-login/secert-login.component';
+import { SecertRegisterComponent } from './secert-register/secert-register.component';
+import { SecertaryComponent } from './secertary/secertary.component';
 
 @NgModule({
   declarations: [
@@ -59,10 +75,25 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     ZfooterComponent,
     NewResearchesComponent,
     EditDeleteResearchComponent,
-    AdminSettings2Component,
     AboutComponent,
     SupportComponent,
     ContactComponent,
+    AdminHomeComponent,
+    AdminInstructionsComponent,
+    AdminAimComponent,
+    AdminBoardComponent,
+    AdminResearchesComponent,
+    AdminAboutComponent,
+    AdminProfileComponent,
+    AdminContactComponent,
+    AdminSupportComponent,
+    SecertApproveComponent,
+    SecertResearchNotesComponent,
+    SecertResearchCompletedComponent,
+    SecertResearchResultComponent,
+    SecertLoginComponent,
+    SecertRegisterComponent,
+    SecertaryComponent,
    
   ],
   imports: [

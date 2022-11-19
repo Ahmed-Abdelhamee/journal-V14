@@ -1,0 +1,342 @@
+<div class="col-12 container">
+
+    <!-- home buttons modal  -->
+    <div class="text-center">
+        <!-- home buttons modal  -->
+        <button type="button" class="btn btn-outline-primary btnModal" data-toggle="modal" data-target="#addSlider">
+            Slider
+        </button>
+        <button type="button" class="btn btn-outline-primary btnModal" data-toggle="modal" data-target="#homePost">
+            Posts
+        </button>
+        <button type="button" class="btn btn-outline-primary btnModal" data-toggle="modal" data-target="#addPublishedVolumes">
+            Researches
+        </button>
+        <hr>
+    </div>
+    <!-- -------------------- -->
+
+     <!-- ----------------------------- show home data ------------------------- -->
+     <div class="homeShow">
+        <div class="col-12 viewBtns text-center">
+            <button class="btn btn-outline-dark" (click)="ViewCarsoul()">View Slider</button>
+            <button class="btn btn-outline-dark" (click)="ViewData()">view Posts</button>
+            <button class="btn btn-outline-dark" (click)="Viewpublished()">view Researches</button>
+        </div>
+
+        <h2 class=" col-12 text-center Basictitle pt-1 pb-1"> * show data *</h2>
+        
+        <div class="col-12" *ngIf="ViewCarsoulData">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <th scope="col" class="text-center">#</th>
+                    <th scope="col" class="text-center">Image</th>
+                    <th scope="col" class="text-center">Title</th>
+                    <th scope="col" class="text-center">Update</th>
+                    <th scope="col" class="text-center">Delete</th>
+                    </tr>
+                </thead>
+
+                <tbody  *ngFor="let item of homeCarousel; let i=index;" >
+                    <tr>
+                    <th scope="row">{{i+1}}</th>
+                    <td class="text-center"><img [src]="item.photourl" class=" rounded-lg" alt="photo" width="170px" height="80px"></td>
+                    <td class=" text-center"><p class="carouselText" >{{item.title}} </p></td>
+                    
+                    <td class=" text-center"><button class="btn btn-warning" (click)="setUpdateID_carsoul(item.id!)"  data-toggle="modal" data-target="#updateCarsoul">Edit</button></td>
+                    <td class=" text-center"><button class="btn btn-danger" (click)="swalDelete('delete_carsoul',item.id)"> X</button></td>
+                    
+                    </tr>
+                </tbody>
+                </table>
+                
+        </div>
+
+        <div class="col-12 text-center" *ngIf="ViewHomeData">
+            
+                <div class=" dataContent">
+                    <table class=" table table-striped">
+                        <thead>
+                            <tr>
+                            <th scope="col" class="text-center">#</th>
+                            <th scope="col" class="text-center">Image</th>
+                            <th scope="col" class="text-center">Text</th>
+                            <th scope="col" class="text-center"></th>
+                            <th scope="col" class="text-center">Update</th>
+                            <th scope="col" class="text-center">Delete</th>
+                            </tr>
+                        </thead>
+
+                        <tbody  *ngFor="let item of homeData; let i=index;" >
+                            <tr>
+                            <th scope="row">{{i+1}}</th>
+                            <td class="text-center"><img [src]="item.photourl" class=" rounded-lg" *ngIf="item.text !='' && item.text !=undefined " alt="photo" width="120px" height="100px"></td>
+                            <td class=" text-center"><p class="discription" >{{item.text}} </p></td>
+                            <td class=" text-center"><button class="btn btn-info" (click)="showData_image(item)"  data-toggle="modal" data-target="#show">Show</button></td>
+                            <td class=" text-center"><button class="btn btn-warning" (click)="setUpdateID_Home(item.id!)"  data-toggle="modal" data-target="#updateHome">Edit</button></td>
+                            <td class=" text-center"><button class="btn btn-danger"  (click)="swalDelete('delete_HomeData',item.id)"> X</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+
+        <div class=" col-12 text-center" style="margin-top: -20px;" *ngIf="ViewPublished">
+            <hr>
+                <p class="reviewLinksTitle"> * Published Volumes *</p>
+                <div class="col-12 reviews" *ngFor="let item of publishReviews; let i=index;">
+                    <a routerLink="/research-collection/{{item.id}}">{{item.id}}</a>
+                </div>
+        </div>
+        
+    </div>
+    <!-- ---------------------------------------------------------------------- -->
+
+    <!-- ----------------------------- add Slider Move ------------------------- -->
+    <div class="modal" id="addSlider">
+        <div class="modal-dialog">
+        <div class="modal-content">
+    
+            <!-- Modal Header -->
+            <div class="modal-header">
+            <h4 class="modal-title"> 
+                <p class="groubTitle">add Slider</p>
+            </h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+    
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="col-12 card">
+                <!-- home carsoul data -->
+                <form class="form" #carsoul="ngForm" (ngSubmit)="carsoulSubmit(carsoul)">
+                        <div class="form-group">
+                            <label for="title">Enter photo Title</label>
+                            <input type="text" class="form-control" name="title" #title ngModel> 
+                        </div>
+                        <div class="form-group">
+                            <label for="file">upload photo</label>
+                            <input type="file" class="form-control" accept=".jpg , .png"  (change)="uploadCarsoulImg($event)">
+                        </div>
+                        <div class="form-group submit">
+                            <input type="submit" value="add" class="btn btn-info" *ngIf="!waiting1">
+                            <button class="btn btn-info" *ngIf="waiting1">
+                                <span class="spinner-border spinner-border-sm"></span>
+                                Loading photo ...
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        
+        </div>
+        </div>
+    </div>
+    <!-- ---------------------------------------------------------------------- -->
+    <!-- ----------------------------- add home post -------------------------- -->
+    <div class="modal" id="homePost">
+        <div class="modal-dialog">
+        <div class="modal-content">
+    
+            <!-- Modal Header -->
+            <div class="modal-header">
+            <h4 class="modal-title">
+                <p class="groubTitle">add Home Post </p>
+            </h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+    
+            <!-- Modal body -->
+            <div class="modal-body">
+            <!-- home post data -->
+                <div class="homePost card  col-12">
+                    <form class="form" #HomePost="ngForm" (ngSubmit)="AddHomePostSubmit(HomePost)">
+                        <div class="form-group">
+                            <label for="text">Enter Describtion</label>
+                            <textarea type="text" class="form-control" name="text" #text ngModel rows="7"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="file">upload photo</label>
+                            <input type="file" class="form-control" accept=".jpg , .png" (change)=uploadHomeImgPost($event)>
+                        </div>
+                
+                        <div class="form-group submit">
+                            <input type="submit" value="add" class="btn btn-info" *ngIf="!waiting2">
+                            <button class="btn btn-info" *ngIf="waiting2">
+                                <span class="spinner-border spinner-border-sm"></span>
+                                Loading photo ...
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+                
+        </div>
+        </div>
+    </div>
+    <!-- ----------------------------------------------------------------------- -->
+    <!-- ----------------------------- add Published Volumes ------------------- -->
+    <div class="modal" id="addPublishedVolumes">
+        <div class="modal-dialog">
+        <div class="modal-content">
+    
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h2 class="groubTitle">add Published Volumes</h2>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+    
+            <!-- Modal body -->
+            <div class="modal-body">
+            <!-- published Volumes -->
+                <div class="publishedVolumes card col-12">
+
+                    <form [formGroup]="publishedVolumes" (ngSubmit)="saveResearch()">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Enter published volume name" formControlName="id">
+                            <div class="form-group" formArrayName="researchGroupNames">
+                                <div class="card form-group " *ngFor="let item of getresearchesGroups.controls;let index1=index">
+                                    <div [formGroupName]="index1">
+                                        <input type="text" class="form-control researchGroupName" formControlName="id"  placeholder="research group name">
+                                        <div formArrayName="researches">
+                                            <div class="card form-group" *ngFor="let item of getResearches.controls;let index2=index">
+                                                <div [formGroupName]="index2">
+                                                    <input type="text" class="form-control" placeholder="research title" formControlName="title">
+                                                    <input type="text" class="form-control" placeholder="pages" formControlName="pages">
+                                                    <textarea rows="5" type="text" class="form-control" placeholder="Abstract" formControlName="summary"></textarea>
+                                                    <input type="text" class="form-control" placeholder=" key words " formControlName="basicWords">
+                                                    <input type="file" name="file" id="file" accept=".pdf , .docx" formControlName="researchfile" class="form-control" >
+                                                    <div formArrayName="researchers"  class="card">
+                                                        <div  *ngFor="let temp of researchersArray.controls ; let index3=index">
+                                                            <div [formGroupName]="index3">
+                                                                <input type="text" class="form-control" placeholder="Author" formControlName="researcherName">
+                                                            </div>
+                                                        </div>
+                                                        <button type="button" class="btn btn-info" (click)=" addReseachers()">+ Author</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group lastBtns">
+                            <button type="button" class="btn btn-info " (click)="addResearch()" *ngIf="btnAddNewResearch">new research</button> 
+                            <button type="submit" class="btn btn-outline-primary" >save</button>
+                        </div>
+        
+                    </form>
+        
+                </div>
+            </div>
+    
+        </div>
+        </div>
+    </div>
+    <!-- ----------------------------------------------------------------------- -->
+
+
+
+
+<!-- home carsoul data -->
+<div class="modal" id="updateCarsoul">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title"> 
+             <p class="groubTitle">Update Slider</p>
+          </h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+            <div class="homeCarsoul card  col-12">
+            <!-- home carsoul data -->
+            <form class="form" [formGroup]="updateHomeCarsoul" (ngSubmit)="updateCarsoul()">
+                <div class="form-group">
+                    <label for="title">Enter photo Title</label>
+                    <input type="text" class="form-control" name="title" formControlName="title"> 
+                </div>
+                <div class="form-group">
+                    <label for="file">upload photo</label>
+                    <input type="file" class="form-control" accept=".jpg , .png"  (change)="uploadCarsoulImg_ForUpdate($event)" formControlName="photourl">
+                </div>
+                
+                <div class="form-group submit">
+                    <input type="submit" value="update" class="btn btn-warning">
+                </div>
+                
+            </form>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- home update data -->
+<div class="homePost   col-12">
+    <div class="modal" id="updateHome">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title"> 
+                 <p class="groubTitle">update home data</p>
+              </h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="homePost card  col-12">
+                <!-- home carsoul data -->
+                <form class="form" [formGroup]="updateHomeData" (ngSubmit)="updateHome()">
+                    <div class="form-group">
+                        <label for="title">Enter Description</label>
+                        <textarea type="text" class="form-control" name="text" formControlName="text" rows="7"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="file">upload photo</label>
+                        <input type="file" class="form-control" accept=".jpg , .png"  (change)="uploadHomeImg_ForUpdate($event)" formControlName="photourl">
+                    </div>
+                    <div class="form-group submit">
+                        <input type="submit" value="update" class="btn btn-warning">
+                    </div>
+                </form>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+    
+<!-- Modal SHow Data -->
+<div class="col-12">
+    <div class="modal fade " id="show" aria-labelledby="show" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"> Show Details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <p class="Basictitle" style="font-size: 20px;" *ngIf="showItem_TiTle!=''">{{showItem_TiTle}}</p>
+                <img class="imageModalShow" [src]="showItem_Photo" alt="showItem_Photo" *ngIf="showItem_Photo!=null" align="left">
+                <span class="text-center">{{showItem_Text}}</span>
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+</div>

@@ -20,10 +20,10 @@
             <p> <b>artical type</b> : {{item.articleType}}</p>
             <p><b>attached files : </b></p>
             <ul>
-                <li>file 1 : {{item.attachFiles.file1}} <span><a href="{{item.attachFiles.file1}}" download="file1"><img src="assets/download-pdf.png" *ngIf="item.attachFiles.file1 !='' && item.attachFiles.file1 !=undefined" class="pdfImg" alt="pdf img"></a></span></li>
-                <li>file 2 : {{item.attachFiles.file2}} <span><a href="{{item.attachFiles.file2}}" download="file1"><img src="assets/download-pdf.png" *ngIf="item.attachFiles.file2 !='' && item.attachFiles.file2 !=undefined" class="pdfImg" alt="pdf img"></a></span></li>
-                <li>file 3 : {{item.attachFiles.file3}} <span><a href="{{item.attachFiles.file3}}" download="file1"><img src="assets/download-pdf.png" *ngIf="item.attachFiles.file3 !='' && item.attachFiles.file3 !=undefined" class="pdfImg" alt="pdf img"></a></span></li>
-                <li>file 4 : {{item.attachFiles.file4}} <span><a href="{{item.attachFiles.file4}}" download="file1"><img src="assets/download-pdf.png" *ngIf="item.attachFiles.file4 !='' && item.attachFiles.file4 !=undefined" class="pdfImg" alt="pdf img"></a></span></li>
+                <li>file 1 : {{item.attachFiles.file1}} <span><a href="{{item.attachFiles.file1}}" download="file1"><img src="assets/download-pdf.png" *ngIf="item.attachFiles.file1 !='' && item.attachFiles.file1 !=undefined" class="pdfImgStyle" alt="pdf img"></a></span></li>
+                <li>file 2 : {{item.attachFiles.file2}} <span><a href="{{item.attachFiles.file2}}" download="file1"><img src="assets/download-pdf.png" *ngIf="item.attachFiles.file2 !='' && item.attachFiles.file2 !=undefined" class="pdfImgStyle" alt="pdf img"></a></span></li>
+                <li>file 3 : {{item.attachFiles.file3}} <span><a href="{{item.attachFiles.file3}}" download="file1"><img src="assets/download-pdf.png" *ngIf="item.attachFiles.file3 !='' && item.attachFiles.file3 !=undefined" class="pdfImgStyle" alt="pdf img"></a></span></li>
+                <li>file 4 : {{item.attachFiles.file4}} <span><a href="{{item.attachFiles.file4}}" download="file1"><img src="assets/download-pdf.png" *ngIf="item.attachFiles.file4 !='' && item.attachFiles.file4 !=undefined" class="pdfImgStyle" alt="pdf img"></a></span></li>
             </ul>
                 
             <p>
@@ -64,7 +64,7 @@
             </p>
 
             <p><b>receipt number :</b> {{item.receiptnumber}}</p>
-            <p><b>receipt Photo :</b> {{item.receiptPhoto}} <span><a href="{{item.receiptPhoto}}" download="receiptPhoto"><img src="assets/download-pdf.png" class="pdfImg" alt="pdf img"></a></span></p>
+            <p><b>receipt Photo :</b> {{item.receiptPhoto}} <span><a href="{{item.receiptPhoto}}" download="receiptPhoto"><img src="assets/download-pdf.png" class="pdfImgStyle" alt="pdf img"></a></span></p>
             <p><b>User Id :</b> {{item.userId}}</p>
 
             <br> <hr>
@@ -90,10 +90,10 @@
   
         <!-- Modal body -->
         <div class="modal-body">
-            <p>Small Text : {{GeneralInformationText1}}</p>
-            <p>********************************************************</p>
-            <p>Big Text : {{GeneralInformationText2}}</p>
-            <p>********************************************************</p>
+            <p> <b>Text 1</b> : {{GeneralInformationText1}}</p>
+            <br>
+            <p> <b>Text 2 </b>: {{GeneralInformationText2}}</p>
+            <br>
         </div>
   
         <!-- Modal footer -->
@@ -119,7 +119,7 @@
   
         <!-- Modal body -->
         <div class="modal-body">
-            <p> Comment : {{comment}}</p>
+            <p> {{comment}}</p>
         </div>
   
         <!-- Modal footer -->
@@ -146,7 +146,7 @@
   
         <!-- Modal body -->
         <div class="modal-body">
-            <p> Abstract : {{abstract}}</p>
+            <p> {{abstract}}</p>
         </div>
   
         <!-- Modal footer -->

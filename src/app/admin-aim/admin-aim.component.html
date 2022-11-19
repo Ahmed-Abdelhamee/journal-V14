@@ -1,0 +1,145 @@
+<div class="col-12">
+    <div class="text-center pt-1 pt-2">
+        <!-- ------------------- Aim button ------------------- -->
+        <button type="button" class="btn btn-outline-primary btnModal" data-toggle="modal" data-target="#Aim">
+            add Aim text
+        </button>
+        <!-- ----------------------------------------------------------- -->
+    </div>
+
+
+
+
+    <!-- ----------------------------- show aim data ------------------------- -->
+    <div class="aimShow col-12">
+
+        <h2 class="aimTitle">Aim and Scope</h2>
+
+        <div class="col-sm-1" style="height: 10px;"></div>
+
+        <table class="table col-sm-10 table-striped">
+            <thead>
+                <tr>
+                <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center">Text</th>
+                <th scope="col" class="text-center"></th>
+                <th scope="col" class="text-center">Update</th>
+                <th scope="col" class="text-center">Delete</th>
+                </tr>
+            </thead>
+
+            <tbody  *ngFor="let item of aimArray; let i=index;" >
+                <tr>
+                <th scope="row">{{i+1}}</th>
+                <td class=" text-center"><p class="aimText text pt-1" >{{item.text}} </p></td>
+                <td class=" text-center"><button class="btn btn-info" (click)="showData_image(item)"  data-toggle="modal" data-target="#show">Show</button></td>
+                <td class=" text-center"><button class="btn btn-warning" (click)="setAim(item)"  data-toggle="modal" data-target="#updateAim">Edit</button></td>
+                <td class=" text-center"><button class="btn btn-danger" (click)="swalDelete('delete_Aim',item)"> X</button></td>
+                </tr>
+            </tbody>
+            </table>
+
+    </div>
+    <!-- --------------------------------------------------------------------- -->
+</div>
+        
+
+
+
+    <!-- ------------------------------ add Aim  ---------------------- -->
+    <div class="modal" id="Aim">
+        <div class="modal-dialog">
+            <div class="modal-content">
+        
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    <p class="groubTitle">add aim text </p>
+                </h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+        
+            <!-- Modal body -->
+            <div class="modal-body">
+                <!-- post Aim -->
+                <div class="postAim card col-12">
+                    <p class="groubTitle">post Aim</p>
+                    <form [formGroup]="aim" (ngSubmit)="addAim()">
+                        <div class="form-group">
+                            <textarea type="text" class="form-control" placeholder="Enter Aim Text" formControlName="text" rows="7"></textarea>
+                        </div>
+                        <div class="submit">
+                            <button class="btn btn-info" type="submit"> add </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        
+            </div>
+        </div>
+    </div>
+    <!-- ----------------------------------------------------------------------- -->
+
+
+
+
+    <!-- ------------------------------ update Aim  --------------------------- -->
+    <div class="modal" id="updateAim">
+        <div class="modal-dialog">
+            <div class="modal-content">
+        
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    <p class="groubTitle">add aim text </p>
+                </h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+        
+            <!-- Modal body -->
+            <div class="modal-body">
+                <!-- update Aim -->
+                <div class="postAim card col-12">
+                    <p class="groubTitle">update Aim</p>
+                    <form [formGroup]="aim" (ngSubmit)="updateAim()">
+                        <div class="form-group">
+                            <label for="aimText">Enter aim Text</label>
+                            <textarea type="text" class="form-control" formControlName="text"  rows="7"></textarea>
+                        </div>
+                        <div class="submit">
+                            <button class="btn btn-warning" type="submit"> update </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+                
+            <!-- Modal footer -->
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div> -->
+        
+            </div>
+        </div>
+    </div>
+    <!-- ----------------------------------------------------------------------- -->
+
+    <!-- div SHow Data -->
+    <div class="col-12">
+        <div class="modal fade " id="show" aria-labelledby="show" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> Show Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <span class="text-center">{{showItem_Text}}</span>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>

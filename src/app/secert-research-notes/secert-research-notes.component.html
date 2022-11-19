@@ -1,0 +1,112 @@
+<!-- ******************  show Sending Notes Check data ******************** -->
+<div class="container">
+   <div class="col-12">
+      <div class=" text-center pt-4">
+        <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#sendingNotes" (click)="forSendNotes()">
+          Sending Notes
+        </button>
+      </div>
+    </div>
+    <h2 class=" col-12 text-center Basictitle"> * Notes * </h2>
+    <table class="table table-striped">
+      <thead>
+          <tr>
+          <th scope="col" class="text-center">#</th>
+          <th scope="col" class="text-center">Title</th>
+          <th scope="col" class="text-center">Notes</th>
+          <th scope="col" class="text-center">user ID</th>
+          <th scope="col" class="text-center">file</th>
+          <th scope="col" class="text-center"></th>
+          <th scope="col" class="text-center">Update</th>
+          <th scope="col" class="text-center">Delete</th>
+          </tr>
+      </thead>
+
+      <tbody>
+          <tr  *ngFor="let item of sendingNotes; let i=index;" >
+          <th scope="row">{{i+1}}</th>
+          <td class=" text-center"><p class="text BasictitleRow pt-2" >{{item.researchTitle}} </p></td>
+          <td class=" text-center"><p class="text pt-2" >{{item.text}} </p></td>
+          <td class=" text-center"><p class="text pt-2" >{{item.userId}} </p></td>
+          <td class=" text-center"><p class="Basictitle pt-1" ><a href="{{item.file}}" download="{{item.file}}">  <img class="card-img" src="assets/download-pdf.png" alt="Card image"> </a> </p></td>
+          <td class=" text-center"><button class="btn btn-info" (click)="showData_image(item)"  style="margin-top: 0px; " data-toggle="modal" data-target="#show">Show</button></td>
+          <td class=" text-center"><button class="btn btn-warning" (click)="forupdateNotes(item)"  data-toggle="modal" data-target="#sendingNotes">Edit</button></td>
+          <td class=" text-center"><button class="btn btn-danger" (click)="swalDelete('Note',item.id)"> X</button></td>
+          </tr>
+      </tbody>
+  </table>
+
+  </div>
+  <!-- ------------------------------------- -->
+
+
+
+
+
+  <!-- Sending Notes Modal -->
+<div class="modal" id="sendingNotes">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Sending Notes</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form [formGroup]="researchNotes" class="col-12 card">
+            <div class="form-group">
+              <input type="text" formControlName="researchTitle" placeholder="Research Title" class="form-control">
+              <textarea type="text" formControlName="text" placeholder="Notes" class="form-control" rows="4">  </textarea>
+              <input type="text" formControlName="userId" placeholder="user Id" class="form-control">
+              <!-- custom file input -->
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <!-- <span class="input-group-text" id="inputGroupFileAddon01">Upload</span> -->
+                </div>
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" formControlName="file">
+                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+              </div>
+              <!-- ----------------- -->
+            </div>
+            <div class="submit">
+              <button class="btn btn-primary" type="submit" (click)="saveNotes()" *ngIf="show_btn_Save_Note"> send </button>
+              <button class="btn btn-warning" type="submit" (click)="updateNote()" *ngIf="show_btn_Update_Note"> update </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+  
+  <!-- div SHow Data -->
+<div class="col-12">
+    <div class="modal fade " id="show" tabindex="-1" aria-labelledby="show" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"> Show Details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            <p class="Basictitle pt-1 text-center" >
+              <a href="{{showItem_file}}" download="{{showItem_file}}" *ngIf="showItem_file!='' && showItem_file!=null"> <img class="card-img-icon" src="assets/download-pdf.png" alt="Card image"> </a>
+                 <span class=" Basictitle" style="font-size: 17px;" *ngIf="showItem_TiTle!='' && showItem_TiTle!=null">{{showItem_TiTle}}</span>
+            </p>
+                <p class="text-center" *ngIf="showItem_Text!='' && showItem_Text!=null">{{showItem_Text}}</p>
+                <p class="text-center" *ngIf="showItem_userId!='' && showItem_userId!=null"> <b> user id </b> : {{showItem_userId}}</p>
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>

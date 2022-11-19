@@ -27,13 +27,7 @@ export class AdminSettingsComponent implements OnInit {
 
 hideAddResearch:boolean=false
 
-// objects for view help
-addCarsoul:any={ title:"", photourl:"" };
-addHomePost:any={ text:"", photourl:"" };
 
-// boolean properity to show the loading button while the photo uploaded
-  waiting1:boolean=false;
-  waiting2:boolean=false;
 
 // boolean properties to control the show 
     showHome:boolean=false;
@@ -229,275 +223,211 @@ addHomePost:any={ text:"", photourl:"" };
 
     let routerValue=this.route.snapshot.paramMap.get("id");
 
-    if(routerValue=="home"){
-      this.showHome=true;
-      this.showAddInstructions=false;
-      this.showAddAim=false;
-      this.showBoard=false;
-      this.profileCheck=false;
-      this.aboutCheck=false;
-      this.logo=false;
-      this.support_Check=false;
-      this.contact_Check=false;
-      // get home carsoul
-      this.service.gethomeCarousel().subscribe( data=>{
-        this.homeCarousel=data
-      })
-    }else if(routerValue=="instructions"){
-      this.showHome=false;
-      this.showAddInstructions=true;
-      this.showAddAim=false;
-      this.showBoard=false;
-      this.profileCheck=false;
-      this.aboutCheck=false;
-      this.logo=false;
-      this.support_Check=false;
-      this.contact_Check=false;
-    // get instructions
-    this.service.getInsturctions().subscribe(data=>{
-      this.instructionsArray=data
+    this.service.getHeaderData().subscribe(data =>{
+      this.headerDataObject=data
     })
-    this.service.getInsturctionsFile().subscribe(data=>{
-      this.getinstructionsFile=data;
-      this.instructionsFileURL=this.getinstructionsFile[0].file
+    this.service.getHomeBackImage().subscribe(data =>{
+      this.backImageURL=data
     })
-    // console.log(this.getinstructionsFile)
-    }else if(routerValue=="aim"){
-      this.showHome=false;
-      this.showAddInstructions=false;
-      this.showAddAim=true;
-      this.showBoard=false;
-      this.profileCheck=false;
-      this.aboutCheck=false;
-      this.logo=false;
-      this.support_Check=false;
-      this.contact_Check=false;
-      // get aim
-      this.service.getAimData().subscribe(data=>{
-        this.aimArray=data
-      })
-    }else if(routerValue=="board"){
-      this.showHome=false;
-      this.showAddInstructions=false;
-      this.showAddAim=false;
-      this.showBoard=true;
-      this.profileCheck=false;
-      this.aboutCheck=false;
-      this.logo=false;
-      this.support_Check=false;
-      this.contact_Check=false;
-      // get board data
-      this.service.getBoard().subscribe(data=>{
-        this.boardArray=data
-      })
-      this.service.getBoardReviewer().subscribe(data=>{
-        this.boardReviewersArray=data
-      })
-    }else if(routerValue=="profile"){
-      this.showHome=false;
-      this.showAddInstructions=false;
-      this.showAddAim=false;
-      this.showBoard=false;
-      this.profileCheck=true;
-      this.logo=false;
-      this.aboutCheck=false;
-      this.support_Check=false;
-      this.contact_Check=false;
-      this.service.getProfileSettings().subscribe(data =>{
-        this.profileSettingsObject=data
-      })
-    }else if(routerValue=="about"){
-      this.showHome=false;
-      this.showAddInstructions=false;
-      this.showAddAim=false;
-      this.showBoard=false;
-      this.profileCheck=false;
-      this.aboutCheck=true;
-      this.logo=false;
-      this.support_Check=false;
-      this.contact_Check=false;
-      this.service.getAbout().subscribe(data => {
-        this.aboutArray=data
-      })
-    }else if(routerValue=="logo"){
-      this.showHome=false;
-      this.showAddInstructions=false;
-      this.showAddAim=false;
-      this.showBoard=false;
-      this.profileCheck=false;
-      this.aboutCheck=false;
-      this.logo=true;
-      this.support_Check=false;
-      this.contact_Check=false;
-      this.service.getHeaderData().subscribe(data =>{
-        this.headerDataObject=data
-      })
-      this.service.getHomeBackImage().subscribe(data =>{
-        this.backImageURL=data
-      })
-    }else if(routerValue=="contact"){
-      this.service.getContactData().subscribe(data =>{
-        this.contactArray=data
-      })
-        this.showHome=false;
-        this.showAddInstructions=false;
-        this.showAddAim=false;
-        this.showBoard=false;
-        this.profileCheck=false;
-        this.aboutCheck=false;
-        this.logo=false;
-        this.support_Check=false;
-        this.contact_Check=true;
-        console.log(this.contactArray)
-    }else if(routerValue=="support"){
-      this.service.getSupportData().subscribe(data =>{
-        this.supportArray=data
-      })
-      this.showHome=false;
-      this.showAddInstructions=false;
-      this.showAddAim=false;
-      this.showBoard=false;
-      this.profileCheck=false;
-      this.aboutCheck=false;
-      this.logo=false;
-      this.support_Check=true;
-      this.contact_Check=false;
-    }
+
+    // if(routerValue=="home"){
+    //   this.showHome=true;
+    //   this.showAddInstructions=false;
+    //   this.showAddAim=false;
+    //   this.showBoard=false;
+    //   this.profileCheck=false;
+    //   this.aboutCheck=false;
+    //   this.logo=false;
+    //   this.support_Check=false;
+    //   this.contact_Check=false;
+    //   // get home carsoul
+    //   this.service.gethomeCarousel().subscribe( data=>{
+    //     this.homeCarousel=data
+    //   })
+    // }else if(routerValue=="instructions"){
+    //   this.showHome=false;
+    //   this.showAddInstructions=true;
+    //   this.showAddAim=false;
+    //   this.showBoard=false;
+    //   this.profileCheck=false;
+    //   this.aboutCheck=false;
+    //   this.logo=false;
+    //   this.support_Check=false;
+    //   this.contact_Check=false;
+    // // get instructions
+    // this.service.getInsturctions().subscribe(data=>{
+    //   this.instructionsArray=data
+    // })
+    // this.service.getInsturctionsFile().subscribe(data=>{
+    //   this.getinstructionsFile=data;
+    //   this.instructionsFileURL=this.getinstructionsFile[0].file
+    // })
+    // // console.log(this.getinstructionsFile)
+    // }else if(routerValue=="aim"){
+    //   this.showHome=false;
+    //   this.showAddInstructions=false;
+    //   this.showAddAim=true;
+    //   this.showBoard=false;
+    //   this.profileCheck=false;
+    //   this.aboutCheck=false;
+    //   this.logo=false;
+    //   this.support_Check=false;
+    //   this.contact_Check=false;
+    //   // get aim
+    //   this.service.getAimData().subscribe(data=>{
+    //     this.aimArray=data
+    //   })
+    // }else if(routerValue=="board"){
+    //   this.showHome=false;
+    //   this.showAddInstructions=false;
+    //   this.showAddAim=false;
+    //   this.showBoard=true;
+    //   this.profileCheck=false;
+    //   this.aboutCheck=false;
+    //   this.logo=false;
+    //   this.support_Check=false;
+    //   this.contact_Check=false;
+    //   // get board data
+    //   this.service.getBoard().subscribe(data=>{
+    //     this.boardArray=data
+    //   })
+    //   this.service.getBoardReviewer().subscribe(data=>{
+    //     this.boardReviewersArray=data
+    //   })
+    // }else if(routerValue=="profile"){
+    //   this.showHome=false;
+    //   this.showAddInstructions=false;
+    //   this.showAddAim=false;
+    //   this.showBoard=false;
+    //   this.profileCheck=true;
+    //   this.logo=false;
+    //   this.aboutCheck=false;
+    //   this.support_Check=false;
+    //   this.contact_Check=false;
+    //   this.service.getProfileSettings().subscribe(data =>{
+    //     this.profileSettingsObject=data
+    //   })
+    // }else if(routerValue=="about"){
+    //   this.showHome=false;
+    //   this.showAddInstructions=false;
+    //   this.showAddAim=false;
+    //   this.showBoard=false;
+    //   this.profileCheck=false;
+    //   this.aboutCheck=true;
+    //   this.logo=false;
+    //   this.support_Check=false;
+    //   this.contact_Check=false;
+    //   this.service.getAbout().subscribe(data => {
+    //     this.aboutArray=data
+    //   })
+    // }else if(routerValue=="logo"){
+    //   this.showHome=false;
+    //   this.showAddInstructions=false;
+    //   this.showAddAim=false;
+    //   this.showBoard=false;
+    //   this.profileCheck=false;
+    //   this.aboutCheck=false;
+    //   this.logo=true;
+    //   this.support_Check=false;
+    //   this.contact_Check=false;
+    //   this.service.getHeaderData().subscribe(data =>{
+    //     this.headerDataObject=data
+    //   })
+    //   this.service.getHomeBackImage().subscribe(data =>{
+    //     this.backImageURL=data
+    //   })
+    // }else if(routerValue=="contact"){
+    //   this.service.getContactData().subscribe(data =>{
+    //     this.contactArray=data
+    //   })
+    //     this.showHome=false;
+    //     this.showAddInstructions=false;
+    //     this.showAddAim=false;
+    //     this.showBoard=false;
+    //     this.profileCheck=false;
+    //     this.aboutCheck=false;
+    //     this.logo=false;
+    //     this.support_Check=false;
+    //     this.contact_Check=true;
+    //     console.log(this.contactArray)
+    // }else if(routerValue=="support"){
+    //   this.service.getSupportData().subscribe(data =>{
+    //     this.supportArray=data
+    //   })
+    //   this.showHome=false;
+    //   this.showAddInstructions=false;
+    //   this.showAddAim=false;
+    //   this.showBoard=false;
+    //   this.profileCheck=false;
+    //   this.aboutCheck=false;
+    //   this.logo=false;
+    //   this.support_Check=true;
+    //   this.contact_Check=false;
+    // }
     
   }
 
   // ------------------------------------------------- control view data ------------------------------------------
-  ViewCarsoul(){
-    this.ViewCarsoulData=true;
-    this.ViewHomeData=false
-    this.ViewPublished=false;
-  }
-  ViewData(){
-    // get home data
-    this.service.gethomeData().subscribe(data=>{
-      this.homeData=data
-    })
-    this.ViewCarsoulData=false;
-    this.ViewHomeData=true;
-    this.ViewPublished=false;
-  }
-  Viewpublished(){
-    this.ViewPublished=true;
-    this.ViewCarsoulData=false;
-    this.ViewHomeData=false 
-    this.service.getResearches().subscribe(data=>{
-      this.publishReviews=data
-    })
-  }
+  // ViewCarsoul(){
+  //   this.ViewCarsoulData=true;
+  //   this.ViewHomeData=false
+  //   this.ViewPublished=false;
+  // }
+  // ViewData(){
+  //   // get home data
+  //   this.service.gethomeData().subscribe(data=>{
+  //     this.homeData=data
+  //   })
+  //   this.ViewCarsoulData=false;
+  //   this.ViewHomeData=true;
+  //   this.ViewPublished=false;
+  // }
+  // Viewpublished(){
+  //   this.ViewPublished=true;
+  //   this.ViewCarsoulData=false;
+  //   this.ViewHomeData=false 
+  //   this.service.getResearches().subscribe(data=>{
+  //     this.publishReviews=data
+  //   })
+  // }
   
-  viewBoard(){
-    this.ViewBoardData=true
-    this.ViewBoardreviewerData=false
-  }
-  viewBoardReviewer(){
-    this.ViewBoardData=false
-    this.ViewBoardreviewerData=true
-  }
+  // viewBoard(){
+  //   this.ViewBoardData=true
+  //   this.ViewBoardreviewerData=false
+  // }
+  // viewBoardReviewer(){
+  //   this.ViewBoardData=false
+  //   this.ViewBoardreviewerData=true
+  // }
   //----------------------------------------------------------------------------------------------------------------
 
  
 
   // -------------------------------------------------- posting data ------------------------------------------------
 
-  // --------------------------- add carsoul image -----------------------------
-  // for upload image 
-  uploadCarsoulImg(event:any){
-    this.waiting1=true;// waiting untill get the link
-    let loader=new FileReader();
-    loader.readAsDataURL(event.target.files[0])
-    loader.onload=(event)=>{
-      this.addCarsoul.photourl=event.target?.result;
-    }
-    this.waiting1=false; // waiting untill get the link
-    // })
-  }
-  // code to submit carsoul data 
-  carsoulSubmit(input: { value: any; }){
-    let data = input.value;
-    this.addCarsoul.title=data.title;
-    this.service.addHomeCarousel(this.addCarsoul)
-    window.location.reload()
-  }
-  // ---------------------------  adding home post  ---------------------------
-  // for upload image 
-  uploadHomeImgPost(event:any){
-    this.waiting2=true; // for show msg
-    let loader=new FileReader();
-    loader.readAsDataURL(event.target.files[0])
-    loader.onload=(event)=>{
-      this.addHomePost.photourl=event.target?.result;
-    }
-    this.waiting2=false;  // for show msg
-  }
-  // code to submit home post
-  AddHomePostSubmit(input: { value: any; }){
-    let data = input.value;
-    this.addHomePost.text=data.text;
-    this.service.addHomData(this.addHomePost) // usimg service function
-    window.location.reload()
-  }
-  //----------------------------------------------------------------------------
-
-  
 
 
   
   
-  // ------------------------------------------------------ adding research ------------------------------------------
-  
-  get getresearchesGroups(){  // get the big array of group names
-    return this.publishedVolumes.get("researchGroupNames") as FormArray
-  }
-  get getResearches(){
-    return this.researchGroubData.get("researches") as FormArray
-  }
-  get getResearch(){
-    return this.researchGroubData.get("research") as FormGroup
-  }
-  addResearch(){
-    let theGroupResearches=this.researchGroubData.get("researches") as FormArray
-    theGroupResearches.push(this.research) // push research in researches array
-    this.getresearchesGroups.push(this.researchGroubData) // push the object group variable for a group of researches in the real researches groups
-    this.researchersArray=this.research.get("researchers") as FormArray  // store the researchers array in global variable=researchersArray
-    this.btnAddNewResearch=false ;
-  }
-  addReseachers(){
-    let researcher=this.formbuilder.group({
-      researcherName : ['',Validators.required ] 
-    })
-    this.researchersArray.push(researcher);
-  }
-  saveResearch(){
-    console.log(this.publishedVolumes.value);
-    this.service.addResearch(this.publishedVolumes.value);
-  }
-  // ----------------------------------------------------------------------------------------------------
-
-
-
+ 
 
 
 
 
 
   //--------------------------- add instructions -----------------------
-  addInstructions(){
-    console.log(this.instruction.value)
-    this.service.addInstructions(this.instruction.value)
-    window.location.reload()
-  }
+  // addInstructions(){
+  //   console.log(this.instruction.value)
+  //   this.service.addInstructions(this.instruction.value)
+  //   window.location.reload()
+  // }
   //---------------------------------------------------------------------
 
   //--------------------------------  add Aim  ---------------------------
-  addAim(){
-    this.service.addAim(this.aim.value)
-    window.location.reload()
-  }
+  // addAim(){
+  //   this.service.addAim(this.aim.value)
+  //   window.location.reload()
+  // }
   //--------------------------------------------------------------------
 
 
@@ -506,30 +436,30 @@ addHomePost:any={ text:"", photourl:"" };
 
 
   //--------------------------------  add board  -------------------------
-  addBoardData(){
-    this.service.addBoard(this.board.value)
-    window.location.reload()
-  }
-  // add boardReviewers
-  get boardReviewersGroupName(){
-    return this.boardReviewers.get("groupNameArray") as FormArray
-  }
-  addBoardReviewer(){
-    let reviewerData=this.formbuilder.group({
-      name:["",Validators.required],
-      job:["",Validators.required],
-      generalSpecialty:["",Validators.required],
-      Specialty:["",Validators.required],
-      })
-    let arr=this.boardReviewersGroupName as FormArray
-    arr.push(reviewerData)
-  }
-  addboardReviewersData(){
-    console.log(this.boardReviewers.value)
-    this.service.addBoardReviewers(this.boardReviewers.value)
-    window.location.reload()
-  }
-  //--------------------------------------------------------------------
+  // addBoardData(){
+  //   this.service.addBoard(this.board.value)
+  //   window.location.reload()
+  // }
+  // // add boardReviewers
+  // get boardReviewersGroupName(){
+  //   return this.boardReviewers.get("groupNameArray") as FormArray
+  // }
+  // addBoardReviewer(){
+  //   let reviewerData=this.formbuilder.group({
+  //     name:["",Validators.required],
+  //     job:["",Validators.required],
+  //     generalSpecialty:["",Validators.required],
+  //     Specialty:["",Validators.required],
+  //     })
+  //   let arr=this.boardReviewersGroupName as FormArray
+  //   arr.push(reviewerData)
+  // }
+  // addboardReviewersData(){
+  //   console.log(this.boardReviewers.value)
+  //   this.service.addBoardReviewers(this.boardReviewers.value)
+  //   window.location.reload()
+  // }
+  // //--------------------------------------------------------------------
 
 
 
@@ -537,23 +467,23 @@ addHomePost:any={ text:"", photourl:"" };
 
 
 
-  // ------------------------------- add about ----------------------------
-  addAbout(){
-    this.service.addAbout(this.about.value)
-    window.location.reload()
-  }
-  //-----------------------------------------------------------------------
+  // // ------------------------------- add about ----------------------------
+  // addAbout(){
+  //   this.service.addAbout(this.about.value)
+  //   window.location.reload()
+  // }
+  // //-----------------------------------------------------------------------
 
-  // ------------------------------- contact  -----------------------------
-  SetAddContact(){
-    this.contact_Save_btn=true;
-    this.Contact_update_btn=false;
-  }
-  addContact(){
-    this.service.addContact(this.contact.value)
-    window.location.reload()
-  }
-  // ----------------------------------------------------------------------
+  // // ------------------------------- contact  -----------------------------
+  // SetAddContact(){
+  //   this.contact_Save_btn=true;
+  //   this.Contact_update_btn=false;
+  // }
+  // addContact(){
+  //   this.service.addContact(this.contact.value)
+  //   window.location.reload()
+  // }
+  // // ----------------------------------------------------------------------
 
 
 
@@ -581,55 +511,7 @@ addHomePost:any={ text:"", photourl:"" };
     this.service.updateHeaderData({journalname:this.headerDataObject.journalname,logoImg:this.urlLogo})
     window.location.reload()
   }
-  // ----------------------------------------------------
 
-  // -------------- update home carsoul ----------------
-  setUpdateID_carsoul(id:number){
-    this.carsoulID=id
-    this.service.gethomeCarousel().subscribe(data=>{
-      let object=data.find(item=> item.id==this.carsoulID)!
-      this.updateHomeCarsoul.patchValue({
-        title:object.title,
-      })
-    console.log(id,object)
-
-    })
-  }
-  uploadCarsoulImg_ForUpdate(event:any){
-    let loader=new FileReader();
-    loader.readAsDataURL(event.target.files[0])
-    loader.onload=(event)=>{
-      this.updateCarsoulObject.photourl=event.target?.result;
-    }
-  }
-  updateCarsoul(){
-    this.updateCarsoulObject.title=this.updateHomeCarsoul.get("title")?.value
-    this.service.updateHomeCarousel(this.carsoulID,this.updateCarsoulObject);
-    window.location.reload()
-  }
-  // -------------- update home data ------------------
-  setUpdateID_Home(id:number){
-    this.homeID=id
-    this.service.gethomeData().subscribe(data=>{
-      let object=data.find(item=> item.id==this.homeID)!
-      this.updateHomeData.patchValue({
-        text:object.text,
-      })
-    })
-  }
-  uploadHomeImg_ForUpdate(event:any){
-    let loader=new FileReader();
-    loader.readAsDataURL(event.target.files[0])
-    loader.onload=(event)=>{
-      this.updateHomeObject.photourl=event.target?.result;
-    }
-  }
-  updateHome(){
-    this.updateHomeObject.text=this.updateHomeData.get("text")?.value
-    this.service.updateHomeData(this.homeID,this.updateHomeObject);
-    window.location.reload()
-  }
-  // ----------------------------------------------------
 
   // --------------------- image back -------------------
   url:any="0"
@@ -650,40 +532,91 @@ addHomePost:any={ text:"", photourl:"" };
   }
   // ----------------------------------------------------
 
+  // ----------------------------------------------------
+
+  // -------------- update home carsoul ----------------
+  // setUpdateID_carsoul(id:number){
+  //   this.carsoulID=id
+  //   this.service.gethomeCarousel().subscribe(data=>{
+  //     let object=data.find(item=> item.id==this.carsoulID)!
+  //     this.updateHomeCarsoul.patchValue({
+  //       title:object.title,
+  //     })
+  //   console.log(id,object)
+
+  //   })
+  // }
+  // uploadCarsoulImg_ForUpdate(event:any){
+  //   let loader=new FileReader();
+  //   loader.readAsDataURL(event.target.files[0])
+  //   loader.onload=(event)=>{
+  //     this.updateCarsoulObject.photourl=event.target?.result;
+  //   }
+  // }
+  // updateCarsoul(){
+  //   this.updateCarsoulObject.title=this.updateHomeCarsoul.get("title")?.value
+  //   this.service.updateHomeCarousel(this.carsoulID,this.updateCarsoulObject);
+  //   window.location.reload()
+  // }
+  // // -------------- update home data ------------------
+  // setUpdateID_Home(id:number){
+  //   this.homeID=id
+  //   this.service.gethomeData().subscribe(data=>{
+  //     let object=data.find(item=> item.id==this.homeID)!
+  //     this.updateHomeData.patchValue({
+  //       text:object.text,
+  //     })
+  //   })
+  // }
+  // uploadHomeImg_ForUpdate(event:any){
+  //   let loader=new FileReader();
+  //   loader.readAsDataURL(event.target.files[0])
+  //   loader.onload=(event)=>{
+  //     this.updateHomeObject.photourl=event.target?.result;
+  //   }
+  // }
+  // updateHome(){
+  //   this.updateHomeObject.text=this.updateHomeData.get("text")?.value
+  //   this.service.updateHomeData(this.homeID,this.updateHomeObject);
+  //   window.location.reload()
+  // }
+  // ----------------------------------------------------
+
+  
 
   
   // ---------------- update instructions ---------------
-  idInstruction:number=0
-  setInstructionID(item:any){
-    this.idInstruction=item.id;
-    this.instruction.patchValue({
-      title:item.title,
-      text:item.text,
-    })
-  }
-  updateInstruction(){
-    this.service.updateInstruction(this.idInstruction,this.instruction.value)
-    window.location.reload()
-  }
-  updateInstructionFile(){
-    this.service.updateInstructionFile(this.instructionFile.value)
-    window.location.reload()
-  }
+  // idInstruction:number=0
+  // setInstructionID(item:any){
+  //   this.idInstruction=item.id;
+  //   this.instruction.patchValue({
+  //     title:item.title,
+  //     text:item.text,
+  //   })
+  // }
+  // updateInstruction(){
+  //   this.service.updateInstruction(this.idInstruction,this.instruction.value)
+  //   window.location.reload()
+  // }
+  // updateInstructionFile(){
+  //   this.service.updateInstructionFile(this.instructionFile.value)
+  //   window.location.reload()
+  // }
   //-----------------------------------------------------
 
 
   // -------------------- update Aim --------------------
-  idAim:number=0
-  setAim(item:any){
-    this.idAim=item.id;
-    this.aim.patchValue({
-      text:item.text,
-    })
-  }
-  updateAim(){
-    this.service.updateAim(this.idAim,this.aim.value)
-    window.location.reload()
-  }
+  // idAim:number=0
+  // setAim(item:any){
+  //   this.idAim=item.id;
+  //   this.aim.patchValue({
+  //     text:item.text,
+  //   })
+  // }
+  // updateAim(){
+  //   this.service.updateAim(this.idAim,this.aim.value)
+  //   window.location.reload()
+  // }
   //-----------------------------------------------------
 
 

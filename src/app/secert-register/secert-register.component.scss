@@ -1,0 +1,51 @@
+[class*="col-"]{
+    width: 100%;
+    float: left;
+}
+
+@media only screen and (max-width: 600px) {
+    div .content{
+        padding: 0%;
+    }
+    div div .Basictitle{
+        font-size: 17px;
+        font-weight: bold;
+    }
+    div div .BasictitleRow{
+        font-size: 13px;
+    }
+    div div table{
+        font-size: 12px;
+    }
+
+    div div div .table{
+        width:100%;
+    }
+    div .table .card-img{
+        height: 30px;
+        width: 25px;
+        padding: 0%;
+    }
+    div .table .btn{
+        font-size: 12px;
+    }
+}
+
+
+.content{
+    padding: 0% 14%;
+}
+
+
+.emailText{
+    font-weight: 700;
+}
+
+.Basictitle{
+    color: rgb(13, 115, 178);
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    padding: 20px;
+    font-size: 25px;
+    text-transform: capitalize;
+}

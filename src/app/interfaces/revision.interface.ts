@@ -28,5 +28,6 @@ export interface data{
     GeneralInformationText2:string,
 
     userId:string
+    id?:number
 
 }

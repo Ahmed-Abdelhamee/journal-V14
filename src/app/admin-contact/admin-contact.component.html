@@ -1,0 +1,88 @@
+
+<!-- ------------------------ show contact with modal button---------------------------- -->
+<div class="col-12 container">
+    <div class=" text-center ">
+        <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#addContact" (click)="SetAddContact()">
+            add contact
+        </button>
+    </div>
+
+    <h2 class=" col-12 text-center Basictitle pt-4"> * contact * </h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+            <th scope="col" class="text-center">#</th>
+            <th scope="col" class="text-center">Title</th>
+            <th scope="col" class="text-center">Text</th>
+            <th scope="col" class="text-center"></th>
+            <th scope="col" class="text-center">Update</th>
+            <th scope="col" class="text-center">Delete</th>
+            </tr>
+        </thead>
+
+        <tbody  *ngFor="let item of contactArray; let i=index;" >
+            <tr>
+            <th scope="row">{{i+1}}</th>
+            <td class=" text-center"><p class="text Basictitle pt-2" >{{item.sideTitle}} </p></td>
+            <td class=" text-center"><p class="text pt-2" >{{item.text}} </p></td>
+            <td class=" text-center"><button class="btn btn-info" (click)="showData_image(item)"  style="margin-top: 0px; " data-toggle="modal" data-target="#show">Show</button></td>
+            <td class=" text-center"><button class="btn btn-warning" (click)="setUpdateContact(item)" style="margin-top: 0px;" data-toggle="modal" data-target="#addContact">Edit</button></td>
+            <td class=" text-center"><button class="btn btn-danger"  (click)="swalDelete('delete_Contact',item)" style="margin-top: 0px;"> X</button></td>
+
+            </tr>
+        </tbody>
+    </table> 
+
+</div>
+
+     
+<!-- ------------------------   add & update contact  ---------------------------- -->
+<div class="modal" id="addContact">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title">add Contact</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form [formGroup]="contact" class="col-12 card compeletedModelCard">
+                    <div class="form-group">
+                        <input type="text" formControlName="sideTitle" placeholder="side Title " class="form-control">            
+                        <textarea type="text" formControlName="text" placeholder="text " class="form-control" rows="5"> </textarea>
+                    </div>
+                    <div class="submit">
+                        <button class="btn btn-outline-primary" type="submit" *ngIf="contact_Save_btn" (click)="addContact()"> save </button>
+                        <button class="btn btn-warning" type="button" *ngIf="Contact_update_btn" (click)="updateContact()"> update </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- ------------------- div SHow Data ---------------- -->
+<div class="col-12">
+    <div class="modal fade " id="show" aria-labelledby="show" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"> Show Details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <p class="Basictitle text-center" style="font-size: 20px;" *ngIf="showItem_TiTle!=''">{{showItem_TiTle}}</p>
+                <p class="text-center">{{showItem_Text}}</p>
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

@@ -1,0 +1,59 @@
+   
+    <div class="col-12 text-center pt-3 ">
+         <!-- ------------------------ user profile --------------------- -->
+        <button type="button" class="btn btn-outline-warning btnModal" data-toggle="modal" data-target="#profile" (click)="setProfileValue()">
+            update profile
+        </button>
+        <!-- ----------------------------------------------------------- -->
+    </div>
+
+    <!-- ----------------------------- show profile data ------------------------- -->
+    <div class="col-12 pt-4">
+        <h4 class="text-center profileText">{{profileSettingsObject.text1}}</h4>
+        <h4 class="text-center profileText">{{profileSettingsObject.text2}}</h4>
+        <h4 class="text-center profileText">{{profileSettingsObject.text3}}</h4>
+        <hr>
+        <h4 class="text-center profileText">{{profileSettingsObject.text4}}</h4>
+        <h4 class="text-center profileText">{{profileSettingsObject.text5}}</h4>
+        <hr>
+        <h4 class="text-center profileText">{{profileSettingsObject.text6}}</h4>
+        <hr>
+    </div>
+    <!-- ----------------------------------------------------------------------- -->
+    
+    
+    <!-- ----------------------------------- update profile ------------------------------------ -->
+    <div class="modal" id="profile">
+        <div class="modal-dialog">
+            <div class="modal-content">
+        
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+        
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <!-- post Board -->
+                    <div class="updateProfile card col-12">
+                        <p class="groubTitle">update profile settings</p>
+                        <form [formGroup]="profile" (ngSubmit)="updateProfile()">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Enter text1" formControlName="text1">
+                                <input type="text" class="form-control" placeholder="Enter text2" formControlName="text2">
+                                <input type="text" class="form-control" placeholder="Enter text3" formControlName="text3">
+                                <input type="text" class="form-control" placeholder="Enter text4" formControlName="text4">
+                                <input type="text" class="form-control" placeholder="Enter text5" formControlName="text5">
+                                <input type="text" class="form-control" placeholder="Enter text6" formControlName="text6">
+                            </div>
+
+                            <div class="submit">
+                                <button class="btn btn-warning" type="submit"> update </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ------------------------------------------------------------------------------------------ -->

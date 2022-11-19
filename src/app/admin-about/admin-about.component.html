@@ -1,0 +1,139 @@
+<div class="col-12 text-center pt-2 pb-2">
+     <!-- ------------------------ user profile --------------------- -->
+            
+     <button type="button" class="btn btn-outline-info btnModal" data-toggle="modal" data-target="#about">
+        add about us
+    </button>
+    
+    <!-- ----------------------------------------------------------- -->
+</div>
+
+
+<!-- ----------------------------- show about data ------------------------- -->
+<div class="aimShow col-12">
+    <h2 class=" col-12 text-center Basictitle pt-1 pb-2"> * about * </h2>
+
+    <div class="col-sm-1" style="height: 1px;"></div>
+    <table class="table col-sm-10 table-striped">
+        <thead>
+            <tr>
+            <th scope="col" class="text-center">#</th>
+            <th scope="col" class="text-center">Big Title</th>
+            <th scope="col" class="text-center">Side Title</th>
+            <th scope="col" class="text-center">Text</th>
+            <th scope="col" class="text-center"></th>
+            <th scope="col" class="text-center">Update</th>
+            <th scope="col" class="text-center">Delete</th>
+            </tr>
+        </thead>
+
+        <tbody  *ngFor="let item of aboutArray; let i=index;" >
+            <tr>
+            <th scope="row">{{i+1}}</th>
+            <td class="text-center"><p class=" text Basictitle pt-2" >{{item.BigTitle}} </p></td>
+            <td class=" text-center"><p class="text pt-2" style="font-weight: 600;">{{item.sideTitle}} </p></td>
+            <td class=" text-center"><p class="text pt-2" >{{item.text}} </p></td>
+            <td class=" text-center"><button class="btn btn-info" (click)="showData_image(item)"  data-toggle="modal" data-target="#show">Show</button></td>
+            <td class=" text-center"><button class="btn btn-warning" (click)="setAbout(item)"  data-toggle="modal" data-target="#aboutUpdate">Edit</button></td>
+            <td class=" text-center"><button class="btn btn-danger" (click)="swalDelete('delete_About',item)"> X</button></td>
+            </tr>
+        </tbody>
+        </table>
+</div>
+<!-- --------------------------------------------------------------------- -->
+
+
+
+
+
+ <!-- --------------------------------- add about us-------------------------- -->
+ <div class="modal" id="about">
+    <div class="modal-dialog">
+        <div class="modal-content">
+    
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+    
+            <!-- Modal body -->
+            <div class="modal-body">
+                <!-- post Board -->
+                <div class="updateProfile card col-12">
+                    <p class="groupTitle"> add about us</p>
+                    <form [formGroup]="about" (ngSubmit)="addAbout()">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder=" title in Big Title" formControlName="BigTitle">
+                            <input type="text" class="form-control" placeholder="side title" formControlName="sideTitle">
+                            <textarea type="text" class="form-control" placeholder="text" formControlName="text" rows="5"></textarea>
+                        </div>
+
+                        <div class="submit">
+                            <button class="btn btn-info" type="submit"> add </button>
+                        </div>
+                    </form>
+                </div>
+            </div>    
+        </div>
+    </div>
+</div>
+<!-- ------------------------------------------------------------------------------------- -->
+
+
+
+
+<!-- ----------------------------------- update about ------------------------------------ -->
+<div class="modal" id="aboutUpdate">
+    <div class="modal-dialog">
+        <div class="modal-content">
+    
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+    
+            <!-- Modal body -->
+            <div class="modal-body">
+                <!-- post Board -->
+                <div class="updateProfile card col-12">
+                    <p class="groubTitle">update profile settings</p>
+                    <form [formGroup]="about" (ngSubmit)="aboutUpdate()">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="big title " formControlName="BigTitle">
+                            <input type="text" class="form-control" placeholder="side title" formControlName="sideTitle">
+                            <textarea type="text" class="form-control" placeholder="text" formControlName="text" rows="7"></textarea>
+                        </div>
+
+                        <div class="submit">
+                            <button class="btn btn-warning" type="submit"> update </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ------------------------------------------------------------------------------------------ -->
+
+
+
+<!-- div SHow Data -->
+<div class="col-12">
+    <div class="modal fade " id="show" aria-labelledby="show" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"> Show Details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <p class="Basictitle text-center" style="font-size: 20px;">{{showItem_bigTitle}}</p>
+                <p class="Basictitle text-left" style="font-size: 15px;">{{showItem_sideTiTle}}</p>
+                <span class="text-center">{{showItem_Text}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

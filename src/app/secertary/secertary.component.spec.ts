@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminSettings2Component } from './admin-settings2.component';
+import { SecertaryComponent } from './secertary.component';
 
-describe('AdminSettings2Component', () => {
-  let component: AdminSettings2Component;
-  let fixture: ComponentFixture<AdminSettings2Component>;
+describe('SecertaryComponent', () => {
+  let component: SecertaryComponent;
+  let fixture: ComponentFixture<SecertaryComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminSettings2Component ]
+      declarations: [ SecertaryComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminSettings2Component);
+    fixture = TestBed.createComponent(SecertaryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

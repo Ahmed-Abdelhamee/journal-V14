@@ -4,34 +4,64 @@
 }
 
 @media only screen and (max-width: 600px) {
+    div{
+        padding: 0px;
+    }
     div div h1{
         font-size: 17px;
     }
+    div div .pageTitle{
+        font-size: 16px;
+    }
+    div div ul li p a .card-img{
+        width: 65px;
+        height: 50px;
+    }
+    // div div ul li{
+    //    margin-bottom: 30px;
+    // }
     div div ul li p{
-        font-size: 15px;
+        font-size: 12px;
         text-align: left;
+    }
+    div div ul li p span{
+       display: none;
     }
     div div ul li ul li{
         font-size: 15px;
+        margin-top: -15px;
+        margin-left: -30px;
+        color: rgb(105, 102, 102);
     }
 }
 
 
 .content {
-    padding-top: 40px;
+    padding-top: 20px;
+    font-weight: 600;
+    text-transform: capitalize;
+    padding-bottom: 100px;
 }
-.content h1{
-    text-align: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    padding-bottom: 20px;
-    color: rgb(144, 19, 19);
+.pageTitle{
+    font-size: 25px;
+    font-weight: bold;
 }
 .researchTitle{
     font-size: 18px;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+    font-family:Georgia, 'Times New Roman', Times, serif ;
     // color: rgb(77, 77, 77);
-    color: black;
     text-transform: capitalize;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+}
+.researchTitle span{
+    text-transform: lowercase;
+    color: gray;
+    font-weight: 600;
+    font-family:'Times New Roman', Times, serif ;
+    font-size: 18px ;
+    padding-right: 7px;
 }
 .content ul li{
     font-size: 17px;

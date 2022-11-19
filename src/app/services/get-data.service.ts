@@ -157,6 +157,7 @@ export class GetDataService {
         
       // }
     })
+
   }
 
 
@@ -245,6 +246,8 @@ export class GetDataService {
   delete_from_NewResearch(id:number){
     this.http.delete(serverURL.serverURL+`revisions/${id}`).subscribe()
   }
+
+  
   deleteReceipt(id:any){
     this.http.delete(serverURL.serverURL+`authorsapproval/${id}`).subscribe()
   }

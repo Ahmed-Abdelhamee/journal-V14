@@ -8,32 +8,32 @@
 </head>
 <body>
 
-    <div class="col-12 container" *ngIf="viewAdmin">
+    <div class="col-12 container">
         <h3 class="text-center text-info bigTitle"> Edit Site Data</h3>
 
         <div class="col-sm-3 card">
             <img src="assets/main change.png" alt="photo">
-            <a routerLink="/admin-settings/logo"> <p class="card-title"> Logo & Title</p> </a>
+            <a routerLink="/admin-settings"> <p class="card-title"> Logo & Title</p> </a>
         </div>
 
         <div class="col-sm-3 card" id="home" >
             <img src="assets/home.png" alt="photo">
-            <a routerLink="/admin-settings/home"> <p class="card-title"> home data</p> </a>
+            <a routerLink="/admin-home"> <p class="card-title"> home data</p> </a>
         </div>
 
         <div class="col-sm-3 card" >
             <img src="assets/instructions.png" alt="photo">
-            <a routerLink="/admin-settings/instructions"> <p class="card-title"> instructions </p> </a>
+            <a routerLink="/admin-instructions"> <p class="card-title"> instructions </p> </a>
         </div>
 
         <div class="col-sm-3 card">
             <img src="assets/aim-goal.png" alt="photo">
-            <a routerLink="/admin-settings/aim"> <p class="card-title"> aim data</p> </a>
+            <a routerLink="/admin-aim"> <p class="card-title"> aim data</p> </a>
         </div>
 
         <div class="col-sm-3 card">
             <img src="assets/who.png" alt="photo">
-            <a routerLink="/admin-settings/board"> <p class="card-title"> editorial board</p> </a>
+            <a routerLink="/admin-board"> <p class="card-title"> editorial board</p> </a>
         </div>
 
         <div class="col-sm-3 card">
@@ -43,70 +43,27 @@
 
         <div class="col-sm-3 card">
             <img src="assets/about.png" alt="photo">
-            <a routerLink="/admin-settings/about"> <p class="card-title"> about us </p> </a>
+            <a routerLink="/admin-about"> <p class="card-title"> about us </p> </a>
         </div>
 
         <div class="col-sm-3 card">
             <img src="assets/profile.png" alt="photo">
-            <a routerLink="/admin-settings/profile"> <p class="card-title"> profile</p> </a>
+            <a routerLink="/admin-profile"> <p class="card-title"> profile</p> </a>
         </div>
         
         <div class="col-sm-3 card">
             <img src="assets/contactUs.png" alt="photo" id="view new-researchesPhoto">
-            <a routerLink="/admin-settings/contact"> <p class="card-title"> contact us</p> </a>
+            <a routerLink="/admin-contact"> <p class="card-title"> contact us</p> </a>
         </div>
 
         <div class="col-sm-3 card">
             <img src="assets/support.png" alt="photo" id="view new-researchesPhoto">
-            <a routerLink="/admin-settings/support"> <p class="card-title"> support  </a>
+            <a routerLink="/admin-support"> <p class="card-title"> support  </a>
         </div>
 
         
     </div>
-
-
-
-
-    <div class="col-12 container" *ngIf="viewSecret">
-        <h3 class="text-center text-warning bigTitle"> New Researches  &  Act With Users</h3>
-
-        <div class="col-sm-3 card">
-            <img src="assets/researches.png" alt="photo" id="view">
-            <a routerLink="/new-researches"> <p class="card-title"> new researches</p> </a>
-        </div>
-
-        <div class="col-sm-3 card">
-            <img src="assets/whitepaper.png" alt="photo" id="view UsersResearches">
-            <a routerLink="/admin-settings2/approval"> <p class="card-title">  author’s approval</p> </a>
-        </div>
-
-        <div class="col-sm-3 card">
-            <img src="assets/note.png" alt="photo" id="view UsersResearches">
-            <a routerLink="/admin-settings2/sendingNotes"> <p class="card-title"> sending notes</p> </a>
-        </div>
-
-        <div class="col-sm-3 card">
-            <img src="assets/research-result.png" alt="photo" id="view new-researchesPhoto">
-            <a routerLink="/admin-settings2/research-result"> <p class="card-title"> research result</p> </a>
-        </div>        
-
-        <div class="col-sm-3 card">
-            <img src="assets/complete.png" alt="photo" id="view new-researchesPhoto">
-            <a routerLink="/admin-settings2/compeletedResearch"> <p class="card-title"> compeleted research</p> </a>
-        </div>
-
-        <div class="col-sm-3 card">
-            <img src="assets/login.png" alt="photo" id="view ">
-            <a routerLink="/admin-settings2/login"> <p class="card-title"> login</p> </a>
-        </div>
-
-        <div class="col-sm-3 card">
-            <img src="assets/register.png" alt="photo" id="view ">
-            <a routerLink="/admin-settings2/register"> <p class="card-title"> register</p> </a>
-        </div>
-
-    </div>
-
+    
 
     <!-- // // for text Editor code in angular -->
     <!-- <angular-editor [placeholder]="'Enter text here...'" [config]="editorConfig" [(ngModel)]="htmlContent"></angular-editor>

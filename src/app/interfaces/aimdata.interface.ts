@@ -1,3 +1,4 @@
 export interface aimdata{
-    text:string
+    text:string,
+    id?:number
 }
